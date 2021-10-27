@@ -61,6 +61,9 @@
         <action
             android:id="@+id/action_forside_to_profil"
             app:destination="@id/profil" />
+        <action
+            android:id="@+id/action_forside_to_historik"
+            app:destination="@id/historik" />
     </fragment>
     <fragment
         android:id="@+id/profil"
@@ -80,5 +83,9 @@
         android:id="@+id/historik"
         android:name="com.example.openlog.historik"
         android:label="fragment_historik"
-        tools:layout="@layout/fragment_historik" />
+        tools:layout="@layout/fragment_historik" >
+        <action
+            android:id="@+id/action_historik_to_forside"
+            app:destination="@id/forside" />
+    </fragment>
 </navigation>
