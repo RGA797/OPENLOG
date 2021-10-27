@@ -76,4 +76,9 @@
             android:id="@+id/action_opret_profil_to_forside"
             app:destination="@id/forside" />
     </fragment>
+    <fragment
+        android:id="@+id/historik"
+        android:name="com.example.openlog.historik"
+        android:label="fragment_historik"
+        tools:layout="@layout/fragment_historik" />
 </navigation>

@@ -22,6 +22,7 @@
     <string name="todo">TODO</string>
     <string name="godt_at_se_dig">Godt at se dig</string>
     <string name="todo">TODO</string>
+    <string name="historik">HISTORIK</string>
     <string-array name="Køn">
         <item>Dreng</item>
         <item>Pige</item>
