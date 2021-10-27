@@ -38,11 +38,6 @@
         android:label="fragment_Login"
         tools:layout="@layout/fragment_login" />
     <fragment
-        android:id="@+id/opret_bruger"
-        android:name="com.example.openlog.Opret_bruger"
-        android:label="fragment_opret_bruger"
-        tools:layout="@layout/fragment_opret_bruger" />
-    <fragment
         android:id="@+id/forside"
         android:name="com.example.openlog.Forside"
         android:label="fragment_forside"
@@ -62,4 +57,9 @@
         android:name="com.example.openlog.Profil"
         android:label="fragment_profil"
         tools:layout="@layout/fragment_profil" />
+    <fragment
+        android:id="@+id/opret_profil"
+        android:name="com.example.openlog.opret_profil"
+        android:label="fragment_opret_profil"
+        tools:layout="@layout/fragment_opret_profil" />
 </navigation>

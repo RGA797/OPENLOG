@@ -12,6 +12,16 @@
     <string name="blodsukker">Blodsukker</string>
     <string name="kulhydrater">Kulhydrater</string>
     <string name="insulin">Insulin</string>
+    <string name="opret_bruger">OPRET BRUGER</string>
+    <string name="min_profil">MIN PROFIL</string>
+    <string name="brugernavn">BRUGERNAVN</string>
+    <string name="adgangskode">ADGANGSKODE</string>
+    <string name="k_n">KØN</string>
+    <string name="f_dselsdag">FØDSELSDAG</string>
+    <string name="nuv_rende_adgangskode">NUVÆRENDE ADGANGSKODE</string>
+    <string name="todo">TODO</string>
+    <string name="godt_at_se_dig">Godt at se dig</string>
+    <string name="todo">TODO</string>
     <string-array name="Køn">
         <item>Dreng</item>
         <item>Pige</item>
