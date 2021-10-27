@@ -61,5 +61,9 @@
         android:id="@+id/opret_profil"
         android:name="com.example.openlog.opret_profil"
         android:label="fragment_opret_profil"
-        tools:layout="@layout/fragment_opret_profil" />
+        tools:layout="@layout/fragment_opret_profil" >
+        <action
+            android:id="@+id/action_opret_profil_to_profil"
+            app:destination="@id/profil" />
+    </fragment>
 </navigation>
