@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/forside">
+    app:startDestination="@id/Login">
 
     <fragment
         android:id="@+id/status_bar_Kulhydrater"
@@ -36,7 +36,14 @@
         android:id="@+id/Login"
         android:name="com.example.openlog.Login"
         android:label="fragment_Login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_Login_to_opret_profil"
+            app:destination="@id/opret_profil" />
+        <action
+            android:id="@+id/action_Login_to_forside"
+            app:destination="@id/forside" />
+    </fragment>
     <fragment
         android:id="@+id/forside"
         android:name="com.example.openlog.Forside"
@@ -51,6 +58,9 @@
         <action
             android:id="@+id/action_forside_to_status_bar_Blodsukker"
             app:destination="@id/status_bar_Blodsukker" />
+        <action
+            android:id="@+id/action_forside_to_profil"
+            app:destination="@id/profil" />
     </fragment>
     <fragment
         android:id="@+id/profil"
@@ -63,7 +73,7 @@
         android:label="fragment_opret_profil"
         tools:layout="@layout/fragment_opret_profil" >
         <action
-            android:id="@+id/action_opret_profil_to_profil"
-            app:destination="@id/profil" />
+            android:id="@+id/action_opret_profil_to_forside"
+            app:destination="@id/forside" />
     </fragment>
 </navigation>
