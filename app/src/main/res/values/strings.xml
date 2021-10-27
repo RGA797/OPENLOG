@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">OPENLOG</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="brugernavn">BRUGERNAVN</string>
+    <string name="adgangskode">ADGANGSKODE</string>
+    <string name="openlog">OPENLOG</string>
+    <string name="login">Login</string>
+    <string name="køn">Køn</string>
+    <string name="fødselsdag">Fødselsdag</string>
+    <string name="profil">PROFIL</string>
+    <string name="blodsukker">Blodsukker</string>
+    <string name="kulhydrater">Kulhydrater</string>
+    <string name="insulin">Insulin</string>
+    <string-array name="Køn">
+        <item>Dreng</item>
+        <item>Pige</item>
+    </string-array>
+
+
+</resources>

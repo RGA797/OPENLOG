@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/forside">
+
+    <fragment
+        android:id="@+id/status_bar_Kulhydrater"
+        android:name="com.example.openlog.Status_bar_Blodsukker"
+        android:label="fragment_status_Kulhydrater"
+        tools:layout="@layout/fragment_status_bar__blodsukker" >
+        <action
+            android:id="@+id/action_status_bar_Kulhydrater_to_forside"
+            app:destination="@id/forside" />
+    </fragment>
+    <fragment
+        android:id="@+id/status_bar_Insulin"
+        android:name="com.example.openlog.Status_bar_Blodsukker"
+        android:label="fragment_status_bar_Insulin"
+        tools:layout="@layout/fragment_status_bar__blodsukker" >
+        <action
+            android:id="@+id/action_status_bar_Insulin_to_forside"
+            app:destination="@id/forside" />
+    </fragment>
+    <fragment
+        android:id="@+id/status_bar_Blodsukker"
+        android:name="com.example.openlog.Status_bar_Blodsukker"
+        android:label="fragment_status_bar__blodsukker"
+        tools:layout="@layout/fragment_status_bar__blodsukker" >
+        <action
+            android:id="@+id/action_status_bar_Blodsukker_to_forside"
+            app:destination="@id/forside" />
+    </fragment>
+    <fragment
+        android:id="@+id/Login"
+        android:name="com.example.openlog.Login"
+        android:label="fragment_Login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/opret_bruger"
+        android:name="com.example.openlog.Opret_bruger"
+        android:label="fragment_opret_bruger"
+        tools:layout="@layout/fragment_opret_bruger" />
+    <fragment
+        android:id="@+id/forside"
+        android:name="com.example.openlog.Forside"
+        android:label="fragment_forside"
+        tools:layout="@layout/fragment_forside" >
+        <action
+            android:id="@+id/action_forside_to_status_bar_Insulin"
+            app:destination="@id/status_bar_Insulin" />
+        <action
+            android:id="@+id/action_forside_to_status_bar_Kulhydrater"
+            app:destination="@id/status_bar_Kulhydrater" />
+        <action
+            android:id="@+id/action_forside_to_status_bar_Blodsukker"
+            app:destination="@id/status_bar_Blodsukker" />
+    </fragment>
+    <fragment
+        android:id="@+id/profil"
+        android:name="com.example.openlog.Profil"
+        android:label="fragment_profil"
+        tools:layout="@layout/fragment_profil" />
+</navigation>
