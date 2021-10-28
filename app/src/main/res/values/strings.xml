@@ -2,8 +2,6 @@
     <string name="app_name">OPENLOG</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="brugernavn">BRUGERNAVN</string>
-    <string name="adgangskode">ADGANGSKODE</string>
     <string name="openlog">OPENLOG</string>
     <string name="login">Login</string>
     <string name="køn">Køn</string>
@@ -19,7 +17,6 @@
     <string name="k_n">KØN</string>
     <string name="f_dselsdag">FØDSELSDAG</string>
     <string name="nuv_rende_adgangskode">NUVÆRENDE ADGANGSKODE</string>
-    <string name="todo">TODO</string>
     <string name="godt_at_se_dig">Godt at se dig</string>
     <string name="todo">TODO</string>
     <string name="historik">HISTORIK</string>
