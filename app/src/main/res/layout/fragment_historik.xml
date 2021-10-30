@@ -5,13 +5,17 @@
     android:id="@+id/frameLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".historik">
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/insulinHistorikButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#008EFF"
         android:text="@string/insulin"
+        android:textColor="#000000"
+        android:textColorHighlight="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -19,11 +23,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.518" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/kulhydraterHistorikButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#FFE500"
         android:text="@string/kulhydrater"
+        android:textColor="#000000"
+        android:textColorHighlight="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -31,16 +38,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.612" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/blodsukkerHistorikButton"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#FF0000"
         android:text="@string/blodsukker"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.43" />
+        app:layout_constraintVertical_bias="0.426"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/historikText"
@@ -48,6 +60,7 @@
         android:layout_height="wrap_content"
         android:text="@string/historik"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
