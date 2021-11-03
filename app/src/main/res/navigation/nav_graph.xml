@@ -40,7 +40,7 @@
         tools:layout="@layout/fragment_forside" >
         <action
             android:id="@+id/action_forside_to_status_bar_Insulin"
-            app:destination="@id/status_bar_Insulin" />
+            app:destination="@id/status_bar_Insulin" /> <!---Error here -->
         <action
             android:id="@+id/action_forside_to_status_bar_Kulhydrater"
             app:destination="@id/status_bar_Kulhydrater" />
