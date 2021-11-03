@@ -12,25 +12,6 @@
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
 
-
-    <fragment
-        android:id="@+id/status_bar_Kulhydrater"
-        android:name="com.example.openlog.Status_bar_Blodsukker"
-        android:label="fragment_status_Kulhydrater"
-        tools:layout="@layout/fragment_status_bar__blodsukker" >
-        <action
-            android:id="@+id/action_status_bar_Kulhydrater_to_forside"
-            app:destination="@id/forside" />
-    </fragment>
-    <fragment
-        android:id="@+id/status_bar_Insulin"
-        android:name="com.example.openlog.Status_bar_Blodsukker"
-        android:label="fragment_status_bar_Insulin"
-        tools:layout="@layout/fragment_status_bar__blodsukker" >
-        <action
-            android:id="@+id/action_status_bar_Insulin_to_forside"
-            app:destination="@id/forside" />
-    </fragment>
     <fragment
         android:id="@+id/status_bar_Blodsukker"
         android:name="com.example.openlog.Status_bar_Blodsukker"
@@ -94,6 +75,25 @@
         tools:layout="@layout/fragment_historik" >
         <action
             android:id="@+id/action_historik_to_forside"
+            app:destination="@id/forside" />
+    </fragment>
+    <fragment
+        android:id="@+id/status_bar_Kulhydrater"
+        android:name="com.example.openlog.Status_bar_Kulhydrater"
+        android:label="fragment_status_bar__kulhydrater"
+        tools:layout="@layout/fragment_status_bar__kulhydrater" >
+        <action
+            android:id="@+id/action_status_bar_Kulhydrater_to_forside"
+            app:destination="@id/forside" />
+    </fragment>
+
+    <fragment>
+        android:id="@+id/status_bar_Insulin"
+        android:name="com.example.openlog.Status_bar_Insulin"
+        android:label="fragment_status_bar__insulin"
+        tools:layout="@layout/fragment_status_bar__insulin" >
+        <action
+            android:id="@+id/action_status_bar_Insulin_to_forside"
             app:destination="@id/forside" />
     </fragment>
 </navigation>
