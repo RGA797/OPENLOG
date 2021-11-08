@@ -13,25 +13,28 @@
         android:layout_height="62dp"
         android:text="@string/openlog"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="#069C81"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.166" />
+        app:layout_constraintVertical_bias="0.176" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/brugernavnTextInput"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="340dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:hint="@string/brugernavn"
+        android:textColorHint="#B3000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.299"
         app:startIconDrawable="@android:drawable/btn_star_big_off">
+
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -42,29 +45,31 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/opretButton"
         android:layout_width="121dp"
-        android:layout_height="48dp"
+        android:layout_height="30dp"
         android:background="@color/white"
         android:text="@string/opret_bruger"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.669"
+        app:layout_constraintHorizontal_bias="0.872"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.775" />
+        app:layout_constraintVertical_bias="0.621" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/adgangskodeTextInput"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="340dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
         android:hint="@string/adgangskode"
+        android:textColorHint="#B3000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.459"
+        app:layout_constraintTop_toBottomOf="@+id/brugernavnTextInput"
+        app:layout_constraintVertical_bias="0.060000002"
         app:startIconDrawable="@android:drawable/ic_lock_idle_lock">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -74,15 +79,30 @@
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/loginButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="#069C81"
         android:text="@string/login"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="22dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.707" />
+        app:layout_constraintVertical_bias="0.55"
+        app:rippleColor="#FFFFFF" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,8 +19,8 @@
         android:label="fragment_status_Kulhydrater"
         tools:layout="@layout/fragment_status_bar__blodsukker" >
         <action
-            android:id="@+id/action_status_bar_Kulhydrater_to_forside"
-            app:destination="@id/forside" />
+            android:id="@+id/action_status_bar_Kulhydrater_to_historik"
+            app:destination="@id/historik" />
     </fragment>
     <fragment
         android:id="@+id/status_bar_Insulin"
@@ -28,8 +28,8 @@
         android:label="fragment_status_bar_Insulin"
         tools:layout="@layout/fragment_status_bar__blodsukker" >
         <action
-            android:id="@+id/action_status_bar_Insulin_to_forside"
-            app:destination="@id/forside" />
+            android:id="@+id/action_status_bar_Insulin_to_historik"
+            app:destination="@id/historik" />
     </fragment>
     <fragment
         android:id="@+id/status_bar_Blodsukker"
@@ -37,8 +37,8 @@
         android:label="fragment_status_bar__blodsukker"
         tools:layout="@layout/fragment_status_bar__blodsukker" >
         <action
-            android:id="@+id/action_status_bar_Blodsukker_to_forside"
-            app:destination="@id/forside" />
+            android:id="@+id/action_status_bar_Blodsukker_to_historik"
+            app:destination="@id/historik" />
     </fragment>
     <fragment
         android:id="@+id/Login"
@@ -49,7 +49,7 @@
             android:id="@+id/action_Login_to_opret_profil"
             app:destination="@id/opret_profil" />
         <action
-            android:id="@+id/action_Login_to_forside"
+            android:id="@+id/navigateToForside"
             app:destination="@id/forside" />
     </fragment>
     <fragment
@@ -57,15 +57,6 @@
         android:name="com.example.openlog.Forside"
         android:label="fragment_forside"
         tools:layout="@layout/fragment_forside" >
-        <action
-            android:id="@+id/action_forside_to_status_bar_Insulin"
-            app:destination="@id/status_bar_Insulin" />
-        <action
-            android:id="@+id/action_forside_to_status_bar_Kulhydrater"
-            app:destination="@id/status_bar_Kulhydrater" />
-        <action
-            android:id="@+id/action_forside_to_status_bar_Blodsukker"
-            app:destination="@id/status_bar_Blodsukker" />
         <action
             android:id="@+id/action_forside_to_profil"
             app:destination="@id/profil" />
@@ -77,7 +68,11 @@
         android:id="@+id/profil"
         android:name="com.example.openlog.Profil"
         android:label="fragment_profil"
-        tools:layout="@layout/fragment_profil" />
+        tools:layout="@layout/fragment_profil" >
+        <action
+            android:id="@+id/action_profil_to_forside"
+            app:destination="@id/forside" />
+    </fragment>
     <fragment
         android:id="@+id/opret_profil"
         android:name="com.example.openlog.opret_profil"
@@ -95,5 +90,14 @@
         <action
             android:id="@+id/action_historik_to_forside"
             app:destination="@id/forside" />
+        <action
+            android:id="@+id/action_historik_to_status_bar_Blodsukker"
+            app:destination="@id/status_bar_Blodsukker" />
+        <action
+            android:id="@+id/action_historik_to_status_bar_Insulin"
+            app:destination="@id/status_bar_Insulin" />
+        <action
+            android:id="@+id/action_historik_to_status_bar_Kulhydrater"
+            app:destination="@id/status_bar_Kulhydrater" />
     </fragment>
 </navigation>
