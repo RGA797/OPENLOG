@@ -87,7 +87,7 @@
             app:destination="@id/forside" />
     </fragment>
 
-    <fragment>
+    <fragment
         android:id="@+id/status_bar_Insulin"
         android:name="com.example.openlog.Status_bar_Insulin"
         android:label="fragment_status_bar__insulin"
