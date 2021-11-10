@@ -16,29 +16,17 @@
         android:id="@+id/status_bar_Kulhydrater"
         android:name="com.example.openlog.Status_bar_Blodsukker"
         android:label="fragment_status_Kulhydrater"
-        tools:layout="@layout/fragment_status_bar__blodsukker" >
-        <action
-            android:id="@+id/action_status_bar_Kulhydrater_to_historik"
-            app:destination="@id/historik" />
-    </fragment>
+        tools:layout="@layout/fragment_status_bar__blodsukker" />
     <fragment
         android:id="@+id/status_bar_Insulin"
         android:name="com.example.openlog.Status_bar_Blodsukker"
         android:label="fragment_status_bar_Insulin"
-        tools:layout="@layout/fragment_status_bar__blodsukker" >
-        <action
-            android:id="@+id/action_status_bar_Insulin_to_historik"
-            app:destination="@id/historik" />
-    </fragment>
+        tools:layout="@layout/fragment_status_bar__blodsukker" />
     <fragment
         android:id="@+id/status_bar_Blodsukker"
         android:name="com.example.openlog.Status_bar_Blodsukker"
         android:label="fragment_status_bar__blodsukker"
-        tools:layout="@layout/fragment_status_bar__blodsukker" >
-        <action
-            android:id="@+id/navigateToHistorik"
-            app:destination="@id/historik" />
-    </fragment>
+        tools:layout="@layout/fragment_status_bar__blodsukker" />
     <fragment
         android:id="@+id/Login"
         android:name="com.example.openlog.Login"
@@ -50,9 +38,6 @@
         <action
             android:id="@+id/navigateFromLoginToOpret"
             app:destination="@id/opret_profil" />
-        <action
-            android:id="@+id/navTest"
-            app:destination="@id/status_bar_Kulhydrater" />
 
     </fragment>
     <fragment
@@ -71,11 +56,7 @@
         android:id="@+id/profil"
         android:name="com.example.openlog.Profil"
         android:label="fragment_profil"
-        tools:layout="@layout/fragment_profil" >
-        <action
-            android:id="@+id/action_profil_to_forside"
-            app:destination="@id/forside" />
-    </fragment>
+        tools:layout="@layout/fragment_profil" />
     <fragment
         android:id="@+id/opret_profil"
         android:name="com.example.openlog.opret_profil"
@@ -90,9 +71,6 @@
         android:name="com.example.openlog.historik"
         android:label="fragment_historik"
         tools:layout="@layout/fragment_historik" >
-        <action
-            android:id="@+id/navigateFromHistorikToForside"
-            app:destination="@id/forside" />
         <action
             android:id="@+id/navigateFromHistorikToBlodsukker"
             app:destination="@id/status_bar_Blodsukker" />
