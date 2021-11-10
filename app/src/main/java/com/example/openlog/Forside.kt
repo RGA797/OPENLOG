@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.navigation.Navigation
 
 class Forside : Fragment() {
@@ -21,9 +22,11 @@ class Forside : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_forside, container, false)
         // Inflate the layout for this fragment
-        //val kulhydratButton = view.findViewById<Button>(R.id.kulhydraterButton)
-        //val insulinButton =  view.findViewById<Button>(R.id.insulinButton)
-        //val blodsukkerButton = view.findViewById<Button>(R.id.blodsukkerButton)
+        val widgetButton = view.findViewById<ImageButton>(R.id.buttonWidget)
+
+        widgetButton.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.navigateFromForsideToHistorik)
+        }
 
         return view
     }

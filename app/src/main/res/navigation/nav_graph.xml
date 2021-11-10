@@ -91,16 +91,16 @@
         android:label="fragment_historik"
         tools:layout="@layout/fragment_historik" >
         <action
-            android:id="@+id/action_historik_to_forside"
+            android:id="@+id/navigateFromHistorikToForside"
             app:destination="@id/forside" />
         <action
-            android:id="@+id/action_historik_to_status_bar_Blodsukker"
+            android:id="@+id/navigateFromHistorikToBlodsukker"
             app:destination="@id/status_bar_Blodsukker" />
         <action
-            android:id="@+id/action_historik_to_status_bar_Insulin"
+            android:id="@+id/navigateFromHistorikToInsulin"
             app:destination="@id/status_bar_Insulin" />
         <action
-            android:id="@+id/action_historik_to_status_bar_Kulhydrater"
+            android:id="@+id/navigateFromHistorikToKulhydrater"
             app:destination="@id/status_bar_Kulhydrater" />
     </fragment>
 </navigation>
