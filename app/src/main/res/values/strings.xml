@@ -23,6 +23,7 @@
     <string name="todo">TODO</string>
     <string name="historik">HISTORIK</string>
     <string name="speak">Button</string>
+    <string name="name">Name</string>
     <string-array name="Køn">
         <item>Dreng</item>
         <item>Pige</item>
