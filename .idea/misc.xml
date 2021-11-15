@@ -3,6 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Nethe/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Nethe/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_forside.xml" value="0.1716485507246377" />
+        <entry key="..\:/Users/Nethe/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_historik.xml" value="0.22" />
+        <entry key="..\:/Users/Nethe/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_login.xml" value="0.1" />
+        <entry key="..\:/Users/Nethe/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_opret_profil.xml" value="0.1" />
+        <entry key="..\:/Users/Nethe/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_profil.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Nethe/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_status_bar__blodsukker.xml" value="0.22" />
+        <entry key="..\:/Users/Nethe/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_status_bar__insulin.xml" value="0.22" />
+        <entry key="..\:/Users/Nethe/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_status_bar__kulhydrater.xml" value="0.1621376811594203" />
         <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/dropdown_item.xml" value="0.175" />
         <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_blank.xml" value="0.17592592592592593" />
