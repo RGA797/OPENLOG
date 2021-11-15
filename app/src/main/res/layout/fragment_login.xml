@@ -12,6 +12,7 @@
         android:layout_width="219dp"
         android:layout_height="62dp"
         android:text="@string/openlog"
+
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textColor="#069C81"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,6 +48,8 @@
         android:layout_width="121dp"
         android:layout_height="30dp"
         android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:fadeScrollbars="false"
         android:text="@string/opret_bruger"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
