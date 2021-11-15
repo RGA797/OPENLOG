@@ -5,7 +5,6 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/Login">
 
-
     <activity
         android:id="@+id/mainActivity"
         android:name="com.example.openlog.MainActivity"
@@ -17,40 +16,29 @@
         android:id="@+id/status_bar_Kulhydrater"
         android:name="com.example.openlog.Status_bar_Blodsukker"
         android:label="fragment_status_Kulhydrater"
-        tools:layout="@layout/fragment_status_bar__blodsukker" >
-        <action
-            android:id="@+id/action_status_bar_Kulhydrater_to_historik"
-            app:destination="@id/historik" />
-    </fragment>
+        tools:layout="@layout/fragment_status_bar__blodsukker" />
     <fragment
         android:id="@+id/status_bar_Insulin"
         android:name="com.example.openlog.Status_bar_Blodsukker"
         android:label="fragment_status_bar_Insulin"
-        tools:layout="@layout/fragment_status_bar__blodsukker" >
-        <action
-            android:id="@+id/action_status_bar_Insulin_to_historik"
-            app:destination="@id/historik" />
-    </fragment>
+        tools:layout="@layout/fragment_status_bar__blodsukker" />
     <fragment
         android:id="@+id/status_bar_Blodsukker"
         android:name="com.example.openlog.Status_bar_Blodsukker"
         android:label="fragment_status_bar__blodsukker"
-        tools:layout="@layout/fragment_status_bar__blodsukker" >
-        <action
-            android:id="@+id/action_status_bar_Blodsukker_to_historik"
-            app:destination="@id/historik" />
-    </fragment>
+        tools:layout="@layout/fragment_status_bar__blodsukker" />
     <fragment
         android:id="@+id/Login"
         android:name="com.example.openlog.Login"
         android:label="fragment_Login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_Login_to_opret_profil"
-            app:destination="@id/opret_profil" />
-        <action
-            android:id="@+id/navigateToForside"
+            android:id="@+id/navigateFromLoginToForside"
             app:destination="@id/forside" />
+        <action
+            android:id="@+id/navigateFromLoginToOpret"
+            app:destination="@id/opret_profil" />
+
     </fragment>
     <fragment
         android:id="@+id/forside"
@@ -61,25 +49,21 @@
             android:id="@+id/action_forside_to_profil"
             app:destination="@id/profil" />
         <action
-            android:id="@+id/action_forside_to_historik"
+            android:id="@+id/navigateFromForsideToHistorik"
             app:destination="@id/historik" />
     </fragment>
     <fragment
         android:id="@+id/profil"
         android:name="com.example.openlog.Profil"
         android:label="fragment_profil"
-        tools:layout="@layout/fragment_profil" >
-        <action
-            android:id="@+id/action_profil_to_forside"
-            app:destination="@id/forside" />
-    </fragment>
+        tools:layout="@layout/fragment_profil" />
     <fragment
         android:id="@+id/opret_profil"
         android:name="com.example.openlog.opret_profil"
         android:label="fragment_opret_profil"
         tools:layout="@layout/fragment_opret_profil" >
         <action
-            android:id="@+id/action_opret_profil_to_forside"
+            android:id="@+id/navigateFromOpretToForside"
             app:destination="@id/forside" />
     </fragment>
     <fragment
@@ -88,16 +72,13 @@
         android:label="fragment_historik"
         tools:layout="@layout/fragment_historik" >
         <action
-            android:id="@+id/action_historik_to_forside"
-            app:destination="@id/forside" />
-        <action
-            android:id="@+id/action_historik_to_status_bar_Blodsukker"
+            android:id="@+id/navigateFromHistorikToBlodsukker"
             app:destination="@id/status_bar_Blodsukker" />
         <action
-            android:id="@+id/action_historik_to_status_bar_Insulin"
+            android:id="@+id/navigateFromHistorikToInsulin"
             app:destination="@id/status_bar_Insulin" />
         <action
-            android:id="@+id/action_historik_to_status_bar_Kulhydrater"
+            android:id="@+id/navigateFromHistorikToKulhydrater"
             app:destination="@id/status_bar_Kulhydrater" />
     </fragment>
 </navigation>

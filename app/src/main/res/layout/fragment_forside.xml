@@ -96,7 +96,7 @@
         app:layout_constraintVertical_bias="0.061" />
 
     <ImageButton
-        android:id="@+id/imageButton15"
+        android:id="@+id/buttonWidget"
         android:layout_width="45dp"
         android:layout_height="65dp"
         android:backgroundTint="@color/white"
