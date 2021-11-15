@@ -23,63 +23,21 @@
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.078" />
-
-    <ImageButton
-        android:id="@+id/imageButton12"
-        android:layout_width="150dp"
-        android:layout_height="180dp"
-        android:backgroundTint="@color/white"
-        android:scaleType="fitStart"
-        android:src="@drawable/ku"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.218"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.671" />
-
-    <ImageButton
-        android:id="@+id/imageButton11"
-        android:layout_width="150dp"
-        android:layout_height="180dp"
-        android:backgroundTint="@color/white"
-        android:scaleType="fitStart"
-        android:src="@drawable/in"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.812"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.326" />
-
-    <ImageButton
-        android:id="@+id/imageButton10"
-        android:layout_width="150dp"
-        android:layout_height="180dp"
-        android:backgroundTint="@color/white"
-        android:scaleType="fitStart"
-        android:src="@drawable/bs"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.218"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.326" />
+        app:layout_constraintVertical_bias="0.087" />
 
     <ImageButton
         android:id="@+id/imageButton13"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="166dp"
+        android:layout_height="176dp"
         android:backgroundTint="@color/white"
         android:scaleType="fitStart"
         android:src="@drawable/mik"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.955" />
+        app:layout_constraintVertical_bias="0.572" />
 
     <ImageButton
         android:id="@+id/imageButton14"
