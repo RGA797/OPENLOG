@@ -81,4 +81,14 @@
             android:id="@+id/navigateFromHistorikToKulhydrater"
             app:destination="@id/status_bar_Kulhydrater" />
     </fragment>
+    <fragment
+        android:id="@+id/voiceConfirmationFragment"
+        android:name="com.example.openlog.voiceConfirmationFragment"
+        android:label="fragment_voice_confirmation"
+        tools:layout="@layout/fragment_voice_confirmation" />
+    <fragment
+        android:id="@+id/manuelIndtastning"
+        android:name="com.example.openlog.manuelIndtastning"
+        android:label="fragment_manuel_indtastning"
+        tools:layout="@layout/fragment_manuel_indtastning" />
 </navigation>
