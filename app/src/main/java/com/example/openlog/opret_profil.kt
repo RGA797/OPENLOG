@@ -20,10 +20,6 @@ class opret_profil : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_opret_profil, container, false)
         // Inflate the layout for this fragment
-        val opretProfilButton = view.findViewById<Button>(R.id.opretProfilButton)
-        opretProfilButton.setOnClickListener{
-            Navigation.findNavController(view).navigate(R.id.navigateFromOpretToForside)
-        }
         return view
     }
 }

@@ -91,4 +91,9 @@
         android:name="com.example.openlog.manuelIndtastning"
         android:label="fragment_manuel_indtastning"
         tools:layout="@layout/fragment_manuel_indtastning" />
+    <fragment
+        android:id="@+id/opret_profile2"
+        android:name="com.example.openlog.opret_profile2"
+        android:label="fragment_opret_profile2"
+        tools:layout="@layout/fragment_opret_profile2" />
 </navigation>
