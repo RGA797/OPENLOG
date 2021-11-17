@@ -5,7 +5,6 @@
     android:id="@+id/OpretConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layoutDescription="@xml/fragment_opret_profil_scene"
     tools:context=".opret_profil">
 
     <TextView
