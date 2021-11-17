@@ -51,6 +51,9 @@
         <action
             android:id="@+id/navigateFromForsideToHistorik"
             app:destination="@id/historik" />
+        <action
+            android:id="@+id/action_forside_to_manuelIndtastning"
+            app:destination="@id/manuelIndtastning" />
     </fragment>
     <fragment
         android:id="@+id/profil"
@@ -85,7 +88,14 @@
         android:id="@+id/voiceConfirmationFragment"
         android:name="com.example.openlog.voiceConfirmationFragment"
         android:label="fragment_voice_confirmation"
-        tools:layout="@layout/fragment_voice_confirmation" />
+        tools:layout="@layout/fragment_voice_confirmation" >
+        <action
+            android:id="@+id/action_voiceConfirmationFragment_to_forside"
+            app:destination="@id/forside" />
+        <action
+            android:id="@+id/action_voiceConfirmationFragment_to_manuelIndtastning"
+            app:destination="@id/manuelIndtastning" />
+    </fragment>
     <fragment
         android:id="@+id/manuelIndtastning"
         android:name="com.example.openlog.manuelIndtastning"

@@ -8,62 +8,6 @@
     android:background="#FFFFFF"
     tools:context=".historik">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/insulinHistorikButton"
-        android:layout_width="340dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:background="#1C93D6"
-        android:text="@string/insulin"
-        android:textColor="#000000"
-        android:textColorHighlight="@color/black"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.405" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/kulhydraterHistorikButton"
-        android:layout_width="340dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="7dp"
-        android:background="#E9BB4C"
-        android:text="@string/kulhydrater"
-        android:textColor="#000000"
-        android:textColorHighlight="@color/black"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/insulinHistorikButton"
-        app:layout_constraintVertical_bias="0.07999998" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/blodsukkerHistorikButton"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="340dp"
-        android:layout_height="50dp"
-        android:layout_margin="10dp"
-        android:layout_marginBottom="5dp"
-        android:background="#F0666B"
-        android:text="@string/blodsukker"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/insulinHistorikButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.88"
-        tools:ignore="TextContrastCheck" />
-
     <TextView
         android:id="@+id/historikText"
         android:layout_width="wrap_content"
@@ -91,5 +35,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.12" />
+
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:layout_width="329dp"
+        android:layout_height="79dp"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitStart"
+        android:src="@drawable/isk"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.424" />
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="330dp"
+        android:layout_height="78dp"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitStart"
+        android:src="@drawable/bsk"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.304" />
+
+    <ImageButton
+        android:id="@+id/imageButton8"
+        android:layout_width="327dp"
+        android:layout_height="82dp"
+        android:backgroundTint="@color/white"
+        android:scaleType="centerInside"
+        android:src="@drawable/khk"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.546" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
