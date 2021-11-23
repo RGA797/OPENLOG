@@ -2,6 +2,7 @@ package com.example.openlog
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.text.Editable
@@ -39,17 +40,19 @@ class Forside : Fragment() {
 
         microphoneButton.setOnClickListener{
             val mIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
-            val language = "dk-DK"
+            val language = "da-DK"
             mIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, language)
             mIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, language)
             mIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, language)
             mIntent.putExtra(RecognizerIntent.EXTRA_ONLY_RETURN_LANGUAGE_PREFERENCE, language)
             mIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
             mIntent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Enter something to log")
+
             try {
                 activityResultLauncher.launch(mIntent)
             }
             catch (exp: ActivityNotFoundException){
+
                 Toast.makeText(context, "Device not supported", Toast.LENGTH_SHORT).show()
             }
         }
@@ -58,17 +61,10 @@ class Forside : Fragment() {
             if (result!!.resultCode== AppCompatActivity.RESULT_OK && result!!.data!= null) {
                 val text =result.data!!.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS) as ArrayList<Editable>
                 speechText.text = text[0]
-                inputData(text[0])
             }
         }
         buttonWidget.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.navigateFromForsideToHistorik) }
         return view
     }
 
-    fun inputData(data: Editable) {
-        if (data.contains("kulhydrat")){
-            val kulhydratInput = KulhydratInput(data)
-            database.child("kulhydraterInput").child("kulhydrat").setValue(kulhydratInput)
-        }
-    }
 }
