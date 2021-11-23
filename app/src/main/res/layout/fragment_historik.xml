@@ -37,7 +37,7 @@
         app:layout_constraintVertical_bias="0.12" />
 
     <ImageButton
-        android:id="@+id/imageButton6"
+        android:id="@+id/insulinHistorikButton"
         android:layout_width="329dp"
         android:layout_height="79dp"
         android:backgroundTint="@color/white"
@@ -51,7 +51,7 @@
         app:layout_constraintVertical_bias="0.424" />
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/blodsukkerHistorikButton"
         android:layout_width="330dp"
         android:layout_height="78dp"
         android:backgroundTint="@color/white"
@@ -65,7 +65,7 @@
         app:layout_constraintVertical_bias="0.304" />
 
     <ImageButton
-        android:id="@+id/imageButton8"
+        android:id="@+id/kulhydratHistorikButton"
         android:layout_width="327dp"
         android:layout_height="82dp"
         android:backgroundTint="@color/white"

@@ -31,7 +31,7 @@ class historik : Fragment() {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_historik, container, false)
 
-        val kulhydratButton = view.findViewById<Button>(R.id.kulhydraterHistorikButton)
+        val kulhydratButton = view.findViewById<Button>(R.id.kulhydratHistorikButton)
         val insulinButton =  view.findViewById<Button>(R.id.insulinHistorikButton)
         val blodsukkerButton = view.findViewById<Button>(R.id.blodsukkerHistorikButton)
 
