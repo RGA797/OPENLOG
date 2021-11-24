@@ -35,6 +35,16 @@ class Forside : Fragment() {
         val view = inflater.inflate(R.layout.fragment_forside, container, false)
         val microphoneButton =  view.findViewById<ImageButton>(R.id.microphoneButton)
         val speechText = view.findViewById<TextView>(R.id.speechText)
+        val manuelIndtastningButton = view.findViewById<ImageButton>(R.id.manuelIndtastningButton)
+        val profilButton = view.findViewById<ImageButton>(R.id.profilButton)
+
+        profilButton.setOnClickListener{
+            Navigation.findNavController(view!!).navigate(R.id.navigateFromForsideToProfil)
+        }
+
+        manuelIndtastningButton.setOnClickListener{
+            Navigation.findNavController(view!!).navigate(R.id.navigateFromForsideToManuelIndtastning)
+        }
 
         microphoneButton.setOnClickListener{
             val mIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
@@ -50,7 +60,6 @@ class Forside : Fragment() {
                 activityResultLauncher.launch(mIntent)
             }
             catch (exp: ActivityNotFoundException){
-
                 Toast.makeText(context, "Device not supported", Toast.LENGTH_SHORT).show()
             }
         }

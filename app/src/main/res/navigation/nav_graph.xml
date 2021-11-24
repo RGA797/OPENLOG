@@ -45,11 +45,14 @@
         android:label="fragment_forside"
         tools:layout="@layout/fragment_forside" >
         <action
-            android:id="@+id/action_forside_to_profil"
+            android:id="@+id/navigateFromForsideToProfil"
             app:destination="@id/profil" />
         <action
             android:id="@+id/navigateFromForsideToHistorik"
             app:destination="@id/historik" />
+        <action
+            android:id="@+id/navigateFromForsideToManuelIndtastning"
+            app:destination="@id/manuelIndtastning" />
         <action
             android:id="@+id/action_forside_to_manuelIndtastning"
             app:destination="@id/manuelIndtastning" />

@@ -45,7 +45,7 @@
             android:contentDescription="TODO" />
 
         <ImageButton
-            android:id="@+id/imageButton14"
+            android:id="@+id/profilButton"
             android:layout_width="115dp"
             android:layout_height="115dp"
             android:backgroundTint="@color/white"
@@ -72,7 +72,7 @@
             app:layout_constraintVertical_bias="0.396" />
 
         <ImageButton
-            android:id="@+id/imageButton7"
+            android:id="@+id/manuelIndtastningButton"
             android:layout_width="57dp"
             android:layout_height="51dp"
             android:backgroundTint="@color/white"
