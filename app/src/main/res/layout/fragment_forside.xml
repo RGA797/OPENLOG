@@ -59,22 +59,6 @@
             app:layout_constraintVertical_bias="0.061"
             tools:ignore="SpeakableTextPresentCheck" />
 
-        <ImageButton
-            android:id="@+id/buttonWidget"
-            android:layout_width="48dp"
-            android:layout_height="65dp"
-            android:backgroundTint="@color/white"
-            android:scaleType="fitStart"
-            android:src="@drawable/prikker"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.918"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.057"
-            tools:ignore="SpeakableTextPresentCheck"
-            android:contentDescription="@string/todo" />
-
         <TextView
             android:id="@+id/speechText"
             android:layout_width="wrap_content"

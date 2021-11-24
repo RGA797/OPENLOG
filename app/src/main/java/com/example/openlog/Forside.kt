@@ -2,15 +2,11 @@ package com.example.openlog
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.text.Editable
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
@@ -19,11 +15,14 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
+import android.view.Menu
+
 
 class Forside : Fragment() {
 
     lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
         super.onCreate(savedInstanceState)
     }
 
@@ -34,7 +33,6 @@ class Forside : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_forside, container, false)
-        val buttonWidget = view.findViewById<ImageButton>(R.id.buttonWidget)
         val microphoneButton =  view.findViewById<ImageButton>(R.id.microphoneButton)
         val speechText = view.findViewById<TextView>(R.id.speechText)
 
@@ -63,8 +61,24 @@ class Forside : Fragment() {
                 speechText.text = text[0]
             }
         }
-        buttonWidget.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.navigateFromForsideToHistorik) }
         return view
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater){
+        menuInflater.inflate(R.menu.nav_menu,menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.historikDropdown -> onHistorikDropdown()
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun onHistorikDropdown(){
+        val view = getView()
+        Navigation.findNavController(view!!).navigate(R.id.navigateFromForsideToHistorik)
     }
 
 }
