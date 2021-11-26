@@ -19,12 +19,21 @@ import androidx.annotation.NonNull
 import com.google.android.gms.tasks.OnCompleteListener
 
 import android.R.attr.password
+import androidx.fragment.app.activityViewModels
 import com.google.firebase.ktx.Firebase
 import java.util.concurrent.Executor
+import com.google.firebase.database.DatabaseReference
+
+import com.google.firebase.database.FirebaseDatabase
+
+
+
 
 
 class Login : Fragment() {
 
+
+    private val dataViewModel: DataViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,8 +62,7 @@ class Login : Fragment() {
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(email,adgangskode).addOnCompleteListener(requireActivity(), OnCompleteListener<AuthResult>(){ task ->
                         if (task.isSuccessful) {
                             val firebaseUser: FirebaseUser = task.result!!.user!!
-                            //viewModel.setCurrentUser(firebaseUser.iud)
-                            //viewModel.setCurrenEmail(email)
+                            dataViewModel.changeUser(firebaseUser)
                             Toast.makeText(context, "You are now logged in", Toast.LENGTH_SHORT)
                                 .show()
                             Navigation.findNavController(view)

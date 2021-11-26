@@ -8,17 +8,18 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import androidx.navigation.Navigation
+import com.google.firebase.database.FirebaseDatabase
 
 class opret_profil : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+
+    private val dataViewModel: DataViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,12 +43,12 @@ class opret_profil : Fragment() {
                     .addOnCompleteListener(requireActivity(), OnCompleteListener<AuthResult>() { task ->
                         if (task.isSuccessful) {
                             val firebaseUser: FirebaseUser = task.result!!.user!!
-                            //viewModel.setCurrentUser(firebaseUser.iud)
-                            //viewModel.setCurrenEmail(email)
-                            Toast.makeText(context, "You are now registered", Toast.LENGTH_SHORT)
-                                .show()
-                            Navigation.findNavController(view)
-                                .navigate(R.id.navigateFromOpretToForside)
+                            dataViewModel.changeUser(firebaseUser)
+                            val database = FirebaseDatabase.getInstance("https://openlog-a2b24-default-rtdb.europe-west1.firebasedatabase.app/")
+                            val myRef = database.getReference("users")
+                            myRef.child(firebaseUser.uid).setValue(email)
+                            Toast.makeText(context, "You are now registered", Toast.LENGTH_SHORT).show()
+                            Navigation.findNavController(view).navigate(R.id.navigateFromOpretToForside)
                         } else {
                             Toast.makeText(context, "E-mail or password not valid", Toast.LENGTH_SHORT).show()
                         }
