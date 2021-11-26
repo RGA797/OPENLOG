@@ -1,6 +1,5 @@
 package com.example.openlog
 
-import android.R.attr
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,20 +13,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.AuthResult
 
-import androidx.annotation.NonNull
-
 import com.google.android.gms.tasks.OnCompleteListener
 
-import android.R.attr.password
 import androidx.fragment.app.activityViewModels
-import com.google.firebase.ktx.Firebase
-import java.util.concurrent.Executor
-import com.google.firebase.database.DatabaseReference
-
-import com.google.firebase.database.FirebaseDatabase
-
-
-
 
 
 class Login : Fragment() {
@@ -62,7 +50,7 @@ class Login : Fragment() {
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(email,adgangskode).addOnCompleteListener(requireActivity(), OnCompleteListener<AuthResult>(){ task ->
                         if (task.isSuccessful) {
                             val firebaseUser: FirebaseUser = task.result!!.user!!
-                            dataViewModel.changeUser(firebaseUser)
+                            dataViewModel.changeUser(firebaseUser,email)
                             Toast.makeText(context, "You are now logged in", Toast.LENGTH_SHORT)
                                 .show()
                             Navigation.findNavController(view)

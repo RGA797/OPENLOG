@@ -20,7 +20,7 @@
     <string name="email">E-mail</string>
     <string name="f_dselsdag">FØDSELSDAG</string>
     <string name="nuv_rende_adgangskode">NUVÆRENDE ADGANGSKODE</string>
-    <string name="godt_at_se_dig">Godt at se dig</string>
+    <string name="hilsen">Godt at se dig %s</string>
     <string name="historik">HISTORIK</string>
     <string name="speak">Button</string>
     <string name="name">Name</string>

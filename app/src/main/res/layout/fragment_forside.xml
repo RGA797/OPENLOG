@@ -4,6 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <data>
+        <variable
+            name="dataViewModel"
+            type="com.example.openlog.DataViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout3"
         android:layout_width="match_parent"
@@ -16,10 +22,10 @@
             android:id="@+id/hilsenTekst"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/godt_at_se_dig"
+            android:text="@{@string/hilsen(dataViewModel.currentEmail)}"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="@color/black"
-            android:textSize="25sp"
+            android:textSize="10sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

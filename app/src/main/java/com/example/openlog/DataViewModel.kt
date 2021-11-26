@@ -12,11 +12,17 @@ class DataViewModel: ViewModel() {
     val currentUser: LiveData<FirebaseUser?>
         get() = _currentUser
 
+    private val _currentEmail = MutableLiveData(user.getEmail())
+    val currentEmail: LiveData<String>
+        get() = _currentEmail
 
-    fun changeUser(firebaseUser: FirebaseUser){
+    fun changeUser(firebaseUser: FirebaseUser, email: String){
         user.setFirebaseUser(firebaseUser)
+        user.setEmail(email)
+        _currentEmail.value =user.getEmail()
         _currentUser.value = user.getFirebaseUser()
     }
+
 
     fun getFirebaseUser(): FirebaseUser?{
         return user.getFirebaseUser()

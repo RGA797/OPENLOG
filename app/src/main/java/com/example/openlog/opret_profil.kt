@@ -43,7 +43,7 @@ class opret_profil : Fragment() {
                     .addOnCompleteListener(requireActivity(), OnCompleteListener<AuthResult>() { task ->
                         if (task.isSuccessful) {
                             val firebaseUser: FirebaseUser = task.result!!.user!!
-                            dataViewModel.changeUser(firebaseUser)
+                            dataViewModel.changeUser(firebaseUser, email)
                             val database = FirebaseDatabase.getInstance("https://openlog-a2b24-default-rtdb.europe-west1.firebasedatabase.app/")
                             val myRef = database.getReference("users")
                             myRef.child(firebaseUser.uid).setValue(email)
