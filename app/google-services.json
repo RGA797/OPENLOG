@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "375260563429",
+    "project_id": "openlog-a2b24",
+    "storage_bucket": "openlog-a2b24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:375260563429:android:dd32607c4e5688e8b1d10c",
+        "android_client_info": {
+          "package_name": "com.example.openlog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "375260563429-u2a344vtlaljohqisvrt1hpu4k29uh61.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.openlog",
+            "certificate_hash": "699638261861d02848cfa21a9d9556bae48788d8"
+          }
+        },
+        {
+          "client_id": "375260563429-r57srf0eo4sipq3k0h00a3irladhni1p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADnLNdUBsPPVUEUoPQTeXML6SSyqAe5TU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "375260563429-r57srf0eo4sipq3k0h00a3irladhni1p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

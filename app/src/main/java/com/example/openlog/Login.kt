@@ -1,12 +1,27 @@
 package com.example.openlog
 
+import android.R.attr
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.navigation.Navigation
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.AuthResult
+
+import androidx.annotation.NonNull
+
+import com.google.android.gms.tasks.OnCompleteListener
+
+import android.R.attr.password
+import com.google.firebase.ktx.Firebase
+import java.util.concurrent.Executor
+
 
 class Login : Fragment() {
 
@@ -25,9 +40,37 @@ class Login : Fragment() {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
         val loginButton = view.findViewById<Button>(R.id.loginButton)
         val opretButton = view.findViewById<Button>(R.id.opretButton)
+        val emailTextView =  view.findViewById<EditText>(R.id.loginEmailText)
+        val adgangskodeTextView =  view.findViewById<EditText>(R.id.loginAdgangskodeText)
         loginButton.setOnClickListener{
-            Navigation.findNavController(view).navigate(R.id.navigateFromLoginToForside)
+            // val email = viewmodel.getcurrentUser
+            if (emailTextView.text.isEmpty() || adgangskodeTextView.text.isEmpty()) {
+                Toast.makeText(context, "email or password not given", Toast.LENGTH_SHORT).show()
+            } else {
+                val email: String = emailTextView.text.toString()
+                val adgangskode: String = adgangskodeTextView.text.toString()
+
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(email,adgangskode).addOnCompleteListener(requireActivity(), OnCompleteListener<AuthResult>(){ task ->
+                        if (task.isSuccessful) {
+                            val firebaseUser: FirebaseUser = task.result!!.user!!
+                            //viewModel.setCurrentUser(firebaseUser.iud)
+                            //viewModel.setCurrenEmail(email)
+                            Toast.makeText(context, "You are now logged in", Toast.LENGTH_SHORT)
+                                .show()
+                            Navigation.findNavController(view)
+                                .navigate(R.id.navigateFromLoginToForside)
+                        } else {
+                            Toast.makeText(
+                                context,
+                                "E-mail or password not valid",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    })
+            }
         }
+
+
         opretButton.setOnClickListener{
             Navigation.findNavController(view).navigate(R.id.navigateFromLoginToOpret)
         }
