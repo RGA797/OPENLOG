@@ -90,7 +90,6 @@ class Forside : Fragment() {
         catch (exp: ActivityNotFoundException){
             Toast.makeText(context, "Device not supported", Toast.LENGTH_SHORT).show()
         }
-
     }
 
     fun onLogInput(){
@@ -110,11 +109,11 @@ class Forside : Fragment() {
                 dataViewModel.changeNew(false)
                 return
             }
-            else if (input.contains("kulhydrater")) {
+            else if (input.contains("kulhydrat")) {
                 time = sdf.format(Date())
                 val inputValue = input.filter { it.isDigit() }
                 if (inputValue != "") {
-                    myRef.child(time).child("kulhydrater").setValue(inputValue)
+                    myRef.child(time).child("kulhydrat").setValue(inputValue)
                 }
                 dataViewModel.changeNew(false)
                 return
@@ -123,7 +122,7 @@ class Forside : Fragment() {
                 time = sdf.format(Date())
                 val inputValue = input.filter { it.isDigit() }
                 if (inputValue != "") {
-                    myRef.child(time).child("insulin").setValue(inputValue)
+                    myRef.child(time).child("blodsukker").setValue(inputValue)
                 }
                 dataViewModel.changeNew(false)
                 return
