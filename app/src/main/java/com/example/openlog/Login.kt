@@ -12,9 +12,7 @@ import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.AuthResult
-
 import com.google.android.gms.tasks.OnCompleteListener
-
 import androidx.fragment.app.activityViewModels
 
 
@@ -22,10 +20,6 @@ class Login : Fragment() {
 
 
     private val dataViewModel: DataViewModel by activityViewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
 
@@ -50,9 +44,8 @@ class Login : Fragment() {
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(email,adgangskode).addOnCompleteListener(requireActivity(), OnCompleteListener<AuthResult>(){ task ->
                         if (task.isSuccessful) {
                             val firebaseUser: FirebaseUser = task.result!!.user!!
-                            dataViewModel.changeUser(firebaseUser,email)
-                            Toast.makeText(context, "You are now logged in", Toast.LENGTH_SHORT)
-                                .show()
+                            dataViewModel.changeUser(firebaseUser, email)
+                            Toast.makeText(context, "You are now logged in", Toast.LENGTH_SHORT).show()
                             Navigation.findNavController(view)
                                 .navigate(R.id.navigateFromLoginToForside)
                         } else {

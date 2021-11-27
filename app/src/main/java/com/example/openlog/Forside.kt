@@ -7,8 +7,6 @@ import android.speech.RecognizerIntent
 import android.text.Editable
 import android.view.*
 import androidx.fragment.app.Fragment
-import android.widget.ImageButton
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
@@ -19,6 +17,13 @@ import android.view.Menu
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import com.example.openlog.databinding.FragmentForsideBinding
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
+import java.text.SimpleDateFormat
+import java.time.Instant
+import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class Forside : Fragment() {
@@ -46,6 +51,8 @@ class Forside : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
+        binding.lifecycleOwner = viewLifecycleOwner
+
         binding.profilButton.setOnClickListener{
             Navigation.findNavController(binding.root).navigate(R.id.navigateFromForsideToProfil)
         }
@@ -54,12 +61,15 @@ class Forside : Fragment() {
             Navigation.findNavController(binding.root).navigate(R.id.navigateFromForsideToManuelIndtastning)
         }
 
-        binding.microphoneButton.setOnClickListener{onMicInput()}
+        binding.microphoneButton.setOnClickListener{ onMicInput()}
+
+        binding.logButton.setOnClickListener{onLogInput()}
 
         activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){result: ActivityResult? ->
             if (result!!.resultCode== AppCompatActivity.RESULT_OK && result!!.data!= null) {
                 val text =result.data!!.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS) as ArrayList<Editable>
-                binding.speechText.text = text[0]
+                dataViewModel.changeInput(text[0].toString())
+                dataViewModel.changeNew(true)
             }
         }
     }
@@ -80,6 +90,45 @@ class Forside : Fragment() {
         catch (exp: ActivityNotFoundException){
             Toast.makeText(context, "Device not supported", Toast.LENGTH_SHORT).show()
         }
+
+    }
+
+    fun onLogInput(){
+        val firebaseUser: FirebaseUser = dataViewModel.getCurrentFirebaseUser()!!
+        val database = FirebaseDatabase.getInstance("https://openlog-a2b24-default-rtdb.europe-west1.firebasedatabase.app/")
+        val input = dataViewModel.getInput()
+        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
+        val time: String
+        if (input != null) {
+            val myRef = database.getReference("users").child(firebaseUser.uid).push()
+            if (input.contains("insulin")) {
+                time = sdf.format(Date())
+                val inputValue = input.filter { it.isDigit() }
+                if (inputValue != "") {
+                    myRef.child(time).child("insulin").setValue(inputValue)
+                }
+                dataViewModel.changeNew(false)
+                return
+            }
+            else if (input.contains("kulhydrater")) {
+                time = sdf.format(Date())
+                val inputValue = input.filter { it.isDigit() }
+                if (inputValue != "") {
+                    myRef.child(time).child("kulhydrater").setValue(inputValue)
+                }
+                dataViewModel.changeNew(false)
+                return
+            }
+            else if (input.contains("blodsukker")) {
+                time = sdf.format(Date())
+                val inputValue = input.filter { it.isDigit() }
+                if (inputValue != "") {
+                    myRef.child(time).child("insulin").setValue(inputValue)
+                }
+                dataViewModel.changeNew(false)
+                return
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater){
@@ -95,8 +144,7 @@ class Forside : Fragment() {
     }
 
     fun onHistorikDropdown(){
-        val view = getView()
-        Navigation.findNavController(view!!).navigate(R.id.navigateFromForsideToHistorik)
+        Navigation.findNavController(binding.root).navigate(R.id.navigateFromForsideToHistorik)
     }
 
 }

@@ -7,7 +7,7 @@ class User {
     private var email = ""
 
     fun setFirebaseUser(firebaseUser: FirebaseUser){
-        this.fireBaseUser = fireBaseUser
+        this.fireBaseUser = firebaseUser
     }
 
     fun setEmail (email: String){
@@ -15,7 +15,12 @@ class User {
     }
 
     fun getFirebaseUser(): FirebaseUser?{
-        return fireBaseUser
+        if (fireBaseUser != null) {
+            return fireBaseUser
+        }
+        else {
+            return null
+        }
     }
 
     fun getEmail(): String {

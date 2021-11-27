@@ -88,7 +88,7 @@
     </fragment>
     <fragment
         android:id="@+id/voiceConfirmationFragment"
-        android:name="com.example.openlog.voiceConfirmationFragment"
+        android:name="com.example.openlog.voiceConfirmation"
         android:label="fragment_voice_confirmation"
         tools:layout="@layout/fragment_voice_confirmation" >
         <action
