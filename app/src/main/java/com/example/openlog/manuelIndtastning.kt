@@ -3,6 +3,7 @@ package com.example.openlog
 import android.os.Bundle
 import android.text.Editable
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
@@ -10,6 +11,7 @@ import androidx.navigation.Navigation
 import com.example.openlog.databinding.FragmentForsideBinding
 import com.example.openlog.databinding.FragmentManuelIndtastningBinding
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
 import java.util.*
@@ -33,45 +35,41 @@ class manuelIndtastning : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.logButton.setOnClickListener{onLog()}
+        binding.logButton.setOnClickListener{onLogInput()}
     }
 
-    fun onLog(){
-        val input = binding.textInput.text.toString()
+
+    fun onLogInput(){
         val firebaseUser: FirebaseUser = dataViewModel.getCurrentFirebaseUser()!!
         val database = FirebaseDatabase.getInstance("https://openlog-a2b24-default-rtdb.europe-west1.firebasedatabase.app/")
-        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
-        val time: String
-        val myRef = database.getReference("users").child(firebaseUser.uid).push()
-        if (input.contains("insulin")) {
-            time = sdf.format(Date())
-            val inputValue = input.filter { it.isDigit() }
-            if (inputValue != "") {
-                myRef.child(time).child("insulin").setValue(inputValue)
+        val input = binding.textInput.text.toString()
+        if (input != null) {
+            val myRef = database.getReference("users").child(firebaseUser.uid).push()
+            if (input.contains("insulin")) {
+                inputData("insulin",input, myRef)
+                Toast.makeText(context, "input saved", Toast.LENGTH_SHORT).show()
+                return
             }
+            else if (input.contains("kulhydrat")) {
+                inputData("kulhydrat",input, myRef)
+                Toast.makeText(context, "input saved", Toast.LENGTH_SHORT).show()
+                return
+            }
+            else if (input.contains("blodsukker")) {
+                inputData("blodsukker",input, myRef)
+                Toast.makeText(context, "input saved", Toast.LENGTH_SHORT).show()
+                return
+            }
+        }
+    }
 
-            binding.textInput.setText("")
-            return
-
+    private fun inputData(type: String, input: String, Ref: DatabaseReference){
+        val time = Calendar.getInstance().getTime().toString()
+        val inputValue = input.filter { it.isDigit() }
+        if (inputValue != "") {
+            Ref.child(time).child(type).setValue(inputValue)
         }
-        else if (input.contains("kulhydrat")) {
-            time = sdf.format(Date())
-            val inputValue = input.filter { it.isDigit() }
-            if (inputValue != "") {
-                myRef.child(time).child("kulhydrat").setValue(inputValue)
-            }
-            binding.textInput.setText("")
-            return
-        }
-        else if (input.contains("blodsukker")) {
-            time = sdf.format(Date())
-            val inputValue = input.filter { it.isDigit() }
-            if (inputValue != "") {
-                myRef.child(time).child("blodsukker").setValue(inputValue)
-            }
-            binding.textInput.setText("")
-            return
-        }
+        dataViewModel.changeNew(false)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater){
