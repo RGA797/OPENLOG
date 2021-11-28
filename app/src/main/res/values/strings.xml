@@ -26,6 +26,7 @@
     <string name="name">Name</string>
     <string name="inputText">Last input: %s</string>
     <string name="del">Del</string>
+    <string name="dropdown">Dropdown</string>
     <string name="textview">TextView</string>
     <string name="todo">TODO</string>
     <string-array name="Køn">
