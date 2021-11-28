@@ -21,7 +21,6 @@ class DataViewModel: ViewModel() {
     val currentInput: LiveData<String?>
         get() = _currentInput
 
-
     fun changeUser(firebaseUser: FirebaseUser, email: String){
         user.setFirebaseUser(firebaseUser)
         user.setEmail(email)
