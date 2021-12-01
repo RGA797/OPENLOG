@@ -1,4 +1,4 @@
-package com.example.openlog
+package com.example.openlog.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,6 +14,8 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import androidx.navigation.Navigation
+import com.example.openlog.R
+import com.example.openlog.viewModel.DataViewModel
 import com.google.firebase.database.FirebaseDatabase
 
 class opret_profil : Fragment() {

@@ -1,8 +1,10 @@
-package com.example.openlog
+package com.example.openlog.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.openlog.model.Data
+import com.example.openlog.model.User
 import com.google.firebase.auth.FirebaseUser
 
 class DataViewModel: ViewModel() {

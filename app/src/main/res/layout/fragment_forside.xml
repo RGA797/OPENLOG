@@ -8,13 +8,13 @@
     <data>
         <variable
             name="dataViewModel"
-            type="com.example.openlog.DataViewModel" />
+            type="com.example.openlog.viewModel.DataViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Forside">
+        tools:context=".view.Forside">
 
         <TextView
             android:id="@+id/hilsenTekst"

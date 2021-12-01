@@ -1,4 +1,4 @@
-package com.example.openlog
+package com.example.openlog.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,6 +14,8 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.AuthResult
 import com.google.android.gms.tasks.OnCompleteListener
 import androidx.fragment.app.activityViewModels
+import com.example.openlog.R
+import com.example.openlog.viewModel.DataViewModel
 
 
 class Login : Fragment() {

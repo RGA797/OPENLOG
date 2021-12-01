@@ -1,4 +1,4 @@
-package com.example.openlog
+package com.example.openlog.model
 
 import com.google.firebase.auth.FirebaseUser
 

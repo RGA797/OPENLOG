@@ -1,19 +1,18 @@
-package com.example.openlog
+package com.example.openlog.view
 
 import android.os.Bundle
-import android.text.Editable
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
-import com.example.openlog.databinding.FragmentForsideBinding
+import com.example.openlog.R
 import com.example.openlog.databinding.FragmentManuelIndtastningBinding
+import com.example.openlog.viewModel.DataViewModel
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -29,7 +28,8 @@ class manuelIndtastning : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_manuel_indtastning, container, false)
+        binding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_manuel_indtastning, container, false)
         return binding.root
     }
 

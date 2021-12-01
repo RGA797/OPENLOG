@@ -1,4 +1,4 @@
-package com.example.openlog
+package com.example.openlog.view
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -16,13 +16,12 @@ import androidx.navigation.Navigation
 import android.view.Menu
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
+import com.example.openlog.R
 import com.example.openlog.databinding.FragmentForsideBinding
+import com.example.openlog.viewModel.DataViewModel
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import java.text.SimpleDateFormat
-import java.time.Instant
-import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 

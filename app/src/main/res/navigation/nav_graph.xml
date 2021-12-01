@@ -7,28 +7,28 @@
 
     <activity
         android:id="@+id/mainActivity"
-        android:name="com.example.openlog.MainActivity"
+        android:name="com.example.openlog.view.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
 
     <fragment
         android:id="@+id/status_bar_Kulhydrater"
-        android:name="com.example.openlog.Status_bar_Blodsukker"
+        android:name="com.example.openlog.view.Status_bar_Blodsukker"
         android:label="fragment_status_Kulhydrater"
         tools:layout="@layout/fragment_status_bar__blodsukker" />
     <fragment
         android:id="@+id/status_bar_Insulin"
-        android:name="com.example.openlog.Status_bar_Blodsukker"
+        android:name="com.example.openlog.view.Status_bar_Blodsukker"
         android:label="fragment_status_bar_Insulin"
         tools:layout="@layout/fragment_status_bar__blodsukker" />
     <fragment
         android:id="@+id/status_bar_Blodsukker"
-        android:name="com.example.openlog.Status_bar_Blodsukker"
+        android:name="com.example.openlog.view.Status_bar_Blodsukker"
         android:label="fragment_status_bar__blodsukker"
         tools:layout="@layout/fragment_status_bar__blodsukker" />
     <fragment
         android:id="@+id/Login"
-        android:name="com.example.openlog.Login"
+        android:name="com.example.openlog.view.Login"
         android:label="fragment_Login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -41,7 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/forside"
-        android:name="com.example.openlog.Forside"
+        android:name="com.example.openlog.view.Forside"
         android:label="fragment_forside"
         tools:layout="@layout/fragment_forside" >
         <action
@@ -59,12 +59,12 @@
     </fragment>
     <fragment
         android:id="@+id/profil"
-        android:name="com.example.openlog.Profil"
+        android:name="com.example.openlog.view.Profil"
         android:label="fragment_profil"
         tools:layout="@layout/fragment_profil" />
     <fragment
         android:id="@+id/opret_profil"
-        android:name="com.example.openlog.opret_profil"
+        android:name="com.example.openlog.view.opret_profil"
         android:label="fragment_opret_profil"
         tools:layout="@layout/fragment_opret_profil" >
         <action
@@ -73,7 +73,7 @@
     </fragment>
     <fragment
         android:id="@+id/historik"
-        android:name="com.example.openlog.historik"
+        android:name="com.example.openlog.view.historik"
         android:label="fragment_historik"
         tools:layout="@layout/fragment_historik" >
         <action
@@ -88,7 +88,7 @@
     </fragment>
     <fragment
         android:id="@+id/manuelIndtastning"
-        android:name="com.example.openlog.manuelIndtastning"
+        android:name="com.example.openlog.view.manuelIndtastning"
         android:label="fragment_manuel_indtastning"
         tools:layout="@layout/fragment_manuel_indtastning" >
         <action

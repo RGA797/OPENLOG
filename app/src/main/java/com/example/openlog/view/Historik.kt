@@ -1,13 +1,13 @@
-package com.example.openlog
+package com.example.openlog.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 import androidx.navigation.Navigation
+import com.example.openlog.R
 
 class historik : Fragment() {
 

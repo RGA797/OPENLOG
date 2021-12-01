@@ -6,7 +6,7 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Profil" >
+    tools:context=".view.Profil" >
 
     <TextView
         android:id="@+id/textView"

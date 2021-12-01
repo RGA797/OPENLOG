@@ -1,4 +1,4 @@
-package com.example.openlog
+package com.example.openlog.model
 
 class Data {
     var input: String? = null
