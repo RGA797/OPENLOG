@@ -87,18 +87,6 @@
             app:destination="@id/status_bar_Kulhydrater" />
     </fragment>
     <fragment
-        android:id="@+id/voiceConfirmationFragment"
-        android:name="com.example.openlog.voiceConfirmation"
-        android:label="fragment_voice_confirmation"
-        tools:layout="@layout/fragment_voice_confirmation" >
-        <action
-            android:id="@+id/action_voiceConfirmationFragment_to_forside"
-            app:destination="@id/forside" />
-        <action
-            android:id="@+id/action_voiceConfirmationFragment_to_manuelIndtastning"
-            app:destination="@id/manuelIndtastning" />
-    </fragment>
-    <fragment
         android:id="@+id/manuelIndtastning"
         android:name="com.example.openlog.manuelIndtastning"
         android:label="fragment_manuel_indtastning"

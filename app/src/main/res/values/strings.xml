@@ -24,7 +24,7 @@
     <string name="historik">HISTORIK</string>
     <string name="speak">Button</string>
     <string name="name">Name</string>
-    <string name="inputText">Last input: %s</string>
+    <string name="inputText">%s</string>
     <string name="del">Del</string>
     <string name="dropdown">Dropdown</string>
     <string name="textview">TextView</string>
