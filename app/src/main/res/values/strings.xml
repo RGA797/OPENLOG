@@ -29,6 +29,7 @@
     <string name="dropdown">Dropdown</string>
     <string name="textview">TextView</string>
     <string name="todo">TODO</string>
+    <string name="alder">Alder</string>
     <string-array name="Køn">
         <item>Dreng</item>
         <item>Pige</item>
