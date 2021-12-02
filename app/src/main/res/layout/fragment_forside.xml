@@ -37,16 +37,16 @@
             android:layout_width="166dp"
             android:layout_height="176dp"
             android:backgroundTint="@color/white"
+            android:contentDescription="TODO"
             android:scaleType="fitStart"
             android:src="@drawable/mik"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.457"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.572"
-            tools:ignore="SpeakableTextPresentCheck"
-            android:contentDescription="TODO" />
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/profilButton"
@@ -70,7 +70,7 @@
             android:text="@{@string/inputText(dataViewModel.currentInput)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.45"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.396" />
@@ -97,10 +97,10 @@
             android:text="Log input"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.549" />
+            app:layout_constraintVertical_bias="0.395" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
