@@ -25,113 +25,111 @@
         app:layout_constraintVertical_bias="0.163" />
 
     <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/opretProfilButton"
-            android:layout_width="320dp"
-            android:layout_height="50dp"
-            android:background="#069C81"
-            android:text="@string/opret_bruger"
-            android:textColor="@color/white"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.505"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.819" />
+        android:id="@+id/opretProfilButton"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:background="#069C81"
+        android:text="@string/opret_bruger"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.829" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailOpretTextInput"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="345dp"
-        android:layout_height="68dp"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
         android:hint="@string/email"
         android:textColorHint="#B3000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.299"
+        app:layout_constraintVertical_bias="0.302"
         app:startIconDrawable="@android:drawable/btn_star_big_off">
 
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/opretEmailText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
-
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/adgangskodeTextInput"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="332dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
         android:hint="@string/adgangskode"
         android:textColorHint="#B3000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailOpretTextInput"
-        app:layout_constraintVertical_bias="0.060000002"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.429"
         app:startIconDrawable="@android:drawable/ic_lock_idle_lock">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/opretAdgangskodeText"
             android:layout_width="match_parent"
 
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/alderTextInput"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="332dp"
-            android:layout_height="62dp"
-            android:layout_marginTop="10dp"
-            android:hint="@string/alder"
-            android:textColorHint="#B3000000"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.582"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailOpretTextInput"
-            app:layout_constraintVertical_bias="0.478"
-          >
+        android:id="@+id/alderTextInput"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:hint="@string/alder"
+        android:textColorHint="#B3000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailOpretTextInput"
+        app:layout_constraintVertical_bias="0.477">
 
         <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/opretAlderText"
-                android:layout_width="match_parent"
+            android:id="@+id/opretAlderText"
+            android:layout_width="match_parent"
 
-                android:layout_height="wrap_content"
-                tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+            android:layout_height="match_parent"
+            tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/kønTextInput"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="332dp"
-            android:layout_height="62dp"
-            android:hint="@string/køn"
-            android:textColorHint="#B3000000"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.582"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.569">
+        android:id="@+id/kønTextInput"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:hint="@string/køn"
+        android:textColorHint="#B3000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.56">
 
         <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/opretKønText"
-                android:layout_width="match_parent"
+            android:id="@+id/opretKønText"
+            android:layout_width="match_parent"
 
-                android:layout_height="wrap_content"
-                tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+            android:layout_height="match_parent"
+            tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
