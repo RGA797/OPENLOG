@@ -69,7 +69,6 @@ class Forside : Fragment() {
             if (result!!.resultCode== AppCompatActivity.RESULT_OK && result!!.data!= null) {
                 val text =result.data!!.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS) as ArrayList<Editable>
                 dataViewModel.changeInput(text[0].toString())
-                dataViewModel.changeNew(true)
             }
         }
     }
@@ -94,36 +93,14 @@ class Forside : Fragment() {
 
     fun onLogInput(){
         val firebaseUser: FirebaseUser = dataViewModel.getCurrentFirebaseUser()!!
-        val database = FirebaseDatabase.getInstance("https://openlog-a2b24-default-rtdb.europe-west1.firebasedatabase.app/")
-        val input = dataViewModel.getInput()
-        if (input != null) {
-            val myRef = database.getReference("users").child(firebaseUser.uid).push()
-            if (input.contains("insulin")) {
-                inputData("insulin",input, myRef)
-                Toast.makeText(context, "input saved", Toast.LENGTH_SHORT).show()
-                return
-            }
-            else if (input.contains("kulhydrat")) {
-                inputData("kulhydrat",input, myRef)
-                Toast.makeText(context, "input saved", Toast.LENGTH_SHORT).show()
-                return
-            }
-            else if (input.contains("blodsukker")) {
-                inputData("blodsukker",input, myRef)
-                Toast.makeText(context, "input saved", Toast.LENGTH_SHORT).show()
-                return
-            }
+        val success = dataViewModel.saveInput(firebaseUser)
+        if (success){
+            Toast.makeText(context, "Input Gemt", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            Toast.makeText(context, "Invalit input", Toast.LENGTH_SHORT).show()
         }
     }
-
-    private fun inputData(type: String, input: String, Ref: DatabaseReference){
-            val time = Calendar.getInstance().getTime().toString()
-            val inputValue = input.filter { it.isDigit() }
-            if (inputValue != "") {
-                Ref.child(time).child(type).setValue(inputValue)
-            }
-            dataViewModel.changeNew(false)
-        }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater){
         menuInflater.inflate(R.menu.nav_menu,menu)
