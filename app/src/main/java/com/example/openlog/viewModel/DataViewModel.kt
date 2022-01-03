@@ -38,17 +38,11 @@ class DataViewModel: ViewModel() {
     fun getCurrentFirebaseUser(): FirebaseUser?{
         return user.getFirebaseUser()
     }
-    fun getInput(): String? {
-        return data.getDataInput()
+
+    fun saveInput(firebaseUser: FirebaseUser): Boolean {
+        return data.storeInput(firebaseUser)
     }
 
-    fun isNewInput(): Boolean{
-        return data.isNew()
-    }
-
-    fun changeNew(new: Boolean){
-        data.changeNew(new)
-    }
 
 
 }
