@@ -96,10 +96,12 @@ class Forside : Fragment() {
         val success = dataViewModel.saveInput(firebaseUser)
         if (success){
             Toast.makeText(context, "Input Gemt", Toast.LENGTH_SHORT).show()
+            dataViewModel.getUserData(firebaseUser,"insulin")
         }
         else{
             Toast.makeText(context, "Invalit input", Toast.LENGTH_SHORT).show()
         }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater){
