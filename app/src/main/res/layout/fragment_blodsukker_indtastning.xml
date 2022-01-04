@@ -22,19 +22,6 @@
     <!-- TODO: Update blank fragment layout -->
 
     <ImageButton
-            android:id="@+id/imageButton10"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:backgroundTint="@color/white"
-            android:scaleType="fitStart"
-            android:src="@drawable/bs"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.339" />
-
-    <ImageButton
             android:id="@+id/imageButton11"
             android:layout_width="110dp"
             android:layout_height="110dp"
@@ -43,7 +30,7 @@
             android:src="@drawable/ku"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.867"
+            app:layout_constraintHorizontal_bias="0.877"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.339" />
@@ -57,7 +44,7 @@
             android:src="@drawable/in"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.136"
+            app:layout_constraintHorizontal_bias="0.099"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.339" />
@@ -71,10 +58,10 @@
             android:src="@drawable/mik"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.909"
+            app:layout_constraintHorizontal_bias="0.881"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.952" />
+            app:layout_constraintVertical_bias="0.955" />
 
     <EditText
         android:id="@+id/textInput"
@@ -99,6 +86,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.603" />
+
+    <ImageButton
+            android:layout_width="120dp"
+            android:layout_height="130dp"
+            app:srcCompat="@drawable/blodsukkerm"
+            android:id="@+id/blodsukker_highlight"
+            android:scaleType="centerInside"
+            android:backgroundTint="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.481"
+            app:layout_constraintVertical_bias="0.339" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
