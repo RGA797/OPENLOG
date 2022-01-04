@@ -1,19 +1,24 @@
 package com.example.openlog.viewModel
 
+import android.app.Activity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.openlog.model.Data
+import com.example.openlog.model.InputDTO
 import com.example.openlog.model.User
 import com.google.firebase.auth.FirebaseUser
 
 class DataViewModel: ViewModel() {
-
     private var user = User()
     private var data = Data()
     private val _currentUser = MutableLiveData(user.getFirebaseUser())
     val currentUser: LiveData<FirebaseUser?>
         get() = _currentUser
+
+    private val _currentDataList = MutableLiveData(ArrayList<InputDTO>(0))
+    val currentDataList: MutableLiveData<ArrayList<InputDTO>>
+        get() = _currentDataList
 
     private val _currentEmail = MutableLiveData(user.getEmail())
     val currentEmail: LiveData<String>
@@ -43,6 +48,9 @@ class DataViewModel: ViewModel() {
         return data.storeInput(firebaseUser)
     }
 
-
-
+    fun getUserData (firebaseUser: FirebaseUser, type: String) {
+        data.getUserData(firebaseUser,type){
+            _currentDataList.value = it as ArrayList<InputDTO>
+        }
+    }
 }

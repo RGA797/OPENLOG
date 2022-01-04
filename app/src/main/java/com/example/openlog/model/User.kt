@@ -15,14 +15,8 @@ class User {
     }
 
     fun getFirebaseUser(): FirebaseUser?{
-        if (fireBaseUser != null) {
-            return fireBaseUser
-        }
-        else {
-            return null
-        }
+        return fireBaseUser
     }
-
     fun getEmail(): String {
         return email
     }
