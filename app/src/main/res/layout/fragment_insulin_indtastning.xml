@@ -49,20 +49,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.326" />
 
-    <ImageButton
-            android:id="@+id/imageButton15"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:backgroundTint="@color/white"
-            android:scaleType="fitStart"
-            android:src="@drawable/mik"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.868"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.952" />
-
     <EditText
         android:id="@+id/textInput"
         android:layout_width="281dp"
@@ -101,6 +87,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.103"
             app:layout_constraintVertical_bias="0.319" />
+
+    <ImageButton
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            app:srcCompat="@drawable/mikrofonny"
+            android:id="@+id/imageButton"
+            android:scaleType="fitStart"
+            android:backgroundTint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.996"
+            app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

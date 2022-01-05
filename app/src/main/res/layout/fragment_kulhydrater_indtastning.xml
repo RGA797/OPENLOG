@@ -22,6 +22,20 @@
     <!-- TODO: Update blank fragment layout -->
 
     <ImageButton
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            app:srcCompat="@drawable/mikrofonny"
+            android:id="@+id/imageButton13"
+            android:scaleType="fitStart"
+            android:backgroundTint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.992"
+            app:layout_constraintVertical_bias="1.0" />
+
+    <ImageButton
             android:id="@+id/imageButton5"
             android:layout_width="110dp"
             android:layout_height="110dp"
@@ -48,20 +62,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.326"
             app:layout_constraintHorizontal_bias="0.498" />
-
-    <ImageButton
-            android:id="@+id/imageButton15"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:backgroundTint="@color/white"
-            android:scaleType="fitStart"
-            android:src="@drawable/mik"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.868"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.952" />
 
     <EditText
         android:id="@+id/textInput"
