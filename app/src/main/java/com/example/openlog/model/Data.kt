@@ -11,7 +11,7 @@ import javax.security.auth.callback.Callback
 
 
 class Data {
-    var input: String? = null
+    var input: String? = ""
     val database = FirebaseDatabase.getInstance("https://openlog-a2b24-default-rtdb.europe-west1.firebasedatabase.app/")
 
     fun changeInput(input: String) {
