@@ -94,5 +94,38 @@
         <action
             android:id="@+id/navigateFromManuelIndtastningToHistorik"
             app:destination="@id/historik" />
+        <action
+                android:id="@+id/navigateFromManuelIndtastningToInsulinIndtastning"
+                app:destination="@id/insulinMI" />
+        <action
+                android:id="@+id/navigateFromManuelIndtastningToKulhydraterIndtastning"
+                app:destination="@id/kulhydraterMI" />
+        <action
+                android:id="@+id/navigateFromManuelIndtastningToBlodsukkerIndtastning"
+                app:destination="@id/blodsukkerMI" />
     </fragment>
+
+    <fragment
+            android:id="@+id/insulinMI"
+            android:name="com.example.openlog.view.Insulin_indtastning"
+            android:label="fragment_insulin_indtastning"
+            tools:layout="@layout/fragment_insulin_indtastning" />
+
+    <fragment
+            android:id="@+id/kulhydraterMI"
+            android:name="com.example.openlog.view.Kulhydrater_indtatsning"
+            android:label="fragment_kulhydrater_indtastning"
+            tools:layout="@layout/fragment_kulhydrater_indtastning" />
+
+    <fragment
+            android:id="@+id/blodsukkerMI"
+            android:name="com.example.openlog.view.Blodsukker_indtastning"
+            android:label="fragment_blodsukker_indtastning"
+            tools:layout="@layout/fragment_blodsukker_indtastning" />
+
+
+
+
+
+
 </navigation>

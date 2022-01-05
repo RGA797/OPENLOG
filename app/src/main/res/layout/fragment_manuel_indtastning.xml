@@ -22,7 +22,7 @@
     <!-- TODO: Update blank fragment layout -->
 
     <ImageButton
-            android:id="@+id/imageButton10"
+            android:id="@+id/blodsukkerButton"
             android:layout_width="110dp"
             android:layout_height="110dp"
             android:backgroundTint="@color/white"
@@ -35,7 +35,7 @@
             app:layout_constraintVertical_bias="0.339" />
 
     <ImageButton
-            android:id="@+id/imageButton11"
+            android:id="@+id/kulhydraterButton"
             android:layout_width="110dp"
             android:layout_height="110dp"
             android:backgroundTint="@color/white"
@@ -49,7 +49,7 @@
             app:layout_constraintVertical_bias="0.339" />
 
     <ImageButton
-            android:id="@+id/imageButton9"
+            android:id="@+id/insulinButton"
             android:layout_width="110dp"
             android:layout_height="110dp"
             android:backgroundTint="@color/white"
@@ -75,30 +75,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.952" />
-
-    <EditText
-        android:id="@+id/textInput"
-        android:layout_width="281dp"
-        android:layout_height="62dp"
-        android:ems="10"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
-
-    <Button
-            android:id="@+id/logButton"
-            android:layout_width="150dp"
-            android:layout_height="55dp"
-            android:backgroundTint="#069C81"
-            android:text="logData"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.51"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.603" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

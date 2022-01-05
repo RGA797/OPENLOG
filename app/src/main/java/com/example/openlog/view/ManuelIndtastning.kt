@@ -35,18 +35,18 @@ class manuelIndtastning : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.logButton.setOnClickListener{onLogInput()}
-    }
 
-    fun onLogInput(){
-        val firebaseUser: FirebaseUser = dataViewModel.getCurrentFirebaseUser()!!
-        dataViewModel.changeInput(binding.textInput.text.toString())
-        val success = dataViewModel.saveInput(firebaseUser)
-        if (success){
-            Toast.makeText(context, "Input Gemt", Toast.LENGTH_SHORT).show()
+
+        binding.insulinButton.setOnClickListener{
+            Navigation.findNavController(binding.root).navigate(R.id.navigateFromManuelIndtastningToInsulinIndtastning)
         }
-        else{
-            Toast.makeText(context, "Invalit input", Toast.LENGTH_SHORT).show()
+
+        binding.kulhydraterButton.setOnClickListener{
+            Navigation.findNavController(binding.root).navigate(R.id.navigateFromManuelIndtastningToKulhydraterIndtastning)
+        }
+
+        binding.blodsukkerButton.setOnClickListener{
+            Navigation.findNavController(binding.root).navigate(R.id.navigateFromManuelIndtastningToBlodsukkerIndtastning)
         }
     }
 

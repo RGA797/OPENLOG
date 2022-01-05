@@ -22,7 +22,7 @@
     <!-- TODO: Update blank fragment layout -->
 
     <ImageButton
-            android:id="@+id/imageButton10"
+            android:id="@+id/blodsukkerButton"
             android:layout_width="110dp"
             android:layout_height="110dp"
             android:backgroundTint="@color/white"
@@ -36,7 +36,7 @@
             app:layout_constraintHorizontal_bias="0.498" />
 
     <ImageButton
-            android:id="@+id/imageButton11"
+            android:id="@+id/kulhydraterButton"
             android:layout_width="110dp"
             android:layout_height="110dp"
             android:backgroundTint="@color/white"
