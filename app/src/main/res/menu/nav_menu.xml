@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id = "@+id/item"
-            android:title="@string/dropdown">
-    <menu>
+
             <item android:id="@+id/historikDropdown"
             android:title="@string/historik"
-            app:showAsAction="always"/>
+            />
 
             <item android:id="@+id/delingDropdown"
-            android:title="@string/del"
-            app:showAsAction="always"/>
-    </menu>
-    </item>
+            android:title="@string/DEL"
+            />
+
+             <item android:id="@+id/infoDropdown"
+            android:title="@string/INFO"
+            />
+
+
 </menu>

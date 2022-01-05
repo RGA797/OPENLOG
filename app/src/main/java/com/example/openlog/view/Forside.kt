@@ -101,7 +101,6 @@ class Forside : Fragment() {
         else{
             Toast.makeText(context, "Invalit input", Toast.LENGTH_SHORT).show()
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater){
