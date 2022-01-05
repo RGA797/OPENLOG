@@ -1,5 +1,6 @@
 package com.example.openlog.view
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,9 +11,12 @@ import com.jjoe64.graphview.GridLabelRenderer
 import com.jjoe64.graphview.LegendRenderer
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
-
+import com.example.openlog.databinding.FragmentStatusBarKulhydraterBinding
+import com.jjoe64.graphview.GraphView
 
 class Status_bar_Kulhydrater : Fragment() {
+
+    private lateinit var binding: FragmentStatusBarKulhydraterBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,31 +25,38 @@ class Status_bar_Kulhydrater : Fragment() {
         // Inflate the layout for this fragment
 
         //Optains graph from layout
-        val graphKulhydrater = findViewById(R.id.graph_kulhydrater) as Graphview
+        binding = FragmentStatusBarKulhydraterBinding.inflate(inflater, container, false)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         //Create curve/series for graph
-        val seriesKulhydrater = com.jjoe64.graphview.series.LineGraphSeries(
+        val seriesKulhydrater = LineGraphSeries(
             arrayOf(
                 com.jjoe64.graphview.series.DataPoint(4.0, 2.0),
                 DataPoint(7.0, 4.0),
                 DataPoint(8.0, 5.0)
             )
         )
+        val graphkulhydrater = binding.graphKulhydrater
 
         //Add curve to graph
-        graphKulhydrater.addSeries(seriesKulhydrater)
+        graphkulhydrater.addSeries(seriesKulhydrater)
 
         //Set colour, title of curve, DataPoints radius, thickness
         seriesKulhydrater.setColor(Color.RED) //or Color.rgb(0,80,100)
         seriesKulhydrater.setTitle("Kulhydrater") //Needed for creating legend described below
         seriesKulhydrater.setDrawDataPoints(true) //Shows datapoints as circles in the curve
-        seriesKulhydrater.setDataPointsRadius(16) //layout for datapoints
+        seriesKulhydrater.setDataPointsRadius(16F) //layout for datapoints
         seriesKulhydrater.setThickness(8) //Layout for datapoints
 
         //Title of graph
-        graphKulhydrater.setTitle("Kulhydrater")
-        graphKulhydrater.setTitleTextSize(90)
-        graphKulhydrater.setTitleColor(Color.BLUE)
+        graphkulhydrater.setTitle("Kulhydrater")
+        graphkulhydrater.setTitleTextSize(90.0F)
+        graphkulhydrater.setTitleColor(Color.BLUE)
 
         //Legend (used for displaying overview of curves)
         graphkulhydrater.getLegendRenderer().setVisible(true)
@@ -54,10 +65,9 @@ class Status_bar_Kulhydrater : Fragment() {
         //Axis titles
         val gridLabelKulhydrat = graphkulhydrater.getGridLabelRenderer() as GridLabelRenderer
         gridLabelKulhydrat.setHorizontalAxisTitle("X Axis Title")
-        gridLabelKulhydrat.setHorizontalAxisTitleTextSize(50)
+        gridLabelKulhydrat.setHorizontalAxisTitleTextSize(50F)
         gridLabelKulhydrat.setVerticalAxisTitle("Y Axis Title")
-        gridLabelKulhydrat.setVerticalAxisTitleTextSize(50)
+        gridLabelKulhydrat.setVerticalAxisTitleTextSize(50F)
 
-        return inflater.inflate(R.layout.fragment_status_bar__kulhydrater, container, false)
     }
 }

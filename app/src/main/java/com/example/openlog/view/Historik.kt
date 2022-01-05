@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.example.openlog.R
 
 class historik : Fragment() {
@@ -22,6 +23,13 @@ class historik : Fragment() {
         val insulinButton =  view.findViewById<ImageButton>(R.id.insulinHistorikButton)
         val blodsukkerButton = view.findViewById<ImageButton>(R.id.blodsukkerHistorikButton)
 
+
+//        val action =
+//            PlayFragmentDirections
+//                .actionPlayFragmentToWinFragment()
+//        view.findNavController().navigate(action)
+//
+//        val action =
 
         kulhydratButton.setOnClickListener{
             Navigation.findNavController(view).navigate(R.id.navigateFromHistorikToKulhydrater)
