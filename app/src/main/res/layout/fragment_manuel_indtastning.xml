@@ -54,7 +54,7 @@
         android:layout_height="94dp"
         android:backgroundTint="@color/white"
         android:scaleType="fitStart"
-        android:src="@drawable/in"
+        android:src="@drawable/insulin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.186"
@@ -63,18 +63,18 @@
         app:layout_constraintVertical_bias="0.339" />
 
     <ImageButton
-        android:id="@+id/imageButton15"
-        android:layout_width="91dp"
-        android:layout_height="81dp"
-        android:backgroundTint="@color/white"
-        android:scaleType="fitStart"
-        android:src="@drawable/mik"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.853"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.904" />
+            android:id="@+id/imageButton15"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:backgroundTint="@color/white"
+            android:scaleType="fitStart"
+            android:src="@drawable/mikrofonny"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.903"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.974" />
 
     <EditText
         android:id="@+id/textInput"

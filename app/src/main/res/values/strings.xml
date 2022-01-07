@@ -23,6 +23,8 @@
     <string name="hilsen">Godt at se dig %s</string>
     <string name="ageDisplay">køn: %s</string>
     <string name="genderDisplay">Alder: %s</string>
+    <string name="navn">NAVN</string>
+
 
     <string name="historik">HISTORIK</string>
     <string name="speak">Button</string>

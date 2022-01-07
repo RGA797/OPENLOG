@@ -14,51 +14,24 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".view.Profil">
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/anton"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        android:textColor="@color/black"
-        android:textSize="35dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.556"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.093" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="136dp"
-        android:layout_height="136dp"
-        android:backgroundTint="@color/white"
-        android:scaleType="centerInside"
-        android:src="@drawable/profil"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.058"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.06" />
+        <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/navn"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+                android:textColor="@color/black"
+                android:textSize="35dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.515"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.067" />
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="310dp"
-        android:layout_height="93dp"
-        android:backgroundTint="@color/white"
-        android:scaleType="centerInside"
-        android:src="@drawable/na"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.158"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.33" />
-
-    <TextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/alderTekst"
@@ -81,5 +54,19 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintVertical_bias="0.607"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageButton
+                android:src="@drawable/profilny"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:id="@+id/imageButton"
+                android:scaleType="fitStart"
+                android:backgroundTint="@color/white"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.049"
+                app:layout_constraintVertical_bias="0.027" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
         </layout>
