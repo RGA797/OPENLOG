@@ -44,21 +44,22 @@ class Login : Fragment() {
                 val adgangskode: String = adgangskodeTextView.text.toString()
 
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(email,adgangskode).addOnCompleteListener(requireActivity(), OnCompleteListener<AuthResult>(){ task ->
-                        if (task.isSuccessful) {
-                            val firebaseUser: FirebaseUser = task.result!!.user!!
-                            dataViewModel.changeUser(firebaseUser, email)
-                            dataViewModel.getCurrentFirebaseUser()?.let { dataViewModel.changeUserData(it) }
-                            Toast.makeText(context, "You are now logged in", Toast.LENGTH_SHORT).show()
-                            Navigation.findNavController(view)
-                                .navigate(R.id.navigateFromLoginToForside)
-                        } else {
-                            Toast.makeText(
-                                context,
-                                "E-mail or password not valid",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    })
+                    if (task.isSuccessful) {
+                        val firebaseUser: FirebaseUser = task.result!!.user!!
+                        dataViewModel.changeUser(firebaseUser, email)
+                        dataViewModel.getCurrentFirebaseUser()?.let { dataViewModel.changeUserData(it) }
+                        dataViewModel.getCurrentFirebaseUser()?.let { dataViewModel.changeInputData(it, "insulin") }
+                        Toast.makeText(context, "You are now logged in", Toast.LENGTH_SHORT).show()
+                        Navigation.findNavController(view)
+                            .navigate(R.id.navigateFromLoginToForside)
+                    } else {
+                        Toast.makeText(
+                            context,
+                            "E-mail or password not valid",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                })
             }
         }
 

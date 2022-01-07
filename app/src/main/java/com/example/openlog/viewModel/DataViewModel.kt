@@ -58,29 +58,30 @@ class DataViewModel: ViewModel() {
         return data.storeUserData(firebaseUser, koen, alder)
     }
 
+
     fun changeInputData (firebaseUser: FirebaseUser, type: String) {
-        data.changeUserData(firebaseUser,type){
+        val date = Calendar.getInstance()
+
+        date.set(2020, 8, 3,3 , 3, 3)
+        val startDate = date.time
+
+        date.set(2022, 1, 6,3 , 3, 3)
+        val endDate = date.time
+        data.changeUserData(firebaseUser,type, startDate, endDate){
             _currentDataList.value = it as ArrayList<InputDTO>
             userInputList = it
         }
     }
 
     fun changeUserData (firebaseUser: FirebaseUser) {
-        data.changeUserData(firebaseUser,"køn"){
+        data.changeUserData(firebaseUser,"køn", null, null){
             _currentDataList.value = it as ArrayList<InputDTO>
             userDataList = it
         }
     }
 
-    //fun sortDatalistForDateRange(startDate: Date, endDate: Date){
-        //val i = 0
-        //while (i< userInputList.size && userInputList.size != 0){
-        //    if ((userInputList[i].secondInput.split(" "))[0] )
-      //  }
-    //}
 
-    fun getUserData(): ArrayList<InputDTO>? {
+    fun getDataList(): ArrayList<InputDTO>? {
         return currentDataList.value
     }
-
 }

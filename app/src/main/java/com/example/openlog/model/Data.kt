@@ -50,7 +50,6 @@ class Data {
         return false
     }
 
-
     fun storeUserData(firebaseUser: FirebaseUser, køn: String, alder: String ){
         val Ref = database.getReference("users").child(firebaseUser.uid).push()
         val data: MutableMap<String, String> = HashMap()
@@ -58,8 +57,7 @@ class Data {
         data["alder"] = alder
         Ref.updateChildren(data as Map<String, Any>)
     }
-
-    fun changeUserData(firebaseUser: FirebaseUser, type: String, callback: (result: List<InputDTO>) -> Unit) {
+    fun changeUserData(firebaseUser: FirebaseUser, type: String, startDate: Date?, endDate: Date?, callback: (result: List<InputDTO>) -> Unit) {
         val myRef = database.getReference("users").child(firebaseUser.uid)
         val dataList = mutableListOf<InputDTO>()
         val valueEventListener = object : ValueEventListener {
@@ -69,8 +67,10 @@ class Data {
                         if (type == "blodsukker" || type == "insulin" ||type == "kulhydrat"){
                             val timeData = ds.child("time").getValue(String::class.java)
                             val typeData = ds.child(type).getValue(String::class.java)
-                            val inputDTO  = InputDTO(timeData!!,typeData!!)
-                            dataList.add(inputDTO)
+                            if(dateInRange(timeData!!, startDate!!, endDate!!)){
+                                val inputDTO  = InputDTO(timeData,typeData!!)
+                                dataList.add(inputDTO)
+                            }
                         }
                         else if (type == "køn"|| type == "alder" ) {
                             val koenData = ds.child("køn").getValue(String::class.java)
@@ -86,5 +86,44 @@ class Data {
             }
         }
         myRef.addValueEventListener(valueEventListener)
+    }
+
+    fun dateInRange(dateString: String, startDate: Date, endDate: Date): Boolean{
+        val date = convertStringToDate(dateString)
+        return if (startDate > date || date > endDate){
+            false
+        } else {
+            false
+        }
+    }
+
+    fun convertStringToDate(time: String): Date {
+
+        val stringList = time.split(" ")
+        val day = stringList[2].toInt()
+        val month = when(stringList[1]){
+            "Jan" -> 1
+            "Feb" -> 2
+            "Mar" -> 3
+            "Apr" -> 4
+            "May" -> 5
+            "Jun" -> 6
+            "Jul" -> 7
+            "Aug" -> 8
+            "Sep" -> 9
+            "Oct" -> 10
+            "Now" -> 11
+            "Dec" -> 12
+            else -> {1}
+        }
+        val hourOfDay = stringList[3].split(":")[0].toInt()
+        val minuteOfDay = stringList[3].split(":")[1].toInt()
+        val seconOfDay = stringList[3].split(":")[2].toInt()
+
+        val year = stringList[5].toInt()
+        val date = Calendar.getInstance()
+        date.set(year, month, day, hourOfDay, minuteOfDay, seconOfDay)
+
+        return date.time
     }
 }

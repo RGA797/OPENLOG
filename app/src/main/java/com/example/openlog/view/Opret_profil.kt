@@ -63,8 +63,6 @@ class Opret_profil : Fragment() {
                             Toast.makeText(context, "E-mail or password not valid", Toast.LENGTH_SHORT).show()
                         }
                     })
-
-
             }
         }
         return view
