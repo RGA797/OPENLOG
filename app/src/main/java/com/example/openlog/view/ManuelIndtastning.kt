@@ -37,7 +37,6 @@ class manuelIndtastning : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.logButton.setOnClickListener{onLogInput()}
-        binding.insulinButton.setOnClickListener{onLogInput()}
         binding.insulinButton.setOnClickListener{onInsulinButton()}
         binding.blodsukkerButton.setOnClickListener{onBlodsukkerButton()}
         binding.kulhydraterButton.setOnClickListener{onKulhydraterButton()}
