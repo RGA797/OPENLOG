@@ -36,6 +36,7 @@ class manuelIndtastning : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //val list = dataViewModel.userInputList
         binding.logButton.setOnClickListener{onLogInput()}
         binding.insulinButton.setOnClickListener{onInsulinButton()}
         binding.blodsukkerButton.setOnClickListener{onBlodsukkerButton()}

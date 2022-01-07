@@ -53,7 +53,6 @@ class Forside : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
         binding.profilButton.setOnClickListener{
-            dataViewModel.getCurrentFirebaseUser()?.let { it1 -> dataViewModel.changeUserData(it1) }
             Navigation.findNavController(binding.root).navigate(R.id.navigateFromForsideToProfil)
         }
 
@@ -96,7 +95,6 @@ class Forside : Fragment() {
         val success = dataViewModel.saveInput(firebaseUser)
         if (success){
             Toast.makeText(context, "Input Gemt", Toast.LENGTH_SHORT).show()
-            dataViewModel.changeInputData(firebaseUser, "insulin")
         }
         else{
             Toast.makeText(context, "Invalit input", Toast.LENGTH_SHORT).show()

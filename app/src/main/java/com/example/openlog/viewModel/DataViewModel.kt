@@ -7,9 +7,6 @@ import com.example.openlog.model.Data
 import com.example.openlog.model.InputDTO
 import com.example.openlog.model.User
 import com.google.firebase.auth.FirebaseUser
-import java.time.LocalDate
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -59,29 +56,30 @@ class DataViewModel: ViewModel() {
     }
 
 
-    fun changeInputData (firebaseUser: FirebaseUser, type: String) {
+    fun changeInputData (firebaseUser: FirebaseUser, type: String, startDate: Date, endDate: Date) {
         val date = Calendar.getInstance()
 
-        date.set(2020, 8, 3,3 , 3, 3)
-        val startDate = date.time
+        //date.set(2020, 2, 3,3 , 3, 3)
+        //val startDate = date.time
 
-        date.set(2022, 1, 6,3 , 3, 3)
-        val endDate = date.time
-        data.changeUserData(firebaseUser,type, startDate, endDate){
+        //date.set(2022, 0, 6,3 , 3, 3)
+        //val endDate = date.time
+        data.updateUserData(firebaseUser,type, startDate, endDate){
             _currentDataList.value = it as ArrayList<InputDTO>
             userInputList = it
         }
     }
 
     fun changeUserData (firebaseUser: FirebaseUser) {
-        data.changeUserData(firebaseUser,"køn", null, null){
+        data.updateUserData(firebaseUser,"køn", null, null){
             _currentDataList.value = it as ArrayList<InputDTO>
             userDataList = it
         }
     }
 
 
-    fun getDataList(): ArrayList<InputDTO>? {
-        return currentDataList.value
+    fun getDataList(): ArrayList<InputDTO> {
+        return userDataList
     }
+
 }
