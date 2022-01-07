@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.text.isDigitsOnly
 import androidx.fragment.app.activityViewModels
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
@@ -18,7 +19,7 @@ import com.example.openlog.R
 import com.example.openlog.viewModel.DataViewModel
 import com.google.firebase.database.FirebaseDatabase
 
-class opret_profil : Fragment() {
+class Opret_profil : Fragment() {
 
 
     private val dataViewModel: DataViewModel by activityViewModels()
@@ -33,6 +34,8 @@ class opret_profil : Fragment() {
         val registerButton = view.findViewById<Button>(R.id.opretProfilButton)
         val emailTextView = view.findViewById<EditText>(R.id.opretEmailText)
         val adgangskodeTextView = view.findViewById<EditText>(R.id.opretAdgangskodeText)
+        val koenTextView = view.findViewById<EditText>(R.id.opretKønText)
+        val alderTextView = view.findViewById<EditText>(R.id.opretAlderText)
 
         registerButton.setOnClickListener {
             if (emailTextView.text.isEmpty() || adgangskodeTextView.text.isEmpty()) {
@@ -40,6 +43,8 @@ class opret_profil : Fragment() {
             } else {
                 val email: String = emailTextView.text.toString()
                 val adgangskode: String = adgangskodeTextView.text.toString()
+                val koen: String = koenTextView.text.toString()
+                val alder: String = alderTextView.text.toString()
 
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, adgangskode)
                     .addOnCompleteListener(requireActivity(), OnCompleteListener<AuthResult>() { task ->
@@ -51,10 +56,15 @@ class opret_profil : Fragment() {
                             myRef.child(firebaseUser.uid).setValue(email)
                             Toast.makeText(context, "You are now registered", Toast.LENGTH_SHORT).show()
                             Navigation.findNavController(view).navigate(R.id.navigateFromOpretToForside)
+                            if (alder.isNotBlank() && alder.isDigitsOnly() && koen.isNotEmpty() && alder.toInt() in 1..99){
+                                dataViewModel.saveUserData(firebaseUser, koen, alder)
+                            }
                         } else {
                             Toast.makeText(context, "E-mail or password not valid", Toast.LENGTH_SHORT).show()
                         }
                     })
+
+
             }
         }
         return view

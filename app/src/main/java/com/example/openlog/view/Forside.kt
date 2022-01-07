@@ -52,8 +52,8 @@ class Forside : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.lifecycleOwner = viewLifecycleOwner
-
         binding.profilButton.setOnClickListener{
+            dataViewModel.getCurrentFirebaseUser()?.let { it1 -> dataViewModel.changeUserData(it1) }
             Navigation.findNavController(binding.root).navigate(R.id.navigateFromForsideToProfil)
         }
 
@@ -67,7 +67,7 @@ class Forside : Fragment() {
 
         activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){result: ActivityResult? ->
             if (result!!.resultCode== AppCompatActivity.RESULT_OK && result!!.data!= null) {
-                val text =result.data!!.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS) as ArrayList<Editable>
+                val text =result.data!!.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS) as ArrayList<*>
                 dataViewModel.changeInput(text[0].toString())
             }
         }
@@ -96,12 +96,11 @@ class Forside : Fragment() {
         val success = dataViewModel.saveInput(firebaseUser)
         if (success){
             Toast.makeText(context, "Input Gemt", Toast.LENGTH_SHORT).show()
-            dataViewModel.getUserData(firebaseUser,"insulin")
+            dataViewModel.changeInputData(firebaseUser, "insulin")
         }
         else{
             Toast.makeText(context, "Invalit input", Toast.LENGTH_SHORT).show()
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater){
