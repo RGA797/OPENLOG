@@ -17,90 +17,88 @@
         tools:context=".view.Forside">
 
         <TextView
-            android:id="@+id/hilsenTekst"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{@string/hilsen(dataViewModel.currentEmail)}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textColor="@color/black"
-            android:textSize="10sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.58"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.089" />
-
-        <ImageButton
-            android:id="@+id/microphoneButton"
-            android:layout_width="166dp"
-            android:layout_height="176dp"
-            android:backgroundTint="@color/white"
-            android:contentDescription="TODO"
-            android:scaleType="fitStart"
-            android:src="@drawable/mik"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.473"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <ImageButton
-            android:id="@+id/profilButton"
-            android:layout_width="98dp"
-            android:layout_height="102dp"
-            android:backgroundTint="@color/white"
-            android:scaleType="fitStart"
-            android:src="@drawable/profil"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.054"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.061"
-            tools:ignore="SpeakableTextPresentCheck" />
+                android:id="@+id/hilsenTekst"
+                android:layout_width="4dp"
+                android:layout_height="16dp"
+                android:text="@{@string/hilsen(dataViewModel.currentEmail)}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.393"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.068" />
 
         <TextView
-            android:id="@+id/speechText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{@string/inputText(dataViewModel.currentInput)}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.31" />
-
-        <ImageButton
-            android:id="@+id/manuelIndtastningButton"
-            android:layout_width="62dp"
-            android:layout_height="64dp"
-            android:backgroundTint="@color/white"
-            android:scaleType="fitStart"
-            android:src="@drawable/tas"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.845"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.899" />
+                android:id="@+id/speechText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/inputText(dataViewModel.currentInput)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.316" />
 
         <Button
-            android:id="@+id/logButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#069C81"
-            android:text="Log input"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.658" />
+                android:id="@+id/logButton"
+                android:layout_width="150dp"
+                android:layout_height="55dp"
+                android:backgroundTint="#069C81"
+                android:text="Log input"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/black"
+                app:layout_constraintVertical_bias="0.687" />
+
+        <ImageButton
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                app:srcCompat="@drawable/profilny"
+                android:id="@+id/profilButton"
+                android:scaleType="fitStart"
+                android:backgroundTint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.056"
+                app:layout_constraintVertical_bias="0.026" />
+
+        <ImageButton
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                app:srcCompat="@drawable/mikrofonny"
+                android:id="@+id/microphoneButton"
+                android:scaleType="fitStart"
+                android:backgroundTint="@color/white"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintVertical_bias="0.498" />
+
+        <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:srcCompat="@drawable/keyboard"
+                android:scaleType="fitStart"
+                android:backgroundTint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.93"
+                app:layout_constraintVertical_bias="0.956"
+                android:id="@+id/manuelIndtastingButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
