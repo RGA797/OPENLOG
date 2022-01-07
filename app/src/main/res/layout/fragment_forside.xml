@@ -84,7 +84,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintVertical_bias="0.498" />
+                app:layout_constraintVertical_bias="0.382" />
 
         <ImageButton
                 android:layout_width="90dp"
@@ -98,7 +98,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.93"
                 app:layout_constraintVertical_bias="0.956"
-                android:id="@+id/manuelIndtastingButton" />
+                android:id="@+id/manuelIndtastningButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
