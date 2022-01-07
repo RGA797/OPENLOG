@@ -48,7 +48,7 @@ class Login : Fragment() {
                         val firebaseUser: FirebaseUser = task.result!!.user!!
                         dataViewModel.changeUser(firebaseUser, email)
                         dataViewModel.getCurrentFirebaseUser()?.let { dataViewModel.changeUserData(it) }
-                        dataViewModel.getCurrentFirebaseUser()?.let { dataViewModel.changeInputData(it, "insulin") }
+           //             dataViewModel.getCurrentFirebaseUser()?.let { dataViewModel.changeInputData(it, "insulin") }
                         Toast.makeText(context, "You are now logged in", Toast.LENGTH_SHORT).show()
                         Navigation.findNavController(view)
                             .navigate(R.id.navigateFromLoginToForside)
