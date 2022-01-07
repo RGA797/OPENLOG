@@ -15,6 +15,6 @@ class Status_bar_Insulin : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_status_bar__insulin, container, false)
+        return inflater.inflate(R.layout.`fragment_generate_graph.xml`, container, false)
     }
 }

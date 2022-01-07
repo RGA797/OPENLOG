@@ -16,6 +16,7 @@ import kotlin.collections.ArrayList
 class DataViewModel: ViewModel() {
     private var user = User()
     private var data = Data()
+    private val categoryArray = arrayOf(false, false, false)
     var userDataList = ArrayList<InputDTO>(0)
     var userInputList = ArrayList<InputDTO>(0)
     private val _currentUser = MutableLiveData(user.getFirebaseUser())
