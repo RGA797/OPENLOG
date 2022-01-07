@@ -42,19 +42,18 @@ class manuelIndtastning : Fragment() {
         binding.kulhydraterButton.setOnClickListener{onKulhydraterButton()}
     }
 
-
     fun onLogInput(){
         val firebaseUser: FirebaseUser = dataViewModel.getCurrentFirebaseUser()!!
         var type = ""
-        if (binding.insulinButton.isVisible){
+        if (binding.Insulinhighlight.isVisible){
             type = "insulin "
         }
 
-        else if (binding.blodsukkerButton.isVisible){
+        else if (binding.blodsukkerhighlight.isVisible){
             type = "blodsukker "
         }
 
-        else if (binding.kulhydraterButton.isVisible){
+        else if (binding.kulhydraterhighlight.isVisible){
             type = "kulhydrat "
         }
 
@@ -91,7 +90,6 @@ class manuelIndtastning : Fragment() {
         binding.kulhydraterhighlight.visibility = View.INVISIBLE
         binding.logButton.visibility = View.VISIBLE
         binding.textInput.visibility = View.VISIBLE
-
     }
 
    fun onKulhydraterButton(){
