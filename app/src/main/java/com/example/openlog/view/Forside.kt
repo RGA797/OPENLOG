@@ -110,6 +110,7 @@ class Forside : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
             R.id.historikDropdown -> onHistorikDropdown()
+            R.id.infoDropdown -> onInfoDropdown()
         }
 
         return super.onOptionsItemSelected(item)
@@ -119,4 +120,7 @@ class Forside : Fragment() {
         Navigation.findNavController(binding.root).navigate(R.id.navigateFromForsideToHistorik)
     }
 
+    fun onInfoDropdown(){
+        Navigation.findNavController(binding.root).navigate(R.id.navigateFromForsideToInfo)
+    }
 }

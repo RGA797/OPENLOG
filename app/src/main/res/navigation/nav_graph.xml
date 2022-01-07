@@ -54,8 +54,9 @@
             android:id="@+id/navigateFromForsideToManuelIndtastning"
             app:destination="@id/manuelIndtastning" />
         <action
-            android:id="@+id/action_forside_to_manuelIndtastning"
-            app:destination="@id/manuelIndtastning" />
+                android:id="@+id/navigateFromForsideToInfo"
+                app:destination="@id/fragment_info2" />
+
     </fragment>
     <fragment
         android:id="@+id/profil"
@@ -95,4 +96,9 @@
             android:id="@+id/navigateFromManuelIndtastningToHistorik"
             app:destination="@id/historik" />
     </fragment>
+    <fragment
+            android:id="@+id/fragment_info2"
+            android:name="com.example.openlog.fragment_info"
+            android:label="fragment_info"
+            tools:layout="@layout/fragment_info" />
 </navigation>

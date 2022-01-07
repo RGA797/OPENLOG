@@ -104,7 +104,6 @@ class manuelIndtastning : Fragment() {
 
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater){
         menuInflater.inflate(R.menu.nav_menu,menu)
     }
