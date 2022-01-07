@@ -85,4 +85,15 @@ class DataViewModel: ViewModel() {
     fun getDataList(): ArrayList<InputDTO>? {
         return currentDataList.value
     }
+
+
+    //flips boolean value for category in bool array indicating if it is to be displayed on graph or not
+    fun flipCategory(index: Int) {
+        categoryArray[index] = !categoryArray[index]
+    }
+
+    //checks if category in given index is selected by user
+    fun categorySelected(index : Int): Boolean {
+        return categoryArray[index]
+    }
 }

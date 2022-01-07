@@ -32,39 +32,39 @@ class Status_bar_Blodsukker : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        dataViewModel.getUserData(dataViewModel.getCurrentFirebaseUser()!!, "kulhydrat")
-        val dataList = dataViewModel.currentDataList
-
-
-        val dataArray = emptyArray<DataPoint>()
-
-
-        var i = 0
-        for (item in dataList.value!!) {
-
-            dataArray[i] = DataPoint(i++.toDouble(),item.value.toDouble())
-        }
-
-        val seriesKulhydrater = LineGraphSeries(dataArray)
+//
+//        dataViewModel.getUserData(dataViewModel.getCurrentFirebaseUser()!!, "kulhydrat")
+//        val dataList = dataViewModel.currentDataList
+//
+//
+//        val dataArray = emptyArray<DataPoint>()
+//
+//
+//        var i = 0
+//        for (item in dataList.value!!) {
+//
+//            dataArray[i] = DataPoint(i++.toDouble(),item.value.toDouble())
+//        }
+//
+//        val seriesKulhydrater = LineGraphSeries(dataArray)
 
 
         //Create curve/series for graph
-//        val seriesKulhydrater = LineGraphSeries(
-//            arrayOf(
-//                DataPoint(2.0, 200.0),
-//                DataPoint(3.0, 100.0),
-//                DataPoint(4.0, 0.0)
-//            )
-//        )
-//
-//        val seriesKulhydrater2 = LineGraphSeries(
-//            arrayOf(
-//                DataPoint(2.0, 0.0),
-//                DataPoint(3.0, 5.0),
-//                DataPoint(4.0, 10.0)
-//            )
-//        )
+        val seriesKulhydrater = LineGraphSeries(
+            arrayOf(
+                DataPoint(2.0, 200.0),
+                DataPoint(3.0, 100.0),
+                DataPoint(4.0, 0.0)
+            )
+        )
+
+        val seriesKulhydrater2 = LineGraphSeries(
+            arrayOf(
+                DataPoint(2.0, 0.0),
+                DataPoint(3.0, 5.0),
+                DataPoint(4.0, 10.0)
+            )
+        )
         val graph = binding.graphBlodsukker
 
         //Add curve to graph
