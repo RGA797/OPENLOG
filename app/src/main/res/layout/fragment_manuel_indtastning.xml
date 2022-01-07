@@ -22,45 +22,46 @@
     <!-- TODO: Update blank fragment layout -->
 
     <ImageButton
-        android:id="@+id/imageButton10"
-        android:layout_width="101dp"
-        android:layout_height="94dp"
-        android:backgroundTint="@color/white"
-        android:scaleType="fitStart"
-        android:src="@drawable/bs"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.339" />
+            android:id="@+id/blodsukkerButton"
+            android:layout_width="101dp"
+            android:layout_height="94dp"
+            android:backgroundTint="@color/white"
+            android:scaleType="centerInside"
+            android:src="@drawable/bs"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.339"
+            app:layout_constraintHorizontal_bias="0.493" />
 
     <ImageButton
-        android:id="@+id/imageButton11"
-        android:layout_width="94dp"
-        android:layout_height="94dp"
-        android:backgroundTint="@color/white"
-        android:scaleType="fitStart"
-        android:src="@drawable/ku"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.807"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.339" />
+            android:id="@+id/kulhydraterButton"
+            android:layout_width="94dp"
+            android:layout_height="94dp"
+            android:backgroundTint="@color/white"
+            android:scaleType="centerInside"
+            android:src="@drawable/ku"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.807"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.339" />
 
     <ImageButton
-        android:id="@+id/imageButton9"
-        android:layout_width="95dp"
-        android:layout_height="94dp"
-        android:backgroundTint="@color/white"
-        android:scaleType="fitStart"
-        android:src="@drawable/insulin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.186"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.339" />
+            android:id="@+id/insulinButton"
+            android:layout_width="95dp"
+            android:layout_height="94dp"
+            android:backgroundTint="@color/white"
+            android:scaleType="centerInside"
+            android:src="@drawable/insulin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.186"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.339" />
 
     <ImageButton
             android:id="@+id/imageButton15"
@@ -81,6 +82,8 @@
         android:layout_width="281dp"
         android:layout_height="62dp"
         android:ems="10"
+        android:visibility="invisible"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,12 +96,58 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#069C81"
         android:text="logData"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.603" />
+
+    <ImageButton
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            app:srcCompat="@drawable/blodsukkerm"
+            android:id="@+id/blodsukkerhighlight"
+            android:scaleType="centerInside"
+            android:backgroundTint="@color/white"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.152" />
+
+    <ImageButton
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            app:srcCompat="@drawable/insulinm"
+            android:id="@+id/Insulinhighlight"
+            android:scaleType="centerInside"
+            android:backgroundTint="@color/white"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.132"
+            app:layout_constraintVertical_bias="0.151" />
+
+    <ImageButton
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            app:srcCompat="@drawable/kulhydratm"
+            android:id="@+id/kulhydraterhighlight"
+            android:backgroundTint="@color/white"
+            android:scaleType="centerInside"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.151"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.863" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

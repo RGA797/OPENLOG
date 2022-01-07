@@ -3,6 +3,7 @@ package com.example.openlog.view
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
@@ -36,11 +37,30 @@ class manuelIndtastning : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.logButton.setOnClickListener{onLogInput()}
+        binding.insulinButton.setOnClickListener{onLogInput()}
+        binding.insulinButton.setOnClickListener{onInsulinButton()}
+        binding.blodsukkerButton.setOnClickListener{onBlodsukkerButton()}
+        binding.kulhydraterButton.setOnClickListener{onKulhydraterButton()}
     }
+
 
     fun onLogInput(){
         val firebaseUser: FirebaseUser = dataViewModel.getCurrentFirebaseUser()!!
-        dataViewModel.changeInput(binding.textInput.text.toString())
+        var type = ""
+        if (binding.insulinButton.isVisible){
+            type = "insulin "
+        }
+
+        if (binding.blodsukkerButton.isVisible){
+            type = "blodsukker "
+        }
+
+        if (binding.kulhydraterButton.isVisible){
+            type = "kulhydrater "
+        }
+
+        dataViewModel.changeInput(type + binding.textInput.text.toString())
+
         val success = dataViewModel.saveInput(firebaseUser)
         if (success){
             Toast.makeText(context, "Input Gemt", Toast.LENGTH_SHORT).show()
@@ -48,7 +68,45 @@ class manuelIndtastning : Fragment() {
         else{
             Toast.makeText(context, "Invalit input", Toast.LENGTH_SHORT).show()
         }
+
     }
+
+   fun onInsulinButton(){
+       binding.insulinButton.visibility = View.INVISIBLE
+       binding.blodsukkerButton.visibility = View.VISIBLE
+       binding.kulhydraterButton.visibility = View.VISIBLE
+       binding.Insulinhighlight.visibility = View.VISIBLE
+       binding.blodsukkerhighlight.visibility = View.INVISIBLE
+       binding.kulhydraterhighlight.visibility = View.INVISIBLE
+       binding.logButton.visibility = View.VISIBLE
+       binding.textInput.visibility = View.VISIBLE
+   }
+
+
+    fun onBlodsukkerButton(){
+        binding.blodsukkerButton.visibility = View.INVISIBLE
+        binding.insulinButton.visibility = View.VISIBLE
+        binding.kulhydraterButton.visibility = View.VISIBLE
+        binding.blodsukkerhighlight.visibility = View.VISIBLE
+        binding.Insulinhighlight.visibility = View.INVISIBLE
+        binding.kulhydraterhighlight.visibility = View.INVISIBLE
+        binding.logButton.visibility = View.VISIBLE
+        binding.textInput.visibility = View.VISIBLE
+
+    }
+
+   fun onKulhydraterButton(){
+       binding.kulhydraterButton.visibility = View.INVISIBLE
+       binding.blodsukkerButton.visibility = View.VISIBLE
+       binding.insulinButton.visibility = View.VISIBLE
+       binding.kulhydraterhighlight.visibility = View.VISIBLE
+       binding.blodsukkerhighlight.visibility = View.INVISIBLE
+       binding.Insulinhighlight.visibility = View.INVISIBLE
+       binding.logButton.visibility = View.VISIBLE
+       binding.textInput.visibility = View.VISIBLE
+
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater){
         menuInflater.inflate(R.menu.nav_menu,menu)
@@ -66,3 +124,4 @@ class manuelIndtastning : Fragment() {
     }
 
 }
+
