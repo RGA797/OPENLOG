@@ -18,8 +18,8 @@
 
         <TextView
                 android:id="@+id/hilsenTekst"
-                android:layout_width="4dp"
-                android:layout_height="16dp"
+                android:layout_width="175dp"
+                android:layout_height="112dp"
                 android:text="@{@string/hilsen(dataViewModel.currentEmail)}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@color/black"
@@ -27,10 +27,10 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.393"
+                app:layout_constraintHorizontal_bias="0.816"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.068" />
+                app:layout_constraintVertical_bias="0.071" />
 
         <TextView
                 android:id="@+id/speechText"
@@ -73,8 +73,8 @@
                 app:layout_constraintVertical_bias="0.026" />
 
         <ImageButton
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:layout_width="182dp"
+                android:layout_height="167dp"
                 app:srcCompat="@drawable/mikrofonny"
                 android:id="@+id/microphoneButton"
                 android:scaleType="fitStart"
@@ -83,8 +83,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintVertical_bias="0.382" />
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintVertical_bias="0.525" />
 
         <ImageButton
                 android:layout_width="90dp"
