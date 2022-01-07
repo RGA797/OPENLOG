@@ -51,12 +51,12 @@ class manuelIndtastning : Fragment() {
             type = "insulin "
         }
 
-        if (binding.blodsukkerButton.isVisible){
+        else if (binding.blodsukkerButton.isVisible){
             type = "blodsukker "
         }
 
-        if (binding.kulhydraterButton.isVisible){
-            type = "kulhydrater "
+        else if (binding.kulhydraterButton.isVisible){
+            type = "kulhydrat "
         }
 
         dataViewModel.changeInput(type + binding.textInput.text.toString())
