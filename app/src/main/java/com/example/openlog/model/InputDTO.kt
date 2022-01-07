@@ -1,10 +1,10 @@
 package com.example.openlog.model
 
-class InputDTO(var time: String, var value: String) {
-    fun getInputTime(): String{
-        return time
+class InputDTO(var firstInput: String, var secondInput: String) {
+    fun getInputOne(): String{
+        return firstInput
     }
-    fun getInputValue(): String {
-        return value
+    fun getInputTwo(): String {
+        return secondInput
     }
 }

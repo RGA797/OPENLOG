@@ -1,13 +1,9 @@
 package com.example.openlog.model
 
-import android.util.Log
-import android.widget.Toast
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
-import kotlinx.coroutines.awaitAll
 import java.util.*
-import javax.security.auth.callback.Callback
+import java.text.SimpleDateFormat
 
 
 class Data {
@@ -46,21 +42,42 @@ class Data {
                 inputData("blodsukker", input!!, myRef)
                 return true
             }
+            else if (input!!.contains("blodsukker")) {
+                inputData("blodsukker", input!!, myRef)
+                return true
+            }
         }
         return false
     }
 
-    fun getUserData(firebaseUser: FirebaseUser, type: String, callback: (result: List<InputDTO>) -> Unit) {
+
+    fun storeUserData(firebaseUser: FirebaseUser, køn: String, alder: String ){
+        val Ref = database.getReference("users").child(firebaseUser.uid).push()
+        val data: MutableMap<String, String> = HashMap()
+        data["køn"] = køn
+        data["alder"] = alder
+        Ref.updateChildren(data as Map<String, Any>)
+    }
+
+    fun changeUserData(firebaseUser: FirebaseUser, type: String, callback: (result: List<InputDTO>) -> Unit) {
         val myRef = database.getReference("users").child(firebaseUser.uid)
         val dataList = mutableListOf<InputDTO>()
         val valueEventListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (ds in dataSnapshot.children) {
                     if (ds.child(type).exists()){
-                        val timeData = ds.child("time").getValue(String::class.java)
-                        val typeData = ds.child(type).getValue(String::class.java)
-                        val inputDTO  = InputDTO(timeData!!,typeData!!)
-                        dataList.add(inputDTO)
+                        if (type == "blodsukker" || type == "insulin" ||type == "kulhydrat"){
+                            val timeData = ds.child("time").getValue(String::class.java)
+                            val typeData = ds.child(type).getValue(String::class.java)
+                            val inputDTO  = InputDTO(timeData!!,typeData!!)
+                            dataList.add(inputDTO)
+                        }
+                        else if (type == "køn"|| type == "alder" ) {
+                            val koenData = ds.child("køn").getValue(String::class.java)
+                            val alderData = ds.child("alder").getValue(String::class.java)
+                            val inputDTO = InputDTO(koenData!!, alderData!!)
+                            dataList.add(inputDTO)
+                        }
                     }
                 }
                 callback (dataList)

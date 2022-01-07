@@ -21,6 +21,9 @@
     <string name="f_dselsdag">FØDSELSDAG</string>
     <string name="nuv_rende_adgangskode">NUVÆRENDE ADGANGSKODE</string>
     <string name="hilsen">Godt at se dig %s</string>
+    <string name="ageDisplay">køn: %s</string>
+    <string name="genderDisplay">Alder: %s</string>
+
     <string name="historik">HISTORIK</string>
     <string name="speak">Button</string>
     <string name="name">Name</string>
