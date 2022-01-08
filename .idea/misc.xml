@@ -21,9 +21,9 @@
         <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/drawable/ic_launcher_background.xml" value="0.5708333333333333" />
         <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_blodsukker_indtastning.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_forside.xml" value="0.5" />
+        <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_forside.xml" value="0.2" />
         <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_historik.xml" value="0.4466666666666667" />
-        <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_info.xml" value="0.2671875" />
+        <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_info.xml" value="0.2" />
         <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_info2.xml" value="0.55" />
         <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_insulin_indtastning.xml" value="0.2988705473501303" />
         <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_kulhydrat_indtastning.xml" value="0.16875" />
@@ -37,7 +37,7 @@
         <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_status_bar__kulhydrater.xml" value="0.6" />
         <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_voice_confirmation.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/insulinindtastning.xml" value="0.5546875" />
-        <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/menu/nav_menu.xml" value="0.1796875" />
+        <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/menu/nav_menu.xml" value="0.33" />
         <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.19583333333333333" />
       </map>
