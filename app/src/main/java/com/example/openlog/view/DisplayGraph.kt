@@ -10,14 +10,14 @@ import androidx.fragment.app.activityViewModels
 import com.jjoe64.graphview.GridLabelRenderer
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
-import com.example.openlog.databinding.FragmentStatusBarBlodsukkerBinding
+import com.example.openlog.databinding.FragmentDisplayGraphBinding
 import com.example.openlog.viewModel.DataViewModel
 
 
-class Status_bar_Blodsukker : Fragment() {
+class DisplayGraph : Fragment() {
 
     private val dataViewModel: DataViewModel by activityViewModels()
-    private lateinit var binding: FragmentStatusBarBlodsukkerBinding
+    private lateinit var binding: FragmentDisplayGraphBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +26,7 @@ class Status_bar_Blodsukker : Fragment() {
         // Inflate the layout for this fragment
 
         //Optains graph from layout
-        binding = FragmentStatusBarBlodsukkerBinding.inflate(inflater, container, false)
+        binding = FragmentDisplayGraphBinding.inflate(inflater, container, false)
 
         return binding.root
     }

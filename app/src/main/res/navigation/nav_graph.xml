@@ -12,20 +12,10 @@
         tools:layout="@layout/activity_main" />
 
     <fragment
-        android:id="@+id/status_bar_Kulhydrater"
-        android:name="com.example.openlog.view.Status_bar_Blodsukker"
-        android:label="fragment_status_Kulhydrater"
-        tools:layout="@layout/fragment_status_bar__blodsukker" />
-    <fragment
-        android:id="@+id/status_bar_Insulin"
-        android:name="com.example.openlog.view.Status_bar_Blodsukker"
-        android:label="fragment_status_bar_Insulin"
-        tools:layout="@layout/fragment_status_bar__blodsukker" />
-    <fragment
         android:id="@+id/status_bar_Blodsukker"
-        android:name="com.example.openlog.view.Status_bar_Blodsukker"
+        android:name="com.example.openlog.view.DisplayGraph"
         android:label="fragment_status_bar__blodsukker"
-        tools:layout="@layout/fragment_status_bar__blodsukker" />
+        tools:layout="@layout/fragment_display_graph" />
     <fragment
         android:id="@+id/Login"
         android:name="com.example.openlog.view.Login"
