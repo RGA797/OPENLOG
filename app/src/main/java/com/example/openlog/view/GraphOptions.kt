@@ -33,34 +33,40 @@ class GraphOption : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.insulinButton.setOnClickListener{onCategory(INSULIN)}
-        binding.blodsukkerButton.setOnClickListener{onCategory(BLOODSUGAR)}
-        binding.kulhydraterButton.setOnClickListener{onCategory(CARB)}
+        binding.insulinHighlight.setOnClickListener{onCategory(INSULIN)}
+
+        binding.bloodSugarButton.setOnClickListener{onCategory(BLOODSUGAR)}
+        binding.bloodSugarHighlight.setOnClickListener{onCategory(BLOODSUGAR)}
+
+        binding.carbohydrateButton.setOnClickListener{onCategory(CARB)}
+        binding.carbohydrateHighlight.setOnClickListener{onCategory(CARB)}
 
         binding.generateGraph.setOnClickListener{Navigation.findNavController(view).navigate(R.id.navigateFromGraphOptionsToGraph)}
     }
 
+    //flips visibility between highlighted and non highlighted buttons
     fun onCategory(category: Int){
         if (dataViewModel.categorySelected(category)) {
             if (category == CARB) {
-                binding.kulhydraterButton.visibility = View.VISIBLE
-                binding.kulhydraterhighlight.visibility = View.INVISIBLE
+                binding.carbohydrateButton.visibility = View.VISIBLE
+                binding.carbohydrateHighlight.visibility = View.INVISIBLE
             } else if (category == INSULIN) {
                 binding.insulinButton.visibility = View.VISIBLE
-                binding.Insulinhighlight.visibility = View.INVISIBLE
+                binding.insulinHighlight.visibility = View.INVISIBLE
             } else {
-                binding.blodsukkerButton.visibility = View.VISIBLE
-                binding.blodsukkerhighlight.visibility = View.INVISIBLE
+                binding.bloodSugarButton.visibility = View.VISIBLE
+                binding.bloodSugarHighlight.visibility = View.INVISIBLE
             }
         } else {
             if (category == CARB) {
-                binding.kulhydraterButton.visibility = View.INVISIBLE
-                binding.kulhydraterhighlight.visibility = View.VISIBLE
+                binding.carbohydrateButton.visibility = View.INVISIBLE
+                binding.carbohydrateHighlight.visibility = View.VISIBLE
             } else if (category == INSULIN) {
                 binding.insulinButton.visibility = View.INVISIBLE
-                binding.Insulinhighlight.visibility = View.VISIBLE
+                binding.insulinHighlight.visibility = View.VISIBLE
             } else {
-                binding.blodsukkerButton.visibility = View.INVISIBLE
-                binding.blodsukkerhighlight.visibility = View.VISIBLE
+                binding.bloodSugarButton.visibility = View.INVISIBLE
+                binding.bloodSugarHighlight.visibility = View.VISIBLE
             }
         }
         dataViewModel.flipCategory(category)
