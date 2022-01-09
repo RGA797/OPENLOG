@@ -3,24 +3,30 @@ package com.example.openlog.model
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import java.util.*
-import java.text.SimpleDateFormat
 
-
+//this class holds the input of a user before it stores it in a firebase database.
+// Fetching data from this database, is also part of its functionality
 class Data {
+    //the local input and used database. remember, input string is not necessarily saved in the database
+    // input should be a string consisting of 2 word, a category and value. ex ("blodsukker 20", "kulhydrat 10", "insulin 5")
     var input: String? = ""
     val database = FirebaseDatabase.getInstance("https://openlog-a2b24-default-rtdb.europe-west1.firebasedatabase.app/")
 
+    //changes instance variable input
     fun changeInput(input: String) {
         this.input = input
     }
 
+    //returns instance variable input
     fun getDataInput(): String? {
         return input
     }
 
-    fun inputData(type: String, input: String, Ref: DatabaseReference) {
+    //stores an input split up in type (category) and value, with a given database reference.
+    //the input is saved as a hashmap with 2 key value pairs. one for value-category, and another for time-date.
+    fun inputData(type: String, value: String, Ref: DatabaseReference) {
         val time = Calendar.getInstance().getTime().toString()
-        val inputValue = input.filter { it.isDigit() }
+        val inputValue = value.filter { it.isDigit() }
         if (inputValue != "") {
             var data: MutableMap<String, String> = HashMap()
             data[type] = inputValue
@@ -29,6 +35,8 @@ class Data {
         }
     }
 
+    //This function checks for valid inputs, and with a given firebase user, gets the corresponding reference, to store data with inputData.
+    //returns true if input successful, false otherwise
     fun storeInput(firebaseUser: FirebaseUser): Boolean {
         if (input != null) {
             val myRef = database.getReference("users").child(firebaseUser.uid).push()
@@ -42,14 +50,12 @@ class Data {
                 inputData("blodsukker", input!!, myRef)
                 return true
             }
-            else if (input!!.contains("blodsukker")) {
-                inputData("blodsukker", input!!, myRef)
-                return true
-            }
         }
         return false
     }
 
+    //once a user has been created, we want to store its age and gender in the database.
+    //this follows the same logic as inputData but with køn-value and age-value pairs
     fun storeUserData(firebaseUser: FirebaseUser, køn: String, alder: String ){
         val Ref = database.getReference("users").child(firebaseUser.uid).push()
         val data: MutableMap<String, String> = HashMap()
@@ -57,6 +63,9 @@ class Data {
         data["alder"] = alder
         Ref.updateChildren(data as Map<String, Any>)
     }
+
+    //this function handles the data fetching. for a given date range, firebase user, and type, we give a list of inputDTO.
+    //due to firebase being an asynchronous database, we use callback. be aware that values are not immediately given.
     fun updateUserData(firebaseUser: FirebaseUser, type: String, startDate: Date?, endDate: Date?, callback: (result: List<InputDTO>) -> Unit) {
         val myRef = database.getReference("users").child(firebaseUser.uid)
         val dataList = mutableListOf<InputDTO>()
@@ -88,11 +97,13 @@ class Data {
         myRef.addValueEventListener(valueEventListener)
     }
 
+    //checks weather a date is in range of two other date
     fun dateInRange(dateString: String, startDate: Date, endDate: Date): Boolean{
         val date = convertStringToDate(dateString)
         return (date.after(startDate) && date.before(endDate))
     }
 
+    //converts a String to Date. this is used when inputDto dates need to be converted back into Dates for comparison, as they are stored as trings in the database.
     fun convertStringToDate(time: String): Date {
 
         val stringList = time.split(" ")

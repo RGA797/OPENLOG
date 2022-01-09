@@ -35,20 +35,20 @@ class Login : Fragment() {
         val opretButton = view.findViewById<Button>(R.id.opretButton)
         val emailTextView =  view.findViewById<EditText>(R.id.loginEmailText)
         val adgangskodeTextView =  view.findViewById<EditText>(R.id.loginAdgangskodeText)
+
+        //on pressing the login button, firebase tries to sign in with e-mail and password given through edittext.
+        //upon successful login, dataViewModel updates current firebaseUser, Email, and saves userData for gender and age
         loginButton.setOnClickListener{
-            // val email = viewmodel.getcurrentUser
             if (emailTextView.text.isEmpty() || adgangskodeTextView.text.isEmpty()) {
                 Toast.makeText(context, "email or password not given", Toast.LENGTH_SHORT).show()
             } else {
                 val email: String = emailTextView.text.toString()
                 val adgangskode: String = adgangskodeTextView.text.toString()
-
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(email,adgangskode).addOnCompleteListener(requireActivity(), OnCompleteListener<AuthResult>(){ task ->
                     if (task.isSuccessful) {
                         val firebaseUser: FirebaseUser = task.result!!.user!!
                         dataViewModel.changeUser(firebaseUser, email)
-                        dataViewModel.getCurrentFirebaseUser()?.let { dataViewModel.changeUserData(it) }
-           //             dataViewModel.getCurrentFirebaseUser()?.let { dataViewModel.changeInputData(it, "insulin") }
+                        dataViewModel.getCurrentFirebaseUser()?.let { dataViewModel.updateUserData(it) }
                         Toast.makeText(context, "You are now logged in", Toast.LENGTH_SHORT).show()
                         Navigation.findNavController(view)
                             .navigate(R.id.navigateFromLoginToForside)
@@ -63,7 +63,7 @@ class Login : Fragment() {
             }
         }
 
-
+        //navigation
         opretButton.setOnClickListener{
             Navigation.findNavController(view).navigate(R.id.navigateFromLoginToOpret)
         }

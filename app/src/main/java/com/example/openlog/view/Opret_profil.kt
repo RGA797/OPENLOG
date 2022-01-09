@@ -37,9 +37,10 @@ class Opret_profil : Fragment() {
         val koenTextView = view.findViewById<EditText>(R.id.opretKønText)
         val alderTextView = view.findViewById<EditText>(R.id.opretAlderText)
 
+        //upon pressing the register button, a user is created. if succesful, optional values for age and gender is saved
         registerButton.setOnClickListener {
             if (emailTextView.text.isEmpty() || adgangskodeTextView.text.isEmpty()) {
-                Toast.makeText(context, "email or password empty", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "email eller adgangskode er tom", Toast.LENGTH_SHORT).show()
             } else {
                 val email: String = emailTextView.text.toString()
                 val adgangskode: String = adgangskodeTextView.text.toString()
@@ -51,16 +52,13 @@ class Opret_profil : Fragment() {
                         if (task.isSuccessful) {
                             val firebaseUser: FirebaseUser = task.result!!.user!!
                             dataViewModel.changeUser(firebaseUser, email)
-                            val database = FirebaseDatabase.getInstance("https://openlog-a2b24-default-rtdb.europe-west1.firebasedatabase.app/")
-                            val myRef = database.getReference("users")
-                            myRef.child(firebaseUser.uid).setValue(email)
-                            Toast.makeText(context, "You are now registered", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Du er nu registreret", Toast.LENGTH_SHORT).show()
                             Navigation.findNavController(view).navigate(R.id.navigateFromOpretToForside)
                             if (alder.isNotBlank() && alder.isDigitsOnly() && koen.isNotEmpty() && alder.toInt() in 1..99){
                                 dataViewModel.saveUserData(firebaseUser, koen, alder)
                             }
                         } else {
-                            Toast.makeText(context, "E-mail or password not valid", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "E-mail eller adgangskode er ikke valit", Toast.LENGTH_SHORT).show()
                         }
                     })
             }

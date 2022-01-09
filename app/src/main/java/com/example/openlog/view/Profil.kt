@@ -13,7 +13,7 @@ import com.example.openlog.R
 import com.example.openlog.databinding.FragmentProfilBinding
 import com.example.openlog.viewModel.DataViewModel
 
-
+//displays user data of age and gender using database.
 class Profil : Fragment() {
     private val dataViewModel: DataViewModel by activityViewModels()
 

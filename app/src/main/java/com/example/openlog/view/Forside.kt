@@ -28,6 +28,7 @@ import kotlin.collections.ArrayList
 
 class Forside : Fragment() {
 
+    //viewmodel is made here. using activitymodels for the instantiation, it can be shared among other fragments
     private val dataViewModel: DataViewModel by activityViewModels()
     lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var binding: FragmentForsideBinding
@@ -44,8 +45,8 @@ class Forside : Fragment() {
         return binding.root
     }
 
-    //viewmodel is made here. using activitymodels for the instantiation, it can be shared among other fragments
-    // code largely gotten from https://www.youtube.com/watch?v=YWNkNrmqff8&ab_channel=Dr.VipinClasses
+
+    //mostly viewbinding and onclicklisteners
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         binding.dataViewModel = dataViewModel
 
@@ -56,6 +57,7 @@ class Forside : Fragment() {
             Navigation.findNavController(binding.root).navigate(R.id.navigateFromForsideToProfil)
         }
 
+        //
         binding.manuelIndtastningButton.setOnClickListener{
             Navigation.findNavController(binding.root).navigate(R.id.navigateFromForsideToManuelIndtastning)
         }
@@ -72,6 +74,8 @@ class Forside : Fragment() {
         }
     }
 
+    //this function uses speech recognition to update the value of input, using the dataViewModel
+    // code largely gotten from https://www.youtube.com/watch?v=YWNkNrmqff8&ab_channel=Dr.VipinClasses
     fun onMicInput(){
         val mIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
         val language = "da-DK"
@@ -90,6 +94,7 @@ class Forside : Fragment() {
         }
     }
 
+    //logs the input into the database, when log button is pressed
     fun onLogInput(){
         val firebaseUser: FirebaseUser = dataViewModel.getCurrentFirebaseUser()!!
         val success = dataViewModel.saveInput(firebaseUser)
@@ -101,10 +106,12 @@ class Forside : Fragment() {
         }
     }
 
+    //dropdown menu
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater){
         menuInflater.inflate(R.menu.nav_menu,menu)
     }
 
+    //dropdown menu navigation
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
             R.id.historikDropdown -> onHistorikDropdown()
@@ -114,10 +121,12 @@ class Forside : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    //navigation
     fun onHistorikDropdown(){
         Navigation.findNavController(binding.root).navigate(R.id.navigateFromForsideToHistorik)
     }
 
+    //navigation
     fun onInfoDropdown(){
         Navigation.findNavController(binding.root).navigate(R.id.navigateFromForsideToInfo)
     }
