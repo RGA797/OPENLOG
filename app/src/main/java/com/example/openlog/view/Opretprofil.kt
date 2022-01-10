@@ -25,32 +25,22 @@ import com.example.openlog.databinding.FragmentOpretProfilBinding
 import com.example.openlog.viewModel.DataViewModel
 import com.google.firebase.database.FirebaseDatabase
 
-class Opret_profil : Fragment() {
-
+class Opretprofil : Fragment() {
 
     private val dataViewModel: DataViewModel by activityViewModels()
-    lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var binding: FragmentOpretProfilBinding
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_opret_profil, container, false)
-        // Inflate the layout for this fragment
-
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_opret_profil, container, false)
         return binding.root
     }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        binding.dataViewModel = dataViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
-
         //upon pressing the register button, a user is created. if succesful, optional values for age and gender is saved
-        binding.opretProfilButton.setOnClickListener {onOpretButton()
-        }
-
+        binding.opretProfilButton.setOnClickListener {onOpretButton()}
         //val languages = resources.getStringArray(R.array.Køn)
         //val arrayAdapter = ArrayAdapter (requireContext(),R.layout.dropdown_item())
     }
