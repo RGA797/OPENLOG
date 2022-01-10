@@ -65,8 +65,8 @@
 
     <ImageButton
             android:id="@+id/imageButton15"
-            android:layout_width="146dp"
-            android:layout_height="137dp"
+            android:layout_width="152dp"
+            android:layout_height="151dp"
             android:backgroundTint="@color/white"
             android:scaleType="centerInside"
             android:src="@drawable/mikrofonny"
