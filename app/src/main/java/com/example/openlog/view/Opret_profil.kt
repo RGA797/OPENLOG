@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -63,6 +64,11 @@ class Opret_profil : Fragment() {
                     })
             }
         }
+
+        //val languages = resources.getStringArray(R.array.Køn)
+        //val arrayAdapter = ArrayAdapter (requireContext(),R.layout.dropdown_item())
+
+
         return view
     }
 }
