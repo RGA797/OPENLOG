@@ -140,6 +140,17 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.524" />
 
+        <sun.bob.mcalendarview.views.ExpCalendarView
+                android:id="@+id/mcalendarView"
+                android:layout_width="358dp"
+                android:layout_height="344dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.491"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.524" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
