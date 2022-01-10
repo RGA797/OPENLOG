@@ -20,7 +20,7 @@
     <com.jjoe64.graphview.GraphView
             android:id="@+id/graph_blodsukker"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="500dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

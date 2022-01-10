@@ -34,27 +34,13 @@ class DisplayGraph : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val graph = binding.graphBlodsukker
-
-        setOptions(graph)
+        setOptions()
     }
 
 
+    fun setOptions() {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    fun setOptions(graph: com.jjoe64.graphview.GraphView) {
+        val graph = binding.graphBlodsukker
 
         //Create curve/series for graph
         val series = LineGraphSeries(
