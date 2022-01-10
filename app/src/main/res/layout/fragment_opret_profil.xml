@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/OpretConstraintLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.Opret_profil">
 
+
+
+
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="dataViewModel"
+            type="com.example.openlog.viewModel.DataViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/OpretConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.Opret_profil">
 
     <TextView
         android:id="@+id/profile_title"
@@ -161,6 +173,7 @@
                 android:id="@+id/autoCompleteTextView"
                 android:inputType="none"
                 android:layout_weight="1" />
-    </com.google.android.material.textfield.TextInputLayout>
 
+    </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
