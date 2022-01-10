@@ -38,6 +38,7 @@ class Profil : Fragment() {
         if (dataViewModel.userDataList.size != 0 ) {
             binding.alderTekst.text = dataViewModel.userDataList.get(0).getInputOne()
             binding.koenTekst.text = dataViewModel.userDataList.get(0).getInputTwo()
+            binding.navnTekst.text = dataViewModel.userDataList.get(1).getInputOne()
         }
     }
 

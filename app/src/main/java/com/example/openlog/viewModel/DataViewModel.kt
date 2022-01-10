@@ -69,9 +69,9 @@ class DataViewModel: ViewModel() {
         return data.storeInput(firebaseUser)
     }
 
-    //saves gender/age to database
-    fun saveUserData(firebaseUser: FirebaseUser, koen: String, alder: String) {
-        return data.storeUserData(firebaseUser, koen, alder)
+    //saves gender/age/name to database
+    fun saveUserData(firebaseUser: FirebaseUser, koen: String, alder: String, navn: String) {
+        return data.storeUserData(firebaseUser, koen, alder, navn)
     }
 
     //updates userDataList to hold all values of given type and date range

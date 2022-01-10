@@ -56,11 +56,12 @@ class Data {
 
     //once a user has been created, we want to store its age and gender in the database.
     //this follows the same logic as inputData but with køn-value and age-value pairs
-    fun storeUserData(firebaseUser: FirebaseUser, køn: String, alder: String ){
+    fun storeUserData(firebaseUser: FirebaseUser, køn: String, alder: String, navn: String){
         val Ref = database.getReference("users").child(firebaseUser.uid).push()
         val data: MutableMap<String, String> = HashMap()
         data["køn"] = køn
         data["alder"] = alder
+        data["navn"] = navn
         Ref.updateChildren(data as Map<String, Any>)
     }
 
@@ -81,11 +82,15 @@ class Data {
                                 dataList.add(inputDTO)
                             }
                         }
-                        else if (type == "køn"|| type == "alder" ) {
+                        else if (type == "køn"|| type == "alder"|| type == "navn"  ) {
                             val koenData = ds.child("køn").getValue(String::class.java)
                             val alderData = ds.child("alder").getValue(String::class.java)
-                            val inputDTO = InputDTO(koenData!!, alderData!!)
-                            dataList.add(inputDTO)
+                            val navnData = ds.child("navn").getValue(String::class.java)
+
+                            val inputDTO_koenAlder = InputDTO(koenData!!, alderData!!)
+                            val inputDTO_navn = InputDTO(navnData!!, " ")
+                            dataList.add(inputDTO_koenAlder)
+                            dataList.add(inputDTO_navn)
                         }
                     }
                 }
