@@ -12,6 +12,7 @@ import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import com.example.openlog.databinding.FragmentDisplayGraphBinding
 import com.example.openlog.viewModel.DataViewModel
+import java.util.*
 
 
 class DisplayGraph : Fragment() {
@@ -32,51 +33,47 @@ class DisplayGraph : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//
-//        dataViewModel.getUserData(dataViewModel.getCurrentFirebaseUser()!!, "kulhydrat")
-//        val dataList = dataViewModel.currentDataList
-//
-//
-//        val dataArray = emptyArray<DataPoint>()
-//
-//
-//        var i = 0
-//        for (item in dataList.value!!) {
-//
-//            dataArray[i] = DataPoint(i++.toDouble(),item.value.toDouble())
-//        }
-//
-//        val seriesKulhydrater = LineGraphSeries(dataArray)
 
-
-        //Create curve/series for graph
-        val seriesKulhydrater = LineGraphSeries(
-            arrayOf(
-                DataPoint(2.0, 200.0),
-                DataPoint(3.0, 100.0),
-                DataPoint(4.0, 0.0)
-            )
-        )
-
-        val seriesKulhydrater2 = LineGraphSeries(
-            arrayOf(
-                DataPoint(2.0, 0.0),
-                DataPoint(3.0, 5.0),
-                DataPoint(4.0, 10.0)
-            )
-        )
         val graph = binding.graphBlodsukker
 
-        //Add curve to graph
-        graph.addSeries(seriesKulhydrater)
-        //graphBlodSukker.addSeries(seriesKulhydrater2)
+        setOptions(graph)
+    }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    fun setOptions(graph: com.jjoe64.graphview.GraphView) {
+
+        //Create curve/series for graph
+        val series = LineGraphSeries(
+            arrayOf(
+                DataPoint(Date().time.toDouble(),1.0),
+                DataPoint(Date().time.toDouble(),1.0),
+                DataPoint(Date().time.toDouble(),1.0),
+                DataPoint(Date().time.toDouble(),1.0)
+            )
+        )
+
+        //Add curve to graph
+        graph.addSeries(series)
         //Set colour, title of curve, DataPoints radius, thickness
-        seriesKulhydrater.setColor(Color.RED) //or Color.rgb(0,80,100)
-        seriesKulhydrater.setTitle("Blodsukker") //Needed for creating legend described below
-        seriesKulhydrater.setDrawDataPoints(true) //Shows datapoints as circles in the curve
-        seriesKulhydrater.setDataPointsRadius(16F) //layout for datapoints
-        seriesKulhydrater.setThickness(8) //Layout for datapoints
+        series.setColor(Color.RED) //or Color.rgb(0,80,100)
+        series.setTitle("Blodsukker") //Needed for creating legend described below
+        series.setDrawDataPoints(true) //Shows datapoints as circles in the curve
+        series.setDataPointsRadius(16F) //layout for datapoints
+        series.setThickness(8) //Layout for datapoints
 
         //Title of graph
         graph.setTitle("Kulhydrater")
@@ -95,6 +92,5 @@ class DisplayGraph : Fragment() {
         gridLabel.setVerticalAxisTitleTextSize(50F)
 
         gridLabel.verticalLabelsSecondScaleColor
-
     }
 }
