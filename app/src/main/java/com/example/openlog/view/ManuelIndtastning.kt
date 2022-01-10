@@ -117,7 +117,7 @@ class manuelIndtastning : Fragment() {
     }
 
     fun onHistorikDropdown(){
-        Navigation.findNavController(binding.root).navigate(R.id.navigateFromManuelIndtastningToHistorik)
+        Navigation.findNavController(binding.root).navigate(R.id.navigateFromManualInputToGraphOptions)
     }
 
 }

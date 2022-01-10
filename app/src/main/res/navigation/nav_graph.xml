@@ -12,20 +12,10 @@
         tools:layout="@layout/activity_main" />
 
     <fragment
-        android:id="@+id/status_bar_Kulhydrater"
-        android:name="com.example.openlog.view.Status_bar_Blodsukker"
-        android:label="fragment_status_Kulhydrater"
-        tools:layout="@layout/fragment_status_bar__blodsukker" />
-    <fragment
-        android:id="@+id/status_bar_Insulin"
-        android:name="com.example.openlog.view.Status_bar_Blodsukker"
-        android:label="fragment_status_bar_Insulin"
-        tools:layout="@layout/fragment_status_bar__blodsukker" />
-    <fragment
         android:id="@+id/status_bar_Blodsukker"
-        android:name="com.example.openlog.view.Status_bar_Blodsukker"
+        android:name="com.example.openlog.view.DisplayGraph"
         android:label="fragment_status_bar__blodsukker"
-        tools:layout="@layout/fragment_status_bar__blodsukker" />
+        tools:layout="@layout/fragment_display_graph" />
     <fragment
         android:id="@+id/Login"
         android:name="com.example.openlog.view.Login"
@@ -48,14 +38,17 @@
             android:id="@+id/navigateFromForsideToProfil"
             app:destination="@id/profil" />
         <action
-            android:id="@+id/navigateFromForsideToHistorik"
-            app:destination="@id/historik" />
-        <action
             android:id="@+id/navigateFromForsideToManuelIndtastning"
             app:destination="@id/manuelIndtastning" />
         <action
                 android:id="@+id/navigateFromForsideToInfo"
                 app:destination="@id/fragment_info2" />
+        <action
+                android:id="@+id/action_forside_to_graphOption"
+                app:destination="@id/graphOption" />
+        <action
+                android:id="@+id/navigateFromFrontpageToGraphOptions"
+                app:destination="@id/graphOption" />
 
     </fragment>
     <fragment
@@ -73,32 +66,25 @@
             app:destination="@id/forside" />
     </fragment>
     <fragment
-        android:id="@+id/historik"
-        android:name="com.example.openlog.view.historik"
-        android:label="fragment_historik"
-        tools:layout="@layout/fragment_historik" >
-        <action
-            android:id="@+id/navigateFromHistorikToBlodsukker"
-            app:destination="@id/status_bar_Blodsukker" />
-        <action
-            android:id="@+id/navigateFromHistorikToInsulin"
-            app:destination="@id/status_bar_Insulin" />
-        <action
-            android:id="@+id/navigateFromHistorikToKulhydrater"
-            app:destination="@id/status_bar_Kulhydrater" />
-    </fragment>
-    <fragment
         android:id="@+id/manuelIndtastning"
         android:name="com.example.openlog.view.manuelIndtastning"
         android:label="fragment_manuel_indtastning"
         tools:layout="@layout/fragment_manuel_indtastning" >
         <action
-            android:id="@+id/navigateFromManuelIndtastningToHistorik"
-            app:destination="@id/historik" />
+                android:id="@+id/navigateFromManualInputToGraphOptions"
+                app:destination="@id/graphOption" />
     </fragment>
     <fragment
             android:id="@+id/fragment_info2"
             android:name="com.example.openlog.fragment_info"
             android:label="fragment_info"
             tools:layout="@layout/fragment_info" />
+    <fragment
+            android:id="@+id/graphOption"
+            android:name="com.example.openlog.view.GraphOption"
+            android:label="GraphOptions">
+        <action
+                android:id="@+id/navigateFromGraphOptionsToGraph"
+                app:destination="@id/status_bar_Blodsukker" />
+    </fragment>
 </navigation>

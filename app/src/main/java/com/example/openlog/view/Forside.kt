@@ -123,7 +123,7 @@ class Forside : Fragment() {
 
     //navigation
     fun onHistorikDropdown(){
-        Navigation.findNavController(binding.root).navigate(R.id.navigateFromForsideToHistorik)
+        Navigation.findNavController(binding.root).navigate(R.id.navigateFromFrontpageToGraphOptions)
     }
 
     //navigation

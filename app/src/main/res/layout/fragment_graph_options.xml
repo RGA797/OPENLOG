@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+                name="dataViewModel"
+                type="com.example.openlog.viewModel.DataViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:id="@+id/frameLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".view.graphOptions">
+
+
+        <!-- TODO: Update blank fragment layout -->
+
+
+        <ImageButton
+                android:id="@+id/bloodSugarButton"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:backgroundTint="@color/white"
+                android:scaleType="centerInside"
+                android:src="@drawable/bs"
+                app:layout_constraintBottom_toBottomOf="@+id/bloodSugarHighlight"
+                app:layout_constraintEnd_toEndOf="@+id/bloodSugarHighlight"
+                app:layout_constraintStart_toStartOf="@+id/bloodSugarHighlight"
+                app:layout_constraintTop_toTopOf="@+id/bloodSugarHighlight"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.654"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="8dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+                android:id="@+id/carbohydrateButton"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:backgroundTint="@color/white"
+                android:scaleType="centerInside"
+                android:src="@drawable/ku"
+                app:layout_constraintBottom_toBottomOf="@+id/carbohydrateHighlight"
+                app:layout_constraintEnd_toEndOf="@+id/carbohydrateHighlight"
+                app:layout_constraintStart_toStartOf="@+id/carbohydrateHighlight"
+                app:layout_constraintTop_toTopOf="@+id/carbohydrateHighlight"
+                app:layout_constraintVertical_bias="0.102"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="7dp" />
+
+        <ImageButton
+                android:id="@+id/insulinButton"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:backgroundTint="@color/white"
+                android:scaleType="centerInside"
+                android:src="@drawable/insulin"
+                app:layout_constraintBottom_toBottomOf="@+id/insulinHighlight"
+                app:layout_constraintEnd_toEndOf="@+id/insulinHighlight"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/insulinHighlight"
+                app:layout_constraintTop_toTopOf="@+id/insulinHighlight"
+                app:layout_constraintVertical_bias="0.125"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="7dp" />
+
+        <ImageButton
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                app:srcCompat="@drawable/blodsukkerm"
+                android:id="@+id/bloodSugarHighlight"
+                android:scaleType="centerInside"
+                android:backgroundTint="@color/white"
+                android:visibility="invisible"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.104"
+                android:layout_marginEnd="150dp" />
+
+        <ImageButton
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                app:srcCompat="@drawable/insulinm"
+                android:id="@+id/insulinHighlight"
+                android:scaleType="centerInside"
+                android:backgroundTint="@color/white"
+                android:visibility="invisible"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0.104"
+                app:layout_constraintEnd_toStartOf="@+id/bloodSugarHighlight"
+                android:layout_marginStart="20dp" />
+
+        <ImageButton
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                app:srcCompat="@drawable/kulhydratm"
+                android:id="@+id/carbohydrateHighlight"
+                android:backgroundTint="@color/white"
+                android:scaleType="centerInside"
+                android:visibility="invisible"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.104"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/bloodSugarHighlight"
+                android:layout_marginEnd="20dp" />
+
+        <Button
+                android:id="@+id/generateGraph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#069C81"
+                android:text="Generate Graph"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.855" />
+
+        <CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.491"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.524" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
