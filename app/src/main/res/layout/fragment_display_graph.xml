@@ -17,6 +17,18 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+    <TextView
+            android:id="@+id/category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="80dp"
+            android:text="nope"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="category" />
+
     <com.jjoe64.graphview.GraphView
             android:id="@+id/graph_blodsukker"
             android:layout_width="match_parent"
@@ -26,7 +38,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.286" />
+            app:layout_constraintVertical_bias="0.549" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
         </layout>

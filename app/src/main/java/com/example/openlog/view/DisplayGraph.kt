@@ -44,12 +44,10 @@ class DisplayGraph : Fragment() {
         date.set(1,1,1,1,1,1)
         val start = date.time
         date.set(2222,1,1,1,1,1)
-        date.timeInMillis
         val end = date.time
-        val milis = end
-        Date(22222222222222)
-//        dataViewModel.updateInputData(fireBaseUser!!,"insulin", start, end)
-//        Thread.sleep(2000)
+
+        dataViewModel.updateInputData(fireBaseUser!!,"insulin", start, end)
+        Thread.sleep(2500)
         labelFormat(graph, "hh:mm:ss")
         setOptions(graph, getData())
     }
@@ -107,34 +105,35 @@ class DisplayGraph : Fragment() {
     }
 
     private fun getData(): Array<DataPoint> {
-//        val dataList = dataViewModel.getDataList()
-        Date(2222,1,1,1,1,1)
-
-//        for ((index, item) in dataList.withIndex()) {
-//            dataPoints[index] = DataPoint(Date(item.secondInput.toLong()), item.firstInput.toDouble())
-//        }
-        val date = Calendar.getInstance()
-        date.set(1,1,1,1,1,1)
-        val one = date.time
-        date.set(1,1,1,2,1,1)
-        val two = date.time
-        date.set(1,1,1,3,1,1)
-        val three = date.time
-        date.set(1,1,1,4,1,1)
-        val four = date.time
+        val dataList = dataViewModel.getDataList()
+        val dataPoints = emptyArray<DataPoint>()
+//        Date(2222,1,1,1,1,1)
+        binding.category.text = dataList[0].firstInput
+        for ((index, item) in dataList.withIndex()) {
+            dataPoints[index] = DataPoint(item.getInputTwoAsDate(), item.firstInput.toDouble())
+        }
+//        val date = Calendar.getInstance()
+//        date.set(1,1,1,1,1,1)
+//        val one = date.time
+//        date.set(1,1,1,2,1,1)
+//        val two = date.time
+//        date.set(1,1,1,3,1,1)
+//        val three = date.time
+//        date.set(1,1,1,4,1,1)
+//        val four = date.time
 
 //        dataPoints[0] = DataPoint(one, 1.0)
 //        dataPoints[1] = DataPoint(two, 2.0)
 //        dataPoints[2] = DataPoint(three, 3.0)
 //        dataPoints[3] = DataPoint(four, 4.0)
 
-
-        val dataPoints = arrayOf(
-            DataPoint(one, 1.0),
-            DataPoint(two, 2.0),
-            DataPoint(three, 3.0),
-            DataPoint(four, 4.0),
-            )
+//
+//        val dataPoints = arrayOf(
+//            DataPoint(one, 1.0),
+//            DataPoint(two, 2.0),
+//            DataPoint(three, 3.0),
+//            DataPoint(four, 4.0),
+//            )
 
         return dataPoints
     }
