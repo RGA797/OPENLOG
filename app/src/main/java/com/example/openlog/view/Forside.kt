@@ -45,7 +45,6 @@ class Forside : Fragment() {
         return binding.root
     }
 
-
     //mostly viewbinding and onclicklisteners
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         binding.dataViewModel = dataViewModel
