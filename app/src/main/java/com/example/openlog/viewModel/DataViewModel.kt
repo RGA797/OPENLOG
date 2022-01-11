@@ -66,17 +66,17 @@ class DataViewModel: ViewModel() {
     }
 
     //saves current input to database
-    fun saveInput(firebaseUser: FirebaseUser): Boolean {
-        return data.storeInput(firebaseUser)
+    fun saveInput(): Boolean {
+        return data.storeInput(getCurrentFirebaseUser()!!)
     }
 
     //saves gender/age/name to database
-    fun saveUserData(firebaseUser: FirebaseUser, koen: String, alder: String, navn: String) {
-        return data.storeUserData(firebaseUser, koen, alder, navn)
+    fun saveUserData(koen: String, alder: String, navn: String) {
+        return data.storeUserData(getCurrentFirebaseUser()!!, koen, alder, navn)
     }
 
     //updates userDataList to hold all values of given type and date range
-    fun updateInputData (firebaseUser: FirebaseUser, type: String, startDate: Date, endDate: Date) {
+    fun updateInputData (type: String, startDate: Date, endDate: Date) {
         //val date = Calendar.getInstance()
 
         //date.set(2020, 2, 3,3 , 3, 3)
@@ -84,15 +84,15 @@ class DataViewModel: ViewModel() {
 
         //date.set(2022, 0, 6,3 , 3, 3)
         //val endDate = date.time
-        data.updateUserData(firebaseUser,type, startDate, endDate){
+        data.updateUserData(getCurrentFirebaseUser()!!,type, startDate, endDate){
             _currentDataList.value = it as ArrayList<InputDTO>
             userInputList = it
         }
     }
 
     //updates user data list to hold gender/age for given firebaseuser
-    fun updateUserData (firebaseUser: FirebaseUser) {
-        data.updateUserData(firebaseUser,"køn", null, null){
+    fun updateUserData () {
+        data.updateUserData(getCurrentFirebaseUser()!!,"køn", null, null){
             _currentDataList.value = it as ArrayList<InputDTO>
             userDataList = it
         }

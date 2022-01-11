@@ -44,7 +44,6 @@ class manuelIndtastning : Fragment() {
     }
 
     fun onLogInput(){
-        val firebaseUser: FirebaseUser = dataViewModel.getCurrentFirebaseUser()!!
         var type = ""
         if (binding.Insulinhighlight.isVisible){
             type = "insulin "
@@ -60,7 +59,7 @@ class manuelIndtastning : Fragment() {
 
         dataViewModel.changeInput(type + binding.textInput.text.toString())
 
-        val success = dataViewModel.saveInput(firebaseUser)
+        val success = dataViewModel.saveInput()
         if (success){
             Toast.makeText(context, "Input Gemt", Toast.LENGTH_SHORT).show()
         }

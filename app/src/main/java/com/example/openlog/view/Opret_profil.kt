@@ -57,9 +57,9 @@ class Opret_profil : Fragment() {
                         Toast.makeText(context, "Du er nu registreret", Toast.LENGTH_SHORT).show()
                         Navigation.findNavController(binding.root).navigate(R.id.navigateFromOpretToForside)
                         if (alder.isNotBlank() && alder.isDigitsOnly() && koen.isNotEmpty() && alder.toInt() in 1..99){
-                            dataViewModel.saveUserData(firebaseUser, koen, alder, navn)
+                            dataViewModel.saveUserData(koen, alder, navn)
                         }
-                        dataViewModel.updateUserData(firebaseUser)
+                        dataViewModel.updateUserData()
                     } else {
                         Toast.makeText(context, "E-mail eller adgangskode er ikke valit", Toast.LENGTH_SHORT).show()
                     }

@@ -96,8 +96,7 @@ class Forside : Fragment() {
 
     //logs the input into the database, when log button is pressed
     fun onLogInput(){
-        val firebaseUser: FirebaseUser = dataViewModel.getCurrentFirebaseUser()!!
-        val success = dataViewModel.saveInput(firebaseUser)
+        val success = dataViewModel.saveInput()
         if (success){
             Toast.makeText(context, "Input Gemt", Toast.LENGTH_SHORT).show()
         }

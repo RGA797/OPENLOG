@@ -48,7 +48,7 @@ class Login : Fragment() {
                     if (task.isSuccessful) {
                         val firebaseUser: FirebaseUser = task.result!!.user!!
                         dataViewModel.changeUser(firebaseUser, email)
-                        dataViewModel.getCurrentFirebaseUser()?.let { dataViewModel.updateUserData(it) }
+                        dataViewModel.updateUserData()
                         Toast.makeText(context, "You are now logged in", Toast.LENGTH_SHORT).show()
                         Navigation.findNavController(view)
                             .navigate(R.id.navigateFromLoginToForside)
