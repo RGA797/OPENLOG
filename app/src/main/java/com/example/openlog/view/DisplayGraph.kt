@@ -1,5 +1,6 @@
 package com.example.openlog.view
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,7 +13,11 @@ import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import com.example.openlog.databinding.FragmentDisplayGraphBinding
 import com.example.openlog.viewModel.DataViewModel
+import com.jjoe64.graphview.DefaultLabelFormatter
+import com.jjoe64.graphview.GraphView
+import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class DisplayGraph : Fragment() {
@@ -26,57 +31,111 @@ class DisplayGraph : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        //Optains graph from layout
+        //Obtains graph from layout
         binding = FragmentDisplayGraphBinding.inflate(inflater, container, false)
 
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        setOptions()
+        val fireBaseUser = dataViewModel.getCurrentFirebaseUser()
+        val graph = binding.graphBlodsukker
+        val date = Calendar.getInstance()
+        date.set(1,1,1,1,1,1)
+        val start = date.time
+        date.set(2222,1,1,1,1,1)
+        date.timeInMillis
+        val end = date.time
+        val milis = end
+        Date(22222222222222)
+//        dataViewModel.updateInputData(fireBaseUser!!,"insulin", start, end)
+//        Thread.sleep(2000)
+        labelFormat(graph, "hh:mm:ss")
+        setOptions(graph, getData())
     }
 
 
-    fun setOptions() {
+    // Sets the format of the label on the x-axis example "hh:mm:ss"
+    private fun labelFormat(graph: GraphView, pattern: String) {
+        graph.gridLabelRenderer.labelFormatter = object : DefaultLabelFormatter() {
 
-        val graph = binding.graphBlodsukker
+            @SuppressLint("SimpleDateFormat")
+            val sdf = SimpleDateFormat(pattern)
 
+            override fun formatLabel(value: Double, isValueX: Boolean): String {
+                if (isValueX) {
+                    return sdf.format(Date(value.toLong()))
+                } else {
+                    return super.formatLabel(value, isValueX)
+                }
+            }
+        }
+    }
+
+
+    private fun setOptions(graph: GraphView, dataArray: Array<DataPoint>) {
         //Create curve/series for graph
-        val series = LineGraphSeries(
-            arrayOf(
-                DataPoint(Date().time.toDouble(),1.0),
-                DataPoint(Date().time.toDouble(),1.0),
-                DataPoint(Date().time.toDouble(),1.0),
-                DataPoint(Date().time.toDouble(),1.0)
-            )
-        )
+        val series = LineGraphSeries(dataArray)
 
         //Add curve to graph
         graph.addSeries(series)
         //Set colour, title of curve, DataPoints radius, thickness
-        series.setColor(Color.RED) //or Color.rgb(0,80,100)
-        series.setTitle("Blodsukker") //Needed for creating legend described below
-        series.setDrawDataPoints(true) //Shows datapoints as circles in the curve
-        series.setDataPointsRadius(16F) //layout for datapoints
-        series.setThickness(8) //Layout for datapoints
+        series.color = Color.RED //or Color.rgb(0,80,100)
+        //series.title = "Blodsukker" //Needed for creating legend described below
+        series.isDrawDataPoints = true //Shows datapoints as circles in the curve
+        series.dataPointsRadius = 16F //layout for datapoints
+        series.thickness = 8 //Layout for datapoints
+
 
         //Title of graph
-        graph.setTitle("Kulhydrater")
-        graph.setTitleTextSize(90.0F)
-        graph.setTitleColor(Color.BLUE)
+        //graph.title = "Kulhydrater"
+        graph.titleTextSize = 90.0F
+        graph.titleColor = Color.BLUE
 
         //Legend (used for displaying overview of curves)
-        graph.getLegendRenderer().setVisible(true)
-        graph.getLegendRenderer().setAlign(com.jjoe64.graphview.LegendRenderer.LegendAlign.TOP)
+        //graph.legendRenderer.isVisible = true
+        graph.legendRenderer.align = com.jjoe64.graphview.LegendRenderer.LegendAlign.TOP
 
         //Axis titles
-        val gridLabel = graph.getGridLabelRenderer() as GridLabelRenderer
-        gridLabel.setHorizontalAxisTitle("X Axis Title")
-        gridLabel.setHorizontalAxisTitleTextSize(50F)
-        gridLabel.setVerticalAxisTitle("Y Axis Title")
-        gridLabel.setVerticalAxisTitleTextSize(50F)
+        val gridLabel = graph.gridLabelRenderer as GridLabelRenderer
+        //gridLabel.horizontalAxisTitle = "X Axis Title"
+        gridLabel.horizontalAxisTitleTextSize = 50F
+        //gridLabel.verticalAxisTitle = "Y Axis Title"
+        gridLabel.verticalAxisTitleTextSize = 50F
 
         gridLabel.verticalLabelsSecondScaleColor
+    }
+
+    private fun getData(): Array<DataPoint> {
+//        val dataList = dataViewModel.getDataList()
+        Date(2222,1,1,1,1,1)
+
+//        for ((index, item) in dataList.withIndex()) {
+//            dataPoints[index] = DataPoint(Date(item.secondInput.toLong()), item.firstInput.toDouble())
+//        }
+        val date = Calendar.getInstance()
+        date.set(1,1,1,1,1,1)
+        val one = date.time
+        date.set(1,1,1,2,1,1)
+        val two = date.time
+        date.set(1,1,1,3,1,1)
+        val three = date.time
+        date.set(1,1,1,4,1,1)
+        val four = date.time
+
+//        dataPoints[0] = DataPoint(one, 1.0)
+//        dataPoints[1] = DataPoint(two, 2.0)
+//        dataPoints[2] = DataPoint(three, 3.0)
+//        dataPoints[3] = DataPoint(four, 4.0)
+
+
+        val dataPoints = arrayOf(
+            DataPoint(one, 1.0),
+            DataPoint(two, 2.0),
+            DataPoint(three, 3.0),
+            DataPoint(four, 4.0),
+            )
+
+        return dataPoints
     }
 }
