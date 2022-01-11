@@ -71,7 +71,7 @@ class DisplayGraph : Fragment() {
     }
 
 
-    private fun setOptions(graph: GraphView, dataArray: Array<DataPoint>) {
+    private fun setOptions(graph: GraphView, dataArray: Array<DataPoint?>) {
         //Create curve/series for graph
         val series = LineGraphSeries(dataArray)
 
@@ -104,14 +104,18 @@ class DisplayGraph : Fragment() {
         gridLabel.verticalLabelsSecondScaleColor
     }
 
-    private fun getData(): Array<DataPoint> {
-        val dataList = dataViewModel.getDataList()
-        val dataPoints = emptyArray<DataPoint>()
+    private fun getData(): Array<DataPoint?> {
+        val dataList = dataViewModel.userInputList
+        val dataPoints = arrayOfNulls<DataPoint>(dataList.size)
 //        Date(2222,1,1,1,1,1)
-        binding.category.text = dataList[0].firstInput
         for ((index, item) in dataList.withIndex()) {
             dataPoints[index] = DataPoint(item.getInputTwoAsDate(), item.firstInput.toDouble())
         }
+//        dataPoints[0] = DataPoint(1.0,1.0)
+//        dataPoints[1] = DataPoint(2.0,2.0)
+//        dataPoints[2] = DataPoint(3.0,3.0)
+//        dataPoints[3] = DataPoint(4.0,4.0)
+
 //        val date = Calendar.getInstance()
 //        date.set(1,1,1,1,1,1)
 //        val one = date.time

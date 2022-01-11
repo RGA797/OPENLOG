@@ -16,8 +16,7 @@ class InputDTO(var firstInput: String, var secondInput: String) {
         return secondInput
     }
 
-    fun getInputTwoAsDate(): Date{
-        val date = dateConverter.convertStringToDate(getInputTwoAsString())
-        return date
-        }
+    fun getInputTwoAsDate(): Date {
+        return dateConverter.convertStringToDate(getInputTwoAsString())
+    }
     }

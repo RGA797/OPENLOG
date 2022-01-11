@@ -78,7 +78,8 @@ class Data {
                             val timeData = ds.child("time").getValue(String::class.java)
                             val typeData = ds.child(type).getValue(String::class.java)
                             if(dateInRange(timeData!!, startDate!!, endDate!!)){
-                                val inputDTO  = InputDTO(timeData,typeData!!)
+                                timeData
+                                val inputDTO  = InputDTO(typeData!!,timeData)
                                 dataList.add(inputDTO)
                             }
                         }
