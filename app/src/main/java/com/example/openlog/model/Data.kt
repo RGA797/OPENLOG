@@ -86,7 +86,6 @@ class Data {
                             val koenData = ds.child("køn").getValue(String::class.java)
                             val alderData = ds.child("alder").getValue(String::class.java)
                             val navnData = ds.child("navn").getValue(String::class.java)
-
                             val inputDTO_koenAlder = InputDTO(koenData!!, alderData!!)
                             val inputDTO_navn = InputDTO(navnData!!, " ")
                             dataList.add(inputDTO_koenAlder)
