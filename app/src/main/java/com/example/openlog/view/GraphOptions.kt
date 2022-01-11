@@ -53,7 +53,7 @@ class GraphOption : Fragment() {
             date.set(2222,1,1,1,1,1)
             val end = date.time
 
-            dataViewModel.updateInputData(fireBaseUser!!,"insulin", start, end)
+            dataViewModel.updateInputData("insulin", start, end)
             Navigation.findNavController(view).navigate(R.id.navigateFromGraphOptionsToGraph)}
     }
 

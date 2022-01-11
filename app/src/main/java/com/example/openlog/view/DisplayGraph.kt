@@ -46,7 +46,7 @@ class DisplayGraph : Fragment() {
         date.set(2222,1,1,1,1,1)
         val end = date.time
 
-        dataViewModel.updateInputData(fireBaseUser!!,"insulin", start, end)
+        dataViewModel.updateInputData("insulin", start, end)
         Thread.sleep(2500)
         labelFormat(graph, "hh:mm:ss")
         setOptions(graph, getData())
