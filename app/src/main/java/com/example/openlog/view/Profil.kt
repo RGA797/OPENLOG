@@ -38,12 +38,12 @@ class Profil : Fragment() {
         if (dataViewModel.userDataList.size != 0 ) {
 
             val navnString =  "Navn: " + dataViewModel.userDataList.get(1).getInputOneAsString()
-            val alderString ="Alder: " + dataViewModel.userDataList.get(0).getInputOneAsString()
-            val koenString = "Køn: " + dataViewModel.userDataList.get(0).getInputTwoAsString()
+            val koenString = "Køn: " + dataViewModel.userDataList.get(0).getInputOneAsString()
+            val alderString ="Alder: " + dataViewModel.userDataList.get(0).getInputTwoAsString()
 
-            binding.alderTekst.text = navnString
+            binding.alderTekst.text = alderString
             binding.koenTekst.text = koenString
-            binding.navnTekst.text = alderString
+            binding.navnTekst.text = navnString
         }
     }
 
