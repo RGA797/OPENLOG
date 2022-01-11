@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.example.openlog.R
+import java.util.*
 
 const val CARB = 0
 const val INSULIN = 1
@@ -41,7 +42,19 @@ class GraphOption : Fragment() {
         binding.carbohydrateButton.setOnClickListener{onCategory(CARB)}
         binding.carbohydrateHighlight.setOnClickListener{onCategory(CARB)}
 
-        binding.generateGraph.setOnClickListener{Navigation.findNavController(view).navigate(R.id.navigateFromGraphOptionsToGraph)}
+        binding.generateGraph.setOnClickListener{
+
+            val fireBaseUser = dataViewModel.getCurrentFirebaseUser()
+
+            val date = Calendar.getInstance()
+
+            date.set(1,1,1,1,1,1)
+            val start = date.time
+            date.set(2222,1,1,1,1,1)
+            val end = date.time
+
+            dataViewModel.updateInputData(fireBaseUser!!,"insulin", start, end)
+            Navigation.findNavController(view).navigate(R.id.navigateFromGraphOptionsToGraph)}
     }
 
     //flips visibility between highlighted and non highlighted buttons

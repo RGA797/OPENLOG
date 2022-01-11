@@ -44,12 +44,10 @@ class DisplayGraph : Fragment() {
         date.set(1,1,1,1,1,1)
         val start = date.time
         date.set(2222,1,1,1,1,1)
-        date.timeInMillis
         val end = date.time
-        val milis = end
-        Date(22222222222222)
-//        dataViewModel.updateInputData(fireBaseUser!!,"insulin", start, end)
-//        Thread.sleep(2000)
+
+        dataViewModel.updateInputData(fireBaseUser!!,"insulin", start, end)
+        Thread.sleep(2500)
         labelFormat(graph, "hh:mm:ss")
         setOptions(graph, getData())
     }
@@ -73,7 +71,7 @@ class DisplayGraph : Fragment() {
     }
 
 
-    private fun setOptions(graph: GraphView, dataArray: Array<DataPoint>) {
+    private fun setOptions(graph: GraphView, dataArray: Array<DataPoint?>) {
         //Create curve/series for graph
         val series = LineGraphSeries(dataArray)
 
@@ -106,35 +104,40 @@ class DisplayGraph : Fragment() {
         gridLabel.verticalLabelsSecondScaleColor
     }
 
-    private fun getData(): Array<DataPoint> {
-//        val dataList = dataViewModel.getDataList()
-        Date(2222,1,1,1,1,1)
+    private fun getData(): Array<DataPoint?> {
+        val dataList = dataViewModel.userInputList
+        val dataPoints = arrayOfNulls<DataPoint>(dataList.size)
+//        Date(2222,1,1,1,1,1)
+        for ((index, item) in dataList.withIndex()) {
+            dataPoints[index] = DataPoint(item.getInputTwoAsDate(), item.firstInput.toDouble())
+        }
+//        dataPoints[0] = DataPoint(1.0,1.0)
+//        dataPoints[1] = DataPoint(2.0,2.0)
+//        dataPoints[2] = DataPoint(3.0,3.0)
+//        dataPoints[3] = DataPoint(4.0,4.0)
 
-//        for ((index, item) in dataList.withIndex()) {
-//            dataPoints[index] = DataPoint(Date(item.secondInput.toLong()), item.firstInput.toDouble())
-//        }
-        val date = Calendar.getInstance()
-        date.set(1,1,1,1,1,1)
-        val one = date.time
-        date.set(1,1,1,2,1,1)
-        val two = date.time
-        date.set(1,1,1,3,1,1)
-        val three = date.time
-        date.set(1,1,1,4,1,1)
-        val four = date.time
+//        val date = Calendar.getInstance()
+//        date.set(1,1,1,1,1,1)
+//        val one = date.time
+//        date.set(1,1,1,2,1,1)
+//        val two = date.time
+//        date.set(1,1,1,3,1,1)
+//        val three = date.time
+//        date.set(1,1,1,4,1,1)
+//        val four = date.time
 
 //        dataPoints[0] = DataPoint(one, 1.0)
 //        dataPoints[1] = DataPoint(two, 2.0)
 //        dataPoints[2] = DataPoint(three, 3.0)
 //        dataPoints[3] = DataPoint(four, 4.0)
 
-
-        val dataPoints = arrayOf(
-            DataPoint(one, 1.0),
-            DataPoint(two, 2.0),
-            DataPoint(three, 3.0),
-            DataPoint(four, 4.0),
-            )
+//
+//        val dataPoints = arrayOf(
+//            DataPoint(one, 1.0),
+//            DataPoint(two, 2.0),
+//            DataPoint(three, 3.0),
+//            DataPoint(four, 4.0),
+//            )
 
         return dataPoints
     }
