@@ -108,7 +108,8 @@ class Data {
         return (date.after(startDate) && date.before(endDate))
     }
 
-    //converts a String to Date. this is used when inputDto dates need to be converted back into Dates for comparison, as they are stored as trings in the database.
+    //converts a String to Date. this is used when inputDto dates need to be
+    // converted back into Dates for comparison, as they are stored as strings in the database.
     fun convertStringToDate(time: String): Date {
 
         val stringList = time.split(" ")
