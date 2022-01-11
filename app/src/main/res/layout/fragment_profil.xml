@@ -27,10 +27,10 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.677"
+                app:layout_constraintHorizontal_bias="0.645"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.102" />
+                app:layout_constraintVertical_bias="0.097" />
 
         <TextView
                 android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintVertical_bias="0.654"
+                app:layout_constraintVertical_bias="0.591"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@color/black" />
 
@@ -55,7 +55,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                app:layout_constraintVertical_bias="0.533"
+                app:layout_constraintVertical_bias="0.475"
                 android:textColor="@color/black" />
 
         <TextView
@@ -67,8 +67,9 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintVertical_bias="0.388"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                app:layout_constraintVertical_bias="0.367"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@color/black" />
 
         <ImageButton
                 android:src="@drawable/profilny"
