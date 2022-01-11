@@ -17,6 +17,7 @@ import com.jjoe64.graphview.DefaultLabelFormatter
 import com.jjoe64.graphview.GraphView
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class DisplayGraph : Fragment() {
@@ -39,10 +40,36 @@ class DisplayGraph : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val fireBaseUser = dataViewModel.getCurrentFirebaseUser()
         val graph = binding.graphBlodsukker
-
-        dataViewModel.updateInputData(fireBaseUser!!,"insulin", Date(1,1,1), Date(90,1,1))
+        val date = Calendar.getInstance()
+        date.set(1,1,1,1,1,1)
+        val start = date.time
+        date.set(2222,1,1,1,1,1)
+        date.timeInMillis
+        val end = date.time
+        val milis = end
+        Date(22222222222222)
+//        dataViewModel.updateInputData(fireBaseUser!!,"insulin", start, end)
+//        Thread.sleep(2000)
         labelFormat(graph, "hh:mm:ss")
         setOptions(graph, getData())
+    }
+
+
+    // Sets the format of the label on the x-axis example "hh:mm:ss"
+    private fun labelFormat(graph: GraphView, pattern: String) {
+        graph.gridLabelRenderer.labelFormatter = object : DefaultLabelFormatter() {
+
+            @SuppressLint("SimpleDateFormat")
+            val sdf = SimpleDateFormat(pattern)
+
+            override fun formatLabel(value: Double, isValueX: Boolean): String {
+                if (isValueX) {
+                    return sdf.format(Date(value.toLong()))
+                } else {
+                    return super.formatLabel(value, isValueX)
+                }
+            }
+        }
     }
 
 
@@ -79,30 +106,35 @@ class DisplayGraph : Fragment() {
         gridLabel.verticalLabelsSecondScaleColor
     }
 
-    // Sets the format of the label on the x-axis example "hh:mm:ss"
-    fun labelFormat(graph: GraphView, pattern: String) {
-        graph.gridLabelRenderer.labelFormatter = object : DefaultLabelFormatter() {
+    private fun getData(): Array<DataPoint> {
+//        val dataList = dataViewModel.getDataList()
+        Date(2222,1,1,1,1,1)
 
-            @SuppressLint("SimpleDateFormat")
-            val sdf = SimpleDateFormat(pattern)
+//        for ((index, item) in dataList.withIndex()) {
+//            dataPoints[index] = DataPoint(Date(item.secondInput.toLong()), item.firstInput.toDouble())
+//        }
+        val date = Calendar.getInstance()
+        date.set(1,1,1,1,1,1)
+        val one = date.time
+        date.set(1,1,1,2,1,1)
+        val two = date.time
+        date.set(1,1,1,3,1,1)
+        val three = date.time
+        date.set(1,1,1,4,1,1)
+        val four = date.time
 
-            override fun formatLabel(value: Double, isValueX: Boolean): String {
-                if (isValueX) {
-                    return sdf.format(Date(value.toLong()))
-                } else {
-                    return super.formatLabel(value, isValueX)
-                }
-            }
-        }
-    }
+//        dataPoints[0] = DataPoint(one, 1.0)
+//        dataPoints[1] = DataPoint(two, 2.0)
+//        dataPoints[2] = DataPoint(three, 3.0)
+//        dataPoints[3] = DataPoint(four, 4.0)
 
-    fun getData(): Array<DataPoint> {
-        var dataPoints = emptyArray<DataPoint>()
-        val dataList = dataViewModel.getDataList()
 
-        for ((index, item) in dataList.withIndex()) {
-            dataPoints[index] = DataPoint(Date(item.secondInput.toLong()), item.firstInput.toDouble())
-        }
+        val dataPoints = arrayOf(
+            DataPoint(one, 1.0),
+            DataPoint(two, 2.0),
+            DataPoint(three, 3.0),
+            DataPoint(four, 4.0),
+            )
 
         return dataPoints
     }
