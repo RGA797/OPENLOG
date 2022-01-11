@@ -37,9 +37,9 @@ class Profil : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if (dataViewModel.userDataList.size != 0 ) {
 
-            val navnString =  "Navn: " + dataViewModel.userDataList.get(1).getInputOne()
-            val alderString ="Alder: " + dataViewModel.userDataList.get(0).getInputOne()
-            val koenString = "Køn: " + dataViewModel.userDataList.get(0).getInputTwo()
+            val navnString =  "Navn: " + dataViewModel.userDataList.get(1).getInputOneAsString()
+            val alderString ="Alder: " + dataViewModel.userDataList.get(0).getInputOneAsString()
+            val koenString = "Køn: " + dataViewModel.userDataList.get(0).getInputTwoAsString()
 
             binding.alderTekst.text = navnString
             binding.koenTekst.text = koenString

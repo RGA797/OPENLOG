@@ -80,7 +80,7 @@ class DataViewModel: ViewModel() {
         //val date = Calendar.getInstance()
 
         //date.set(2020, 2, 3,3 , 3, 3)
-        //val startDate = date.time
+        //al startDate = date.time
 
         //date.set(2022, 0, 6,3 , 3, 3)
         //val endDate = date.time

@@ -11,6 +11,7 @@ class Data {
     // input should be a string consisting of 2 word, a category and value. ex ("blodsukker 20", "kulhydrat 10", "insulin 5")
     var input: String? = ""
     val database = FirebaseDatabase.getInstance("https://openlog-a2b24-default-rtdb.europe-west1.firebasedatabase.app/")
+    val dateConverter = DateConverter()
 
     //changes instance variable input
     fun changeInput(input: String) {
@@ -77,7 +78,7 @@ class Data {
                         if (type == "blodsukker" || type == "insulin" || type == "kulhydrat"){
                             val timeData = ds.child("time").getValue(String::class.java)
                             val typeData = ds.child(type).getValue(String::class.java)
-                            if(dateInRange(timeData!!, startDate!!, endDate!!)){
+                            if(dateConverter.dateInRange(timeData!!, startDate!!, endDate!!)){
                                 val inputDTO  = InputDTO(timeData,typeData!!)
                                 dataList.add(inputDTO)
                             }
@@ -109,7 +110,6 @@ class Data {
 
     //converts a String to Date. this is used when inputDto dates need to be converted back into Dates for comparison, as they are stored as trings in the database.
     fun convertStringToDate(time: String): Date {
-
         val stringList = time.split(" ")
         val day = stringList[2].toInt()
         val month = when(stringList[1]){
@@ -134,7 +134,6 @@ class Data {
         val year = stringList[5].toInt()
         val date = Calendar.getInstance()
         date.set(year, month, day, hourOfDay, minuteOfDay, seconOfDay)
-
         return date.time
     }
 }
