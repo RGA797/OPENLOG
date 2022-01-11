@@ -58,7 +58,7 @@
         tools:layout="@layout/fragment_profil" />
     <fragment
         android:id="@+id/opret_profil"
-        android:name="com.example.openlog.view.Opretprofil"
+        android:name="com.example.openlog.view.Opret_profil"
         android:label="fragment_opret_profil"
         tools:layout="@layout/fragment_opret_profil" >
         <action
