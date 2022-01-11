@@ -46,7 +46,7 @@ class DisplayGraph : Fragment() {
         date.set(2222,1,1,1,1,1)
         val end = date.time
 
-        dataViewModel.updateInputData("insulin", start, end)
+       // dataViewModel.updateInputData("insulin", start, end)
         Thread.sleep(2500)
         labelFormat(graph, "hh:mm:ss")
         setOptions(graph, getData())
@@ -109,7 +109,7 @@ class DisplayGraph : Fragment() {
         val dataPoints = arrayOfNulls<DataPoint>(dataList.size)
 //        Date(2222,1,1,1,1,1)
         for ((index, item) in dataList.withIndex()) {
-            dataPoints[index] = DataPoint(item.getInputTwoAsDate(), item.firstInput.toDouble())
+            //dataPoints[index] = DataPoint(item.getInputTwoAsDate(), item.firstInput.toDouble())
         }
 //        dataPoints[0] = DataPoint(1.0,1.0)
 //        dataPoints[1] = DataPoint(2.0,2.0)

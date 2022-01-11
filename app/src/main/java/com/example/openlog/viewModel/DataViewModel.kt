@@ -4,6 +4,7 @@ package com.example.openlog.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.openlog.model.Categories
 import com.example.openlog.model.Data
 import com.example.openlog.model.InputDTO
 import com.example.openlog.model.User
@@ -17,14 +18,14 @@ class DataViewModel: ViewModel() {
     //local user and data model objects
     private var user = User()
     private var data = Data()
-    private val categoryArray = arrayOf(false, false, false)
+    private val categories = Categories()
     //these are the two lists holding fetched database values, as lists of inputDTO's.
 
     //userDataList holds user data made when creating a user (gender and age)
     var userDataList = ArrayList<InputDTO>(0)
 
-    //userInputList holds user input made when logged in (blodsukker, insulin, kulhydrat values with dates)
-    var userInputList = ArrayList<InputDTO>(0)
+    //userInputList holds a list of list of user input made when logged in (in order, insulin, blodsukker, kulhydrat values, with dates)
+    var userInputList = ArrayList<ArrayList<InputDTO>>(0)
 
     //currentUser livedata. not used atm.
     private val _currentUser = MutableLiveData(user.getFirebaseUser())
@@ -75,20 +76,41 @@ class DataViewModel: ViewModel() {
         return data.storeUserData(getCurrentFirebaseUser()!!, koen, alder, navn)
     }
 
-    //updates userDataList to hold all values of given type and date range
-    fun updateInputData (type: String, startDate: Date, endDate: Date) {
-        //val date = Calendar.getInstance()
+    //updates userDataList to hold all values of given type and date range. the values updated depend on categories booleans in model
+    fun updateInputData (startDate: Date, endDate: Date) {
+        val categoryArray = categories.getCategories()
+        val firebaseUser = getCurrentFirebaseUser()!!
 
-        //date.set(2020, 2, 3,3 , 3, 3)
-        //al startDate = date.time
+        //if insulin == true
+        if (categoryArray[0] == true) {
+            data.updateUserData(firebaseUser, "insulin", startDate, endDate) {
+                _currentDataList.value = it as ArrayList<InputDTO>
+                userInputList[0] = it
+            }
+        }
 
-        //date.set(2022, 0, 6,3 , 3, 3)
-        //val endDate = date.time
-        data.updateUserData(getCurrentFirebaseUser()!!,type, startDate, endDate){
-            _currentDataList.value = it as ArrayList<InputDTO>
-            userInputList = it
+        //if blodsukker == true
+        if (categoryArray[1] == true) {
+            data.updateUserData(firebaseUser, "blodsukker", startDate, endDate) {
+                _currentDataList.value = it as ArrayList<InputDTO>
+                userInputList[1] = it
+            }
+        }
+
+        //if kulhydrat == true
+        if (categoryArray[2] == true) {
+            data.updateUserData(firebaseUser, "kulhydrat", startDate, endDate) {
+                _currentDataList.value = it as ArrayList<InputDTO>
+                userInputList[2] = it
+            }
         }
     }
+
+    fun setCategoriesArray(isInsulin:Boolean, isBlodsukker:Boolean , isKulhydrat:Boolean){
+        categories.setCategories(isInsulin, isBlodsukker , isKulhydrat)
+    }
+
+
 
     //updates user data list to hold gender/age for given firebaseuser
     fun updateUserData () {
@@ -105,11 +127,13 @@ class DataViewModel: ViewModel() {
 
     //flips boolean value for category in bool array indicating if it is to be displayed on graph or not
     fun flipCategory(index: Int) {
+        val categoryArray = categories.getCategories()
         categoryArray[index] = !categoryArray[index]
     }
 
     //checks if category in given index is selected by user
     fun categorySelected(index : Int): Boolean {
+        val categoryArray = categories.getCategories()
         return categoryArray[index]
     }
 }
