@@ -42,7 +42,7 @@
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.31" />
+                app:layout_constraintVertical_bias="0.283" />
 
         <Button
                 android:id="@+id/logButton"
@@ -73,8 +73,8 @@
                 app:layout_constraintVertical_bias="0.026" />
 
         <ImageButton
-                android:layout_width="227dp"
-                android:layout_height="218dp"
+                android:layout_width="241dp"
+                android:layout_height="238dp"
                 app:srcCompat="@drawable/mikrofonny"
                 android:id="@+id/microphoneButton"
                 android:scaleType="centerInside"
@@ -83,7 +83,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintVertical_bias="0.481" />
+                app:layout_constraintVertical_bias="0.466" />
 
         <ImageButton
                 android:layout_width="98dp"
