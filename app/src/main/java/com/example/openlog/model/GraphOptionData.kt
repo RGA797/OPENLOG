@@ -1,7 +1,9 @@
 package com.example.openlog.model
 
 import java.util.*
-
+const val CARB = 0
+const val INSULIN = 1
+const val BLOODSUGAR = 2
 class GraphOptionData {
     private val categoryArray = arrayOf(false, false, false)
     private var selectedDates = arrayOfNulls<Date>(2)
@@ -52,14 +54,20 @@ class GraphOptionData {
                 selectedDates[1] = firstDate
             }
         }
-        var tempArray = arrayOf(
-            selectedDates[0],
-            selectedDates[1]
-        )
 
-        val tmp = selectedDates
-        selectedDates = arrayOfNulls(2)
+        return selectedDates
+    }
 
-        return tmp
+    fun resetDatesAndCategories() {
+        val date = Calendar.getInstance()
+        
+        date.set(1, 1, 1, 1, 1, 1)
+        selectedDates[0] = date.time
+        date.set(1, 1, 1, 2, 1, 1)
+        selectedDates[1] = date.time
+        
+        categoryArray[0] = false
+        categoryArray[1] = false
+        categoryArray[2] = false
     }
 }

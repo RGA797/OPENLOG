@@ -17,8 +17,6 @@ class DataViewModel: ViewModel() {
     private var user = User()
     private var data = Data()
     private var graphOptionData = GraphOptionData()
-    private val categoryArray = arrayOf(false, false, false)
-    private val categories = Categories()
     //these are the two lists holding fetched database values, as lists of inputDTO's.
 
     //userDataList holds user data made when creating a user (gender and age)
@@ -77,42 +75,38 @@ class DataViewModel: ViewModel() {
     }
 
     //updates userDataList to hold all values of given type and date range. the values updated depend on categories booleans in model
-    fun updateInputData (startDate: Date, endDate: Date) {
-        categories.setCategories(true, true, true)
-        val categoryArray = categories.getCategories()
-        val firebaseUser = getCurrentFirebaseUser()!!
+    fun updateInputData () {
 
-        //if insulin == true
-        if (categoryArray[0] == true) {
+        val firebaseUser = getCurrentFirebaseUser()!!
+        val startDate = graphOptionData.getSelectedDates()[0]
+        val endDate = graphOptionData.getSelectedDates()[1]
+
+        //if kulhydrat == true
+        if (graphOptionData.categorySelected(CARB)) {
+            data.updateUserData(firebaseUser, "kulhydrat", startDate, endDate) {
+                _currentDataList.value = it as ArrayList<InputDTO>
+                userInputList[CARB] = it
+            }
+        }
+
+        //if insulin == true (set true temporarily for testing)
+        if (true) {
             data.updateUserData(firebaseUser, "insulin", startDate, endDate) {
                 _currentDataList.value = it as ArrayList<InputDTO>
-                userInputList[0] =  it
+                userInputList[INSULIN] = it
             }
         }
 
         //if blodsukker == true
-        if (categoryArray[1] == true) {
+        if (graphOptionData.categorySelected(BLOODSUGAR)) {
             data.updateUserData(firebaseUser, "blodsukker", startDate, endDate) {
                 _currentDataList.value = it as ArrayList<InputDTO>
-                userInputList[1] =  it
+                userInputList[BLOODSUGAR] = it
             }
         }
-
-        //if kulhydrat == true
-        if (categoryArray[2] == true) {
-            data.updateUserData(firebaseUser, "kulhydrat", startDate, endDate) {
-                _currentDataList.value = it as ArrayList<InputDTO>
-                userInputList[2] =  it
-            }
-        }
+        graphOptionData.resetDatesAndCategories()
         Thread.sleep(250)
     }
-
-    fun setCategoriesArray(isInsulin:Boolean, isBlodsukker:Boolean , isKulhydrat:Boolean){
-        categories.setCategories(isInsulin, isBlodsukker , isKulhydrat)
-    }
-
-
 
     //updates user data list to hold gender/age for given firebaseuser
     fun updateUserData () {
@@ -139,10 +133,6 @@ class DataViewModel: ViewModel() {
 
     fun setDateSelected(date: Date) {
         graphOptionData.setDateSelected(date)
-    }
-
-    fun getSelectedDates(): Array<Date?> {
-        return graphOptionData.getSelectedDates()
     }
 
     fun getInputList(): Array<ArrayList<InputDTO>?> {
