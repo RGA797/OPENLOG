@@ -5,18 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CalendarView
-import android.widget.Toast
 import com.example.openlog.databinding.FragmentGraphOptionsBinding
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import com.example.openlog.R
+import com.example.openlog.model.BLOODSUGAR
+import com.example.openlog.model.CARB
+import com.example.openlog.model.INSULIN
 import java.util.*
-
-const val CARB = 0
-const val INSULIN = 1
-const val BLOODSUGAR = 2
 
 class GraphOption : Fragment() {
 
@@ -53,24 +49,7 @@ class GraphOption : Fragment() {
 
         binding.generateGraph.setOnClickListener{
 
-            val fireBaseUser = dataViewModel.getCurrentFirebaseUser()
-
-            val date = Calendar.getInstance()
-
-            val intervalArray = dataViewModel.getSelectedDates()
-
-            var start = intervalArray[0]
-            var end = intervalArray[1]
-
-            if (start != null && end != null) {
-            dataViewModel.updateInputData(start, end)
-            } else {
-                date.set(1,1,1,1,1,1)
-                start = date.time
-                date.set(1,1,1,2,1,1)
-                end = date.time
-                dataViewModel.updateInputData(start!!, end!!)
-            }
+            dataViewModel.updateInputData()
 
             Navigation.findNavController(view).navigate(R.id.navigateFromGraphOptionsToGraph)}
     }

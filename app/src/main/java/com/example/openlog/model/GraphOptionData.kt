@@ -2,8 +2,12 @@ package com.example.openlog.model
 
 import java.util.*
 
+const val CARB = 0
+const val INSULIN = 1
+const val BLOODSUGAR = 2
+
 class GraphOptionData {
-    private val categoryArray = arrayOf(false, false, false)
+    private var categoryArray = arrayOf(false, false, false)
     private var selectedDates = arrayOfNulls<Date>(2)
     private var isStartDate = true
 
@@ -26,13 +30,6 @@ class GraphOptionData {
             selectedDates[1] = date
             isStartDate = true
         }
-//        if (selectedDates[0] == null) {
-//            selectedDates[0] = date
-//        } else {
-//            if (selectedDates[1] == null) {
-//                selectedDates[1] = date
-//            }
-//        }
     }
 
     //returns array with selected dates, earlier date in first index, later date in second
@@ -52,14 +49,20 @@ class GraphOptionData {
                 selectedDates[1] = firstDate
             }
         }
-        var tempArray = arrayOf(
-            selectedDates[0],
-            selectedDates[1]
-        )
+        return selectedDates
+    }
 
-        val tmp = selectedDates
-        selectedDates = arrayOfNulls(2)
+    // puts dates into selectedDates that should have no values
+    // sets all categories to not chosen
+    // (temporary solution)
+    // TODO : better solution for resetting dates
+    fun resetDateAndCategory() {
+        val date = Calendar.getInstance()
+        date.set(1, 1, 1, 1, 1, 1)
+        selectedDates[0] = date.time
+        date.set(1, 1, 1, 2, 1, 1)
+        selectedDates[1] = date.time
 
-        return tmp
+        categoryArray = arrayOf(false, false, false)
     }
 }

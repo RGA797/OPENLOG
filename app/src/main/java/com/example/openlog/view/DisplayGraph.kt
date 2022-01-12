@@ -17,8 +17,6 @@ import com.jjoe64.graphview.DefaultLabelFormatter
 import com.jjoe64.graphview.GraphView
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
-
 
 class DisplayGraph : Fragment() {
 
@@ -29,7 +27,6 @@ class DisplayGraph : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
 
         //Obtains graph from layout
         binding = FragmentDisplayGraphBinding.inflate(inflater, container, false)
@@ -38,8 +35,7 @@ class DisplayGraph : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val list = dataViewModel.getInputList()
-        val fireBaseUser = dataViewModel.getCurrentFirebaseUser()
+
         val graph = binding.graphBlodsukker
         labelFormat(graph,"dd:HH")
         getData(graph)?.let { setOptions(graph, it) }
