@@ -4,7 +4,7 @@ import java.util.*
 
 class GraphOptionData {
     private val categoryArray = arrayOf(false, false, false)
-    private val selectedDates = arrayOfNulls<Date>(2)
+    private var selectedDates = arrayOfNulls<Date>(2)
     private var isStartDate = true
 
     //flips boolean value for category in bool array indicating if it is to be displayed on graph or not
@@ -26,6 +26,13 @@ class GraphOptionData {
             selectedDates[1] = date
             isStartDate = true
         }
+//        if (selectedDates[0] == null) {
+//            selectedDates[0] = date
+//        } else {
+//            if (selectedDates[1] == null) {
+//                selectedDates[1] = date
+//            }
+//        }
     }
 
     //returns array with selected dates, earlier date in first index, later date in second
@@ -34,9 +41,10 @@ class GraphOptionData {
         var secondDate = selectedDates[1]
         val dayInMiliseconds = 86400000
 
-        if (secondDate == null && firstDate != null) {
-            secondDate = Date(firstDate.time+dayInMiliseconds)
-        }
+        //if only one day selected
+//        if (secondDate == null && firstDate != null) {
+//            secondDate = Date(firstDate.time+dayInMiliseconds)
+//        }
 
         if (firstDate != null && secondDate != null) {
             if (firstDate.after(secondDate)) {
@@ -49,9 +57,9 @@ class GraphOptionData {
             selectedDates[1]
         )
 
-        selectedDates[0] = null
-        selectedDates[1] = null
+        val tmp = selectedDates
+        selectedDates = arrayOfNulls(2)
 
-        return tempArray
+        return tmp
     }
 }

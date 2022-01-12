@@ -47,10 +47,9 @@ class DisplayGraph : Fragment() {
 //        val end = date.time
 //
 //        dataViewModel.updateInputData("insulin", start, end)
-        Thread.sleep(1000)
-        labelFormat(graph,"dd:hh")
+        Thread.sleep(2000)
+        labelFormat(graph,"dd:HH")
         setOptions(graph,getData(graph))
-
     }
 
 

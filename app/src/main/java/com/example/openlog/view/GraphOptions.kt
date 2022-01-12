@@ -39,7 +39,7 @@ class GraphOption : Fragment() {
         binding.calendarView.setOnDateChangeListener { p0, p1, p2, p3 ->
             val date = Calendar.getInstance()
 
-            date.set(p1,p2,p3,1,1,1)
+            date.set(p1,p2,p3,0,0,0)
             dataViewModel.setDateSelected(date.time)
         }
         binding.insulinButton.setOnClickListener{onCategory(INSULIN)}
@@ -55,18 +55,14 @@ class GraphOption : Fragment() {
 
             val date = Calendar.getInstance()
 
-            date.set(1,1,1,1,1,1)
-//            var start = date.time
-            date.set(2222,1,1,1,1,1)
-//            var end = date.time
             val intervalArray = dataViewModel.getSelectedDates()
-//            dataViewModel.updateInputData("insulin", start, end)
 
             var start = intervalArray[0]
             var end = intervalArray[1]
 
+
             if (start != null && end != null) {
-                dataViewModel.updateInputData("insulin", start, end)
+            dataViewModel.updateInputData("insulin", start, end)
             } else {
                 date.set(1,1,1,1,1,1)
                 start = date.time
