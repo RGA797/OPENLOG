@@ -38,18 +38,11 @@ class DisplayGraph : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val list = dataViewModel.getInputList()
         val fireBaseUser = dataViewModel.getCurrentFirebaseUser()
         val graph = binding.graphBlodsukker
-//        val date = Calendar.getInstance()
-//        date.set(1,1,1,1,1,1)
-//        val start = date.time
-//        date.set(2222,1,1,1,1,1)
-//        val end = date.time
-//
-//        dataViewModel.updateInputData("insulin", start, end)
-        Thread.sleep(2000)
         labelFormat(graph,"dd:HH")
-        setOptions(graph,getData(graph))
+        getData(graph)?.let { setOptions(graph, it) }
     }
 
 
@@ -104,22 +97,31 @@ class DisplayGraph : Fragment() {
         gridLabel.verticalLabelsSecondScaleColor
     }
 
-    private fun getData(graph: GraphView): Array<DataPoint?> {
-        val dataList = dataViewModel.userInputList
-        val dataPoints = arrayOfNulls<DataPoint>(dataList.size)
+    private fun getData(graph: GraphView): Array<DataPoint?>? {
+        val dataList = dataViewModel.getInputList()[0]
+        val dataPoints = dataList?.let { arrayOfNulls<DataPoint>(it.size) }
 //        Date(2222,1,1,1,1,1)
-        for ((index, item) in dataList.withIndex()) {
-            dataPoints[index] = DataPoint(item.getInputTwoAsDate(), item.firstInput.toDouble())
+        if (dataList != null) {
+            for ((index, item) in dataList.withIndex()) {
+                dataPoints?.set(index,
+                    DataPoint(item.getInputTwoAsDate(), item.firstInput.toDouble())
+                )
+            }
         }
 //        dataPoints[0] = DataPoint(1.0,1.0)
 //        dataPoints[1] = DataPoint(2.0,2.0)
 //        dataPoints[2] = DataPoint(3.0,3.0)
 //        dataPoints[3] = DataPoint(4.0,4.0)
 
-        if (dataList.isNotEmpty()) {
-            graph.viewport.setMinX(dataList[0].getInputTwoAsDate().time.toDouble())
-            graph.viewport.setMaxX(dataList[dataList.size-1].getInputTwoAsDate().time.toDouble())
-            graph.viewport.isXAxisBoundsManual = true
+        if (dataList != null) {
+            if (dataList.isNotEmpty()) {
+                graph.viewport.setMinX(dataList?.get(0)?.getInputTwoAsDate()?.time.toDouble())
+                dataList?.get(dataList.size-1)?.getInputTwoAsDate()?.time?.let {
+                    graph.viewport.setMaxX(
+                        it.toDouble())
+                }
+                graph.viewport.isXAxisBoundsManual = true
+            }
         }
 //        graph.viewport.setMinY(0.0);
 //        graph.viewport.setMaxY(200.0);

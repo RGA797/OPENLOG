@@ -4,10 +4,7 @@ package com.example.openlog.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.openlog.model.Data
-import com.example.openlog.model.GraphOptionData
-import com.example.openlog.model.InputDTO
-import com.example.openlog.model.User
+import com.example.openlog.model.*
 import com.google.firebase.auth.FirebaseUser
 import java.util.*
 import kotlin.collections.ArrayList
@@ -27,7 +24,7 @@ class DataViewModel: ViewModel() {
     var userDataList = ArrayList<InputDTO>(0)
 
     //userInputList holds a list of list of user input made when logged in (in order, insulin, blodsukker, kulhydrat values, with dates)
-    var userInputList = ArrayList<ArrayList<InputDTO>>(0)
+    var userInputList = arrayOfNulls<ArrayList<InputDTO>>(3)
 
     //currentUser livedata. not used atm.
     private val _currentUser = MutableLiveData(user.getFirebaseUser())
@@ -88,7 +85,7 @@ class DataViewModel: ViewModel() {
         if (categoryArray[0] == true) {
             data.updateUserData(firebaseUser, "insulin", startDate, endDate) {
                 _currentDataList.value = it as ArrayList<InputDTO>
-                userInputList.add( it)
+                userInputList[0] =  it
             }
         }
 
@@ -96,7 +93,7 @@ class DataViewModel: ViewModel() {
         if (categoryArray[1] == true) {
             data.updateUserData(firebaseUser, "blodsukker", startDate, endDate) {
                 _currentDataList.value = it as ArrayList<InputDTO>
-                userInputList.add( it)
+                userInputList[1] =  it
             }
         }
 
@@ -104,7 +101,7 @@ class DataViewModel: ViewModel() {
         if (categoryArray[2] == true) {
             data.updateUserData(firebaseUser, "kulhydrat", startDate, endDate) {
                 _currentDataList.value = it as ArrayList<InputDTO>
-                userInputList.add(it)
+                userInputList[2] =  it
             }
         }
     }
@@ -146,7 +143,7 @@ class DataViewModel: ViewModel() {
         return graphOptionData.getSelectedDates()
     }
 
-    fun getInputList(): ArrayList<ArrayList<InputDTO>> {
+    fun getInputList(): Array<ArrayList<InputDTO>?> {
         return userInputList
     }
 }
