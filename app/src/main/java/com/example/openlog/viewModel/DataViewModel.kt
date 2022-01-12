@@ -8,6 +8,7 @@ import com.example.openlog.model.*
 import com.google.firebase.auth.FirebaseUser
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.concurrent.thread
 
 //dataViewModel follows MVVM structure.
 //used to fetch and save/change values in model (both local and firebase database)
@@ -104,6 +105,7 @@ class DataViewModel: ViewModel() {
                 userInputList[2] =  it
             }
         }
+        Thread.sleep(250)
     }
 
     fun setCategoriesArray(isInsulin:Boolean, isBlodsukker:Boolean , isKulhydrat:Boolean){
