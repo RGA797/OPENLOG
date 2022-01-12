@@ -48,12 +48,13 @@ class GraphOption : Fragment() {
 
             val date = Calendar.getInstance()
 
-            date.set(1,1,1,1,1,1)
-            val start = date.time
-            date.set(2222,1,1,1,1,1)
-            val end = date.time
+            //date.set(1,1,1,1,1,1)
+           // val start = date.time
+            //date.set(2222,1,1,1,1,1)
+            //val end = date.time
+            //dataViewModel.setCategoriesArray(true,false,true)
+            //dataViewModel.updateInputData(start, end)
 
-            dataViewModel.updateInputData("insulin", start, end)
             Navigation.findNavController(view).navigate(R.id.navigateFromGraphOptionsToGraph)}
     }
 

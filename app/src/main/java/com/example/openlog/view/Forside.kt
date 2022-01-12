@@ -71,6 +71,8 @@ class Forside : Fragment() {
                 dataViewModel.changeInput(text[0].toString())
             }
         }
+
+
     }
 
     //this function uses speech recognition to update the value of input, using the dataViewModel

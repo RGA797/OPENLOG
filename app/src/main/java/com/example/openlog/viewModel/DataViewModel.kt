@@ -78,6 +78,7 @@ class DataViewModel: ViewModel() {
 
     //updates userDataList to hold all values of given type and date range. the values updated depend on categories booleans in model
     fun updateInputData (startDate: Date, endDate: Date) {
+        categories.setCategories(true, true, true)
         val categoryArray = categories.getCategories()
         val firebaseUser = getCurrentFirebaseUser()!!
 
@@ -85,7 +86,7 @@ class DataViewModel: ViewModel() {
         if (categoryArray[0] == true) {
             data.updateUserData(firebaseUser, "insulin", startDate, endDate) {
                 _currentDataList.value = it as ArrayList<InputDTO>
-                userInputList[0] = it
+                userInputList.add( it)
             }
         }
 
@@ -93,7 +94,7 @@ class DataViewModel: ViewModel() {
         if (categoryArray[1] == true) {
             data.updateUserData(firebaseUser, "blodsukker", startDate, endDate) {
                 _currentDataList.value = it as ArrayList<InputDTO>
-                userInputList[1] = it
+                userInputList.add( it)
             }
         }
 
@@ -101,7 +102,7 @@ class DataViewModel: ViewModel() {
         if (categoryArray[2] == true) {
             data.updateUserData(firebaseUser, "kulhydrat", startDate, endDate) {
                 _currentDataList.value = it as ArrayList<InputDTO>
-                userInputList[2] = it
+                userInputList.add(it)
             }
         }
     }
@@ -135,5 +136,9 @@ class DataViewModel: ViewModel() {
     fun categorySelected(index : Int): Boolean {
         val categoryArray = categories.getCategories()
         return categoryArray[index]
+    }
+
+    fun getInputList(): ArrayList<ArrayList<InputDTO>> {
+        return userInputList
     }
 }

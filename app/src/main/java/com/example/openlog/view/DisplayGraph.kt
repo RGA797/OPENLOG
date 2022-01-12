@@ -40,12 +40,7 @@ class DisplayGraph : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val fireBaseUser = dataViewModel.getCurrentFirebaseUser()
         val graph = binding.graphBlodsukker
-        val date = Calendar.getInstance()
-        date.set(1,1,1,1,1,1)
-        val start = date.time
-        date.set(2222,1,1,1,1,1)
-        val end = date.time
-
+        val list = dataViewModel.getInputList()
        // dataViewModel.updateInputData("insulin", start, end)
         Thread.sleep(2500)
         labelFormat(graph, "hh:mm:ss")
