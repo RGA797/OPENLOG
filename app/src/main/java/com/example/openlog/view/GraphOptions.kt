@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CalendarView
+import android.widget.Toast
 import com.example.openlog.databinding.FragmentGraphOptionsBinding
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
@@ -33,6 +35,13 @@ class GraphOption : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.calendarView.setOnDateChangeListener { p0, p1, p2, p3 ->
+            val date = Calendar.getInstance()
+
+            date.set(p1,p2,p3,0,0,0)
+            dataViewModel.setDateSelected(date.time)
+        }
         binding.insulinButton.setOnClickListener{onCategory(INSULIN)}
         binding.insulinHighlight.setOnClickListener{onCategory(INSULIN)}
 
@@ -48,12 +57,21 @@ class GraphOption : Fragment() {
 
             val date = Calendar.getInstance()
 
-            //date.set(1,1,1,1,1,1)
-           // val start = date.time
-            //date.set(2222,1,1,1,1,1)
-            //val end = date.time
-            //dataViewModel.setCategoriesArray(true,false,true)
-            //dataViewModel.updateInputData(start, end)
+            val intervalArray = dataViewModel.getSelectedDates()
+
+            var start = intervalArray[0]
+            var end = intervalArray[1]
+
+
+            if (start != null && end != null) {
+            dataViewModel.updateInputData("insulin", start, end)
+            } else {
+                date.set(1,1,1,1,1,1)
+                start = date.time
+                date.set(1,1,1,2,1,1)
+                end = date.time
+                dataViewModel.updateInputData("insulin", start, end)
+            }
 
             Navigation.findNavController(view).navigate(R.id.navigateFromGraphOptionsToGraph)}
     }
