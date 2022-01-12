@@ -7,7 +7,7 @@ class InputDTO(var firstInput: String, var secondInput: String) {
     val dateConverter = DateConverter()
 
     //gets the first value (ex, a number for age, insulin, kulhydrat, blodsukker etc.)
-    fun getInputOneAsString(): String{
+    fun getInputOneAsString(): String {
         return firstInput
     }
 
@@ -19,4 +19,4 @@ class InputDTO(var firstInput: String, var secondInput: String) {
     fun getInputTwoAsDate(): Date {
         return dateConverter.convertStringToDate(getInputTwoAsString())
     }
-    }
+}

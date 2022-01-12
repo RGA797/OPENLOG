@@ -28,13 +28,6 @@ class GraphOptionData {
             selectedDates[1] = date
             isStartDate = true
         }
-//        if (selectedDates[0] == null) {
-//            selectedDates[0] = date
-//        } else {
-//            if (selectedDates[1] == null) {
-//                selectedDates[1] = date
-//            }
-//        }
     }
 
     //returns array with selected dates, earlier date in first index, later date in second
@@ -58,6 +51,8 @@ class GraphOptionData {
         return selectedDates
     }
 
+    // resets selected dates and categories
+    // TODO : create a better way to reset selected dates
     fun resetDatesAndCategories() {
         val date = Calendar.getInstance()
         
