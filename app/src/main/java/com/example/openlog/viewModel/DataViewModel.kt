@@ -109,6 +109,7 @@ class DataViewModel: ViewModel() {
         }
         // once data is fetched selected dates and categories are reset
         graphOptionData.resetDateAndCategory()
+
     }
 
 
