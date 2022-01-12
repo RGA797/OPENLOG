@@ -40,14 +40,14 @@ class DisplayGraph : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val graph = binding.graphBlodsukker
-        val date = Calendar.getInstance()
-        date.set(1,1,1,1,1,1)
-        val start = date.time
-        date.set(2222,1,1,1,1,1)
-        val end = date.time
-
-        dataViewModel.updateInputData("insulin", start, end)
-        Thread.sleep(1500)
+//        val date = Calendar.getInstance()
+//        date.set(1,1,1,1,1,1)
+//        val start = date.time
+//        date.set(2222,1,1,1,1,1)
+//        val end = date.time
+//
+//        dataViewModel.updateInputData("insulin", start, end)
+        Thread.sleep(1000)
         labelFormat(graph,"dd:hh")
         setOptions(graph,getData(graph))
 

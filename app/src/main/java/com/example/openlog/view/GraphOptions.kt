@@ -62,13 +62,17 @@ class GraphOption : Fragment() {
             val intervalArray = dataViewModel.getSelectedDates()
 //            dataViewModel.updateInputData("insulin", start, end)
 
-            val start = intervalArray[0]
-            val end = intervalArray[1]
+            var start = intervalArray[0]
+            var end = intervalArray[1]
 
-            if (start != null) {
-                if (end != null) {
-                    dataViewModel.updateInputData("insulin", start, end)
-                }
+            if (start != null && end != null) {
+                dataViewModel.updateInputData("insulin", start, end)
+            } else {
+                date.set(1,1,1,1,1,1)
+                start = date.time
+                date.set(1,1,1,2,1,1)
+                end = date.time
+                dataViewModel.updateInputData("insulin", start, end)
             }
 
             Navigation.findNavController(view).navigate(R.id.navigateFromGraphOptionsToGraph)}
