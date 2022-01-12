@@ -100,7 +100,7 @@ class DisplayGraph : Fragment() {
     private fun getData(graph: GraphView): Array<DataPoint?>? {
         val dataList = dataViewModel.getInputList()[0]
         val dataPoints = dataList?.let { arrayOfNulls<DataPoint>(it.size) }
-//        Date(2222,1,1,1,1,1)
+
         if (dataList != null) {
             for ((index, item) in dataList.withIndex()) {
                 dataPoints?.set(index,
@@ -108,10 +108,6 @@ class DisplayGraph : Fragment() {
                 )
             }
         }
-//        dataPoints[0] = DataPoint(1.0,1.0)
-//        dataPoints[1] = DataPoint(2.0,2.0)
-//        dataPoints[2] = DataPoint(3.0,3.0)
-//        dataPoints[3] = DataPoint(4.0,4.0)
 
         if (dataList != null) {
             if (dataList.isNotEmpty()) {
@@ -123,21 +119,6 @@ class DisplayGraph : Fragment() {
                 graph.viewport.isXAxisBoundsManual = true
             }
         }
-//        graph.viewport.setMinY(0.0);
-//        graph.viewport.setMaxY(200.0);
-
-//        dataPoints[0] = DataPoint(one, 1.0)
-//        dataPoints[1] = DataPoint(two, 2.0)
-//        dataPoints[2] = DataPoint(three, 3.0)
-//        dataPoints[3] = DataPoint(four, 4.0)
-
-//
-//        val dataPoints = arrayOf(
-//            DataPoint(one, 1.0),
-//            DataPoint(two, 2.0),
-//            DataPoint(three, 3.0),
-//            DataPoint(four, 4.0),
-//            )
 
         return dataPoints
     }

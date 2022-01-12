@@ -52,8 +52,13 @@ class GraphOption : Fragment() {
         binding.carbohydrateHighlight.setOnClickListener{onCategory(CARB)}
 
         binding.generateGraph.setOnClickListener{
+
+            val fireBaseUser = dataViewModel.getCurrentFirebaseUser()
+
             val date = Calendar.getInstance()
+
             val intervalArray = dataViewModel.getSelectedDates()
+
             var start = intervalArray[0]
             var end = intervalArray[1]
 

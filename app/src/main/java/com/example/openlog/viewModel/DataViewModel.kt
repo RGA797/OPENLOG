@@ -77,7 +77,7 @@ class DataViewModel: ViewModel() {
 
     //updates userDataList to hold all values of given type and date range. the values updated depend on categories booleans in model
     fun updateInputData (startDate: Date, endDate: Date) {
-        categories.setCategories(true, true, true)
+        categories.setCategories(true, false, false)
         val categoryArray = categories.getCategories()
         val firebaseUser = getCurrentFirebaseUser()!!
 
