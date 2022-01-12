@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.openlog.model.Data
+import com.example.openlog.model.GraphOptionData
 import com.example.openlog.model.InputDTO
 import com.example.openlog.model.User
 import com.google.firebase.auth.FirebaseUser
@@ -17,6 +18,7 @@ class DataViewModel: ViewModel() {
     //local user and data model objects
     private var user = User()
     private var data = Data()
+    private var graphOptionData = GraphOptionData()
     private val categoryArray = arrayOf(false, false, false)
     //these are the two lists holding fetched database values, as lists of inputDTO's.
 
@@ -103,13 +105,19 @@ class DataViewModel: ViewModel() {
         return userDataList
     }
 
-    //flips boolean value for category in bool array indicating if it is to be displayed on graph or not
     fun flipCategory(index: Int) {
-        categoryArray[index] = !categoryArray[index]
+        graphOptionData.flipCategory(index)
     }
 
-    //checks if category in given index is selected by user
     fun categorySelected(index : Int): Boolean {
-        return categoryArray[index]
+        return graphOptionData.categorySelected(index)
+    }
+
+    fun setDateSelected(date: Date) {
+        graphOptionData.setDateSelected(date)
+    }
+
+    fun getSelectedDates(): Array<Date?> {
+        return graphOptionData.getSelectedDates()
     }
 }
