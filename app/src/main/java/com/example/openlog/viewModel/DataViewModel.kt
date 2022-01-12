@@ -8,7 +8,6 @@ import com.example.openlog.model.*
 import com.google.firebase.auth.FirebaseUser
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.concurrent.thread
 
 //dataViewModel follows MVVM structure.
 //used to fetch and save/change values in model (both local and firebase database)
@@ -81,31 +80,34 @@ class DataViewModel: ViewModel() {
         val startDate = graphOptionData.getSelectedDates()[0]
         val endDate = graphOptionData.getSelectedDates()[1]
 
-        //if kulhydrat == true
-        if (graphOptionData.categorySelected(CARB)) {
-            data.updateUserData(firebaseUser, "kulhydrat", startDate, endDate) {
-                _currentDataList.value = it as ArrayList<InputDTO>
-                userInputList[CARB] = it
+        if (startDate != null && endDate != null) {
+            //if kulhydrat == true
+            if (graphOptionData.categorySelected(CARB)) {
+                data.updateUserData(firebaseUser, "kulhydrat", startDate, endDate) {
+                    _currentDataList.value = it as ArrayList<InputDTO>
+                    userInputList[CARB] = it
+                }
             }
-        }
 
-        //if insulin == true (set true temporarily for testing)
-        if (true) {
-            data.updateUserData(firebaseUser, "insulin", startDate, endDate) {
-                _currentDataList.value = it as ArrayList<InputDTO>
-                userInputList[INSULIN] = it
+            //if insulin == true (set true temporarily for testing)
+            if (graphOptionData.categorySelected(INSULIN)) {
+                data.updateUserData(firebaseUser, "insulin", startDate, endDate) {
+                    _currentDataList.value = it as ArrayList<InputDTO>
+                    userInputList[INSULIN] = it
+                }
             }
-        }
 
-        //if blodsukker == true
-        if (graphOptionData.categorySelected(BLOODSUGAR)) {
-            data.updateUserData(firebaseUser, "blodsukker", startDate, endDate) {
-                _currentDataList.value = it as ArrayList<InputDTO>
-                userInputList[BLOODSUGAR] = it
+            //if blodsukker == true
+            if (graphOptionData.categorySelected(BLOODSUGAR)) {
+                data.updateUserData(firebaseUser, "blodsukker", startDate, endDate) {
+                    _currentDataList.value = it as ArrayList<InputDTO>
+                    userInputList[BLOODSUGAR] = it
+                }
             }
+            // TODO : find better way to prevent attempting to use date before it has been fetched
+            Thread.sleep(250)
         }
         graphOptionData.resetDatesAndCategories()
-        Thread.sleep(250)
     }
 
     //updates user data list to hold gender/age for given firebaseuser

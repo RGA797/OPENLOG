@@ -32,8 +32,8 @@ class GraphOptionData {
 
     //returns array with selected dates, earlier date in first index, later date in second
     fun getSelectedDates(): Array<Date?> {
-        var firstDate = selectedDates[0]
-        var secondDate = selectedDates[1]
+        val firstDate = selectedDates[0]
+        val secondDate = selectedDates[1]
         val dayInMiliseconds = 86400000
 
         //if only one day selected
