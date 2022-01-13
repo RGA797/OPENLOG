@@ -41,6 +41,7 @@ class GraphOption : Fragment() {
             date.set(p1,p2,p3,0,0,0)
             dataViewModel.setDateSelected(date.time)
         }
+
         binding.insulinButton.setOnClickListener{onCategory(INSULIN)}
         binding.insulinHighlight.setOnClickListener{onCategory(INSULIN)}
 
