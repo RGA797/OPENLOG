@@ -56,7 +56,7 @@ class GraphOption : Fragment() {
     }
 
     //flips visibility between highlighted and non highlighted buttons
-    fun onCategory(category: Int){
+    private fun onCategory(category: Int){
         if (dataViewModel.categorySelected(category)) {
             when (category) {
                 CARB -> {
