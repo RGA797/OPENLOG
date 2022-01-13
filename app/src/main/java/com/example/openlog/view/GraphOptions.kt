@@ -10,6 +10,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.example.openlog.R
+import sun.bob.mcalendarview.MCalendarView
+
+//import android.R
+
+
+
 
 const val CARB = 0
 const val INSULIN = 1
@@ -42,6 +48,18 @@ class GraphOption : Fragment() {
         binding.carbohydrateHighlight.setOnClickListener{onCategory(CARB)}
 
         binding.generateGraph.setOnClickListener{Navigation.findNavController(view).navigate(R.id.navigateFromGraphOptionsToGraph)}
+
+        binding.mcalendarView.setOnClickListener{dateHighlight()}
+    }
+
+    fun dateHighlight() {
+        var calendarView: MCalendarView = binding.mcalendarView
+        calendarView.markDate(2015, 10, 7)
+
+        //mcalendarView.setOnItemClickListener
+
+        //var calendarView: mCalendarView = (findViewById(R.id.calendar) as mCalendarView)
+        //calendarView.markDate(2015, 10, 7)
     }
 
     //flips visibility between highlighted and non highlighted buttons
