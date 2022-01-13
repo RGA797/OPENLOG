@@ -80,6 +80,8 @@ class DataViewModel: ViewModel() {
         val startDate = graphOptionData.getSelectedDates()[0]
         val endDate = graphOptionData.getSelectedDates()[1]
 
+
+
         if (startDate != null && endDate != null) {
             //if kulhydrat == true
             if (graphOptionData.categorySelected(CARB)) {
