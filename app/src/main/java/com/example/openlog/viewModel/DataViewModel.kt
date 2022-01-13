@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.openlog.model.*
 import com.google.firebase.auth.FirebaseUser
+import com.jjoe64.graphview.GraphView
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -16,6 +17,7 @@ class DataViewModel: ViewModel() {
     private var user = User()
     private var data = Data()
     private var graphOptionData = GraphOptionData()
+    private var graphData = GraphData()
     //these are the two lists holding fetched database values, as lists of inputDTO's.
 
     //userDataList holds user data made when creating a user (gender and age)
@@ -52,6 +54,14 @@ class DataViewModel: ViewModel() {
         _currentUser.value = user.getFirebaseUser()
     }
 
+    fun setGraph(graph: GraphView){
+        graphData.setGraphData(graph)
+    }
+
+    fun getGraph(): GraphView? {
+        return graphData.getGraphData()
+    }
+
     //changes the current input. used to store input of speech recognition. does not save in database
     fun changeInput(input: String){
         data.changeInput(input)
@@ -79,12 +89,17 @@ class DataViewModel: ViewModel() {
         val firebaseUser = getCurrentFirebaseUser()!!
         val startDate = graphOptionData.getSelectedDates()[0]
         val endDate = graphOptionData.getSelectedDates()[1]
+       // val fetchedBooleans = graphOptionData.getCategoryArray()
+        //fetchedBooleans[CARB] = !fetchedBooleans[CARB]
+       // fetchedBooleans[INSULIN] = !fetchedBooleans[INSULIN]
+        //fetchedBooleans[BLOODSUGAR] = !fetchedBooleans[BLOODSUGAR]
 
         if (startDate != null && endDate != null) {
             //if kulhydrat == true
             if (graphOptionData.categorySelected(CARB)) {
                 data.updateUserData(firebaseUser, "kulhydrat", startDate, endDate) {
                     _currentDataList.value = it as ArrayList<InputDTO>
+                  //  fetchedBooleans[BLOODSUGAR] = !fetchedBooleans[BLOODSUGAR]
                     userInputList[CARB] = it
                 }
             }
@@ -93,6 +108,7 @@ class DataViewModel: ViewModel() {
             if (graphOptionData.categorySelected(INSULIN)) {
                 data.updateUserData(firebaseUser, "insulin", startDate, endDate) {
                     _currentDataList.value = it as ArrayList<InputDTO>
+                 //   fetchedBooleans[BLOODSUGAR] = !fetchedBooleans[BLOODSUGAR]
                     userInputList[INSULIN] = it
                 }
             }
@@ -101,9 +117,21 @@ class DataViewModel: ViewModel() {
             if (graphOptionData.categorySelected(BLOODSUGAR)) {
                 data.updateUserData(firebaseUser, "blodsukker", startDate, endDate) {
                     _currentDataList.value = it as ArrayList<InputDTO>
+                  //  fetchedBooleans[BLOODSUGAR] = !fetchedBooleans[BLOODSUGAR]
                     userInputList[BLOODSUGAR] = it
                 }
             }
+            //while (true) {
+            //    var isDoneCounter = 0
+             //   for (bool in fetchedBooleans) {
+              //      if (bool) {
+               //         isDoneCounter++
+              //      }
+               // }
+              //  if (isDoneCounter == 3) {
+              //      break
+               // }
+           // }
             // TODO : find better way to prevent attempting to use date before it has been fetched
             Thread.sleep(250)
         }

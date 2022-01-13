@@ -11,9 +11,6 @@ import androidx.navigation.Navigation
 import com.example.openlog.R
 import com.example.openlog.databinding.FragmentManuelIndtastningBinding
 import com.example.openlog.viewModel.DataViewModel
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import java.util.*
 
 
@@ -105,7 +102,7 @@ class manuelIndtastning : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater){
-        menuInflater.inflate(R.menu.nav_menu,menu)
+        menuInflater.inflate(R.menu.nav_menu_forside,menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

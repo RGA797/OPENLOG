@@ -30,6 +30,10 @@ class GraphOptionData {
         }
     }
 
+    fun getCategoryArray(): Array<Boolean> {
+        return arrayOf(categoryArray[0], categoryArray[1],categoryArray[2])
+    }
+
     //returns array with selected dates, earlier date in first index, later date in second
     fun getSelectedDates(): Array<Date?> {
         val firstDate = selectedDates[0]

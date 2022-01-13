@@ -4,7 +4,6 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
-import android.text.Editable
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
@@ -19,9 +18,6 @@ import androidx.fragment.app.activityViewModels
 import com.example.openlog.R
 import com.example.openlog.databinding.FragmentForsideBinding
 import com.example.openlog.viewModel.DataViewModel
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -108,7 +104,7 @@ class Forside : Fragment() {
 
     //dropdown menu
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater){
-        menuInflater.inflate(R.menu.nav_menu,menu)
+        menuInflater.inflate(R.menu.nav_menu_forside,menu)
     }
 
     //dropdown menu navigation

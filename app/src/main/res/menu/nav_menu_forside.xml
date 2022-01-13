@@ -6,10 +6,6 @@
             android:title="@string/historik"
             />
 
-            <item android:id="@+id/delingDropdown"
-            android:title="@string/DEL"
-            />
-
              <item android:id="@+id/infoDropdown"
             android:title="@string/INFO"
             />
