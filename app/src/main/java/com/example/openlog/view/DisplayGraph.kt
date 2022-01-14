@@ -42,7 +42,7 @@ class DisplayGraph : Fragment() {
         val fireBaseUser = dataViewModel.getCurrentFirebaseUser()
         val graph = binding.graphBlodsukker
         labelFormat(graph,"dd:HH")
-        getData(graph)?.let { setOptions(graph, it) }
+        setOptions(graph, loadData())
     }
 
 
@@ -64,19 +64,19 @@ class DisplayGraph : Fragment() {
     }
 
 
-    private fun setOptions(graph: GraphView, dataArray: Array<DataPoint?>) {
+    private fun setOptions(graph: GraphView, dataArray: Array<Array<DataPoint?>?>) {
         //Create curve/series for graph
-        val series = LineGraphSeries(dataArray)
+        val lineGraphSeriesList = constructSeries(dataArray)
 
-        //Add curve to graph
-        graph.addSeries(series)
-        //Set colour, title of curve, DataPoints radius, thickness
-        series.color = Color.RED //or Color.rgb(0,80,100)
-        //series.title = "Blodsukker" //Needed for creating legend described below
-        series.isDrawDataPoints = true //Shows datapoints as circles in the curve
-        series.dataPointsRadius = 16F //layout for datapoints
-        series.thickness = 8 //Layout for datapoints
+        for (lineGraph in lineGraphSeriesList) {
+            graph.addSeries(lineGraph)
 
+            lineGraph.color = Color.RED //or Color.rgb(0,80,100)
+            //series.title = "Blodsukker" //Needed for creating legend described below
+            lineGraph.isDrawDataPoints = true //Shows datapoints as circles in the curve
+            lineGraph.dataPointsRadius = 16F //layout for datapoints
+            lineGraph.thickness = 8 //Layout for datapoints
+        }
 
         //Title of graph
         //graph.title = "Kulhydrater"
@@ -92,36 +92,60 @@ class DisplayGraph : Fragment() {
         //gridLabel.horizontalAxisTitle = "X Axis Title"
         gridLabel.horizontalAxisTitleTextSize = 50F
         //gridLabel.verticalAxisTitle = "Y Axis Title"
-        gridLabel.verticalAxisTitleTextSize = 50F
+        gridLabel.verticalAxisTitleTextSize = 25F
 
         gridLabel.verticalLabelsSecondScaleColor
     }
 
-    private fun getData(graph: GraphView): Array<DataPoint?>? {
-        val dataList = dataViewModel.getInputList()[1]
-        val dataPoints = dataList?.let { arrayOfNulls<DataPoint>(it.size) }
-//        Date(2222,1,1,1,1,1)
-        if (dataList != null) {
-            for ((index, item) in dataList.withIndex()) {
-                dataPoints?.set(index,
-                    DataPoint(item.getInputTwoAsDate(), item.firstInput.toDouble())
-                )
-            }
-        }
+    private fun constructSeries(dataPoints: Array<Array<DataPoint?>?>): ArrayList<LineGraphSeries<DataPoint>> {
 
-        if (dataList != null) {
-            if (dataList.isNotEmpty()) {
-                graph.viewport.setMinX(dataList?.get(0)?.getInputTwoAsDate()?.time.toDouble())
-                dataList?.get(dataList.size-1)?.getInputTwoAsDate()?.time?.let {
-                    graph.viewport.setMaxX(
-                        it.toDouble())
+        val lineGraphSeriesList = ArrayList<LineGraphSeries<DataPoint>>(1)
+
+        for (list in dataPoints) {
+            if (list != null)
+            lineGraphSeriesList.add(LineGraphSeries(list))
+        }
+        return lineGraphSeriesList
+    }
+
+
+
+    private fun getData(graph: GraphView)//: Array<Array<DataPoint?>>
+    {
+        val dataList = dataViewModel.getInputList()
+        val dataPoints = loadData()
+
+//        if (dataList != null) {
+//            if (dataList.isNotEmpty()) {
+//                graph.viewport.setMinX(dataList?.get(0)?.getInputTwoAsDate()?.time.toDouble())
+//                dataList?.get(dataList.size-1)?.getInputTwoAsDate()?.time?.let {
+//                    graph.viewport.setMaxX(
+//                        it.toDouble())
+//                }
+//                graph.viewport.isXAxisBoundsManual = true
+//            }
+//        }
+////        graph.viewport.setMinY(0.0);
+////        graph.viewport.setMaxY(200.0);
+//
+//        return dataPoints
+    }
+
+
+    private fun loadData(): Array<Array<DataPoint?>?> {
+        val dataList = dataViewModel.getInputList()
+        val dataPoints = arrayOfNulls<Array<DataPoint?>>(dataList.size)
+
+        for ((i, list) in dataList.withIndex()) {
+            if (list != null) {
+                dataPoints[i] = Array(list.size) { DataPoint(0.0,0.0) }
+                for ((j, inputDTO) in list.withIndex()) {
+                    dataPoints[i]?.set(j,
+                        (DataPoint(inputDTO.getInputTwoAsDate(), inputDTO.firstInput.toDouble()))
+                    )
                 }
-                graph.viewport.isXAxisBoundsManual = true
             }
         }
-//        graph.viewport.setMinY(0.0);
-//        graph.viewport.setMaxY(200.0);
-
         return dataPoints
     }
 }

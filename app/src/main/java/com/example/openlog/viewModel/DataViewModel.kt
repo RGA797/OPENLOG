@@ -21,7 +21,8 @@ class DataViewModel: ViewModel() {
     //userDataList holds user data made when creating a user (gender and age)
     var userDataList = ArrayList<InputDTO>(0)
 
-    //userInputList holds a list of list of user input made when logged in (in order, insulin, blodsukker, kulhydrat values, with dates)
+    //userInputList holds a list of list of user input made when logged in
+    // (in order, kulhydrat, insulin, blodsukker values, with dates)
     var userInputList = arrayOfNulls<ArrayList<InputDTO>>(3)
 
     //currentUser livedata. not used atm.
@@ -80,7 +81,7 @@ class DataViewModel: ViewModel() {
         val startDate = graphOptionData.getSelectedDates()[0]
         val endDate = graphOptionData.getSelectedDates()[1]
 
-
+        resetUseInputList()
 
         if (startDate != null && endDate != null) {
             //if kulhydrat == true
@@ -106,7 +107,7 @@ class DataViewModel: ViewModel() {
                     userInputList[BLOODSUGAR] = it
                 }
             }
-            // TODO : find better way to prevent attempting to use date before it has been fetched
+            // TODO : find better way to prevent attempting to use data before it has been fetched
             Thread.sleep(250)
         }
         graphOptionData.resetDatesAndCategories()
@@ -117,6 +118,12 @@ class DataViewModel: ViewModel() {
         data.updateUserData(getCurrentFirebaseUser()!!,"køn", null, null){
             _currentDataList.value = it as ArrayList<InputDTO>
             userDataList = it
+        }
+    }
+
+    private fun resetUseInputList() {
+        for ((index, item) in userInputList.withIndex()) {
+            userInputList[index] = null
         }
     }
 
