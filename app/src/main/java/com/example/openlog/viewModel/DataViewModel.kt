@@ -133,6 +133,7 @@ class DataViewModel: ViewModel() {
     //updates user data list to hold gender/age for given firebaseuser
     fun updateUserData () {
         data.updateUserData(getCurrentFirebaseUser()!!,"køn", null, null){
+            resetUserData()
             userDataList = it as ArrayList<InputDTO>
             if (userDataList.size != 0) {
                 user.setUsername(userDataList.get(1).getInputOneAsString())
@@ -143,6 +144,12 @@ class DataViewModel: ViewModel() {
                 _currentAge.value = user.getAge()
             }
         }
+    }
+
+    fun resetUserData(){
+        _currentUsername.value = ""
+        _currentGender.value = ""
+        _currentAge.value = ""
     }
 
     //returns userDataList
