@@ -31,10 +31,22 @@ class DataViewModel: ViewModel() {
     val currentUser: LiveData<FirebaseUser?>
         get() = _currentUser
 
+    private val _currentUsername = MutableLiveData(user.getUsername())
+    val currentUsername: LiveData<String?>
+        get() = _currentUsername
+
+    private val _currentAge = MutableLiveData(user.getAge())
+    val currentAge: LiveData<String?>
+        get() = _currentAge
+
+    private val _currentGender = MutableLiveData(user.getGender())
+    val currentGender: LiveData<String?>
+        get() = _currentGender
+
     //currentDataList livedata. not used atm.
-    private val _currentDataList = MutableLiveData(ArrayList<InputDTO>(0))
+    private val _currentInputList = MutableLiveData(ArrayList<InputDTO>(0))
     val currentDataList: MutableLiveData<ArrayList<InputDTO>>
-        get() = _currentDataList
+        get() = _currentInputList
 
     //currentEmail livedata. used for greeting in viewbinding for forside fragment
     private val _currentEmail = MutableLiveData(user.getEmail())
@@ -83,66 +95,53 @@ class DataViewModel: ViewModel() {
         return data.storeUserData(getCurrentFirebaseUser()!!, koen, alder, navn)
     }
 
-    //updates userDataList to hold all values of given type and date range. the values updated depend on categories booleans in model
+    //updates userInputList to hold all values of given type and date range. the values updated depend on categories booleans in model
     fun updateInputData () {
-
+        userInputList = arrayOfNulls(3)
         val firebaseUser = getCurrentFirebaseUser()!!
         val startDate = graphOptionData.getSelectedDates()[0]
         val endDate = graphOptionData.getSelectedDates()[1]
-       // val fetchedBooleans = graphOptionData.getCategoryArray()
-        //fetchedBooleans[CARB] = !fetchedBooleans[CARB]
-       // fetchedBooleans[INSULIN] = !fetchedBooleans[INSULIN]
-        //fetchedBooleans[BLOODSUGAR] = !fetchedBooleans[BLOODSUGAR]
 
         if (startDate != null && endDate != null) {
             //if kulhydrat == true
             if (graphOptionData.categorySelected(CARB)) {
                 data.updateUserData(firebaseUser, "kulhydrat", startDate, endDate) {
-                    _currentDataList.value = it as ArrayList<InputDTO>
-                  //  fetchedBooleans[BLOODSUGAR] = !fetchedBooleans[BLOODSUGAR]
-                    userInputList[CARB] = it
+                    userInputList[CARB] = it as ArrayList<InputDTO>
                 }
             }
 
             //if insulin == true (set true temporarily for testing)
             if (graphOptionData.categorySelected(INSULIN)) {
                 data.updateUserData(firebaseUser, "insulin", startDate, endDate) {
-                    _currentDataList.value = it as ArrayList<InputDTO>
-                 //   fetchedBooleans[BLOODSUGAR] = !fetchedBooleans[BLOODSUGAR]
-                    userInputList[INSULIN] = it
+                    userInputList[INSULIN] = it as ArrayList<InputDTO>
                 }
             }
 
             //if blodsukker == true
             if (graphOptionData.categorySelected(BLOODSUGAR)) {
                 data.updateUserData(firebaseUser, "blodsukker", startDate, endDate) {
-                    _currentDataList.value = it as ArrayList<InputDTO>
-                  //  fetchedBooleans[BLOODSUGAR] = !fetchedBooleans[BLOODSUGAR]
-                    userInputList[BLOODSUGAR] = it
+                    userInputList[BLOODSUGAR] = it as ArrayList<InputDTO>
                 }
             }
-            //while (true) {
-            //    var isDoneCounter = 0
-             //   for (bool in fetchedBooleans) {
-              //      if (bool) {
-               //         isDoneCounter++
-              //      }
-               // }
-              //  if (isDoneCounter == 3) {
-              //      break
-               // }
-           // }
             // TODO : find better way to prevent attempting to use date before it has been fetched
             Thread.sleep(250)
         }
         graphOptionData.resetDatesAndCategories()
     }
 
+
     //updates user data list to hold gender/age for given firebaseuser
     fun updateUserData () {
         data.updateUserData(getCurrentFirebaseUser()!!,"køn", null, null){
-            _currentDataList.value = it as ArrayList<InputDTO>
-            userDataList = it
+            userDataList = it as ArrayList<InputDTO>
+            if (userDataList.size != 0) {
+                user.setUsername(userDataList.get(1).getInputOneAsString())
+                _currentUsername.value = user.getUsername()
+                user.setGender(userDataList.get(0).getInputOneAsString())
+                _currentGender.value = user.getGender()
+                user.setAge(userDataList.get(0).getInputTwoAsString())
+                _currentAge.value = user.getAge()
+            }
         }
     }
 

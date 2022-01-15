@@ -44,9 +44,7 @@ class Forside : Fragment() {
     //mostly viewbinding and onclicklisteners
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         binding.dataViewModel = dataViewModel
-
         super.onViewCreated(view, savedInstanceState)
-
         binding.lifecycleOwner = viewLifecycleOwner
         binding.profilButton.setOnClickListener{
             Navigation.findNavController(binding.root).navigate(R.id.navigateFromForsideToProfil)
@@ -67,8 +65,6 @@ class Forside : Fragment() {
                 dataViewModel.changeInput(text[0].toString())
             }
         }
-
-
     }
 
     //this function uses speech recognition to update the value of input, using the dataViewModel

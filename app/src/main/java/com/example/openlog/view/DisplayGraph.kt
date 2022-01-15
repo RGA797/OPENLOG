@@ -60,8 +60,6 @@ class DisplayGraph : Fragment() {
     }
 
 
-
-
     // Sets the format of the label on the x-axis example "hh:mm:ss"
     private fun labelFormat(graph: GraphView, pattern: String) {
         graph.gridLabelRenderer.labelFormatter = object : DefaultLabelFormatter() {
@@ -154,7 +152,6 @@ class DisplayGraph : Fragment() {
     }
 
     fun onDelDropdown() {
-        activity?.let { ActivityCompat.requestPermissions(it,arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),1 ) }
         if (activity?.let { ContextCompat.checkSelfPermission(it,android.Manifest.permission.WRITE_EXTERNAL_STORAGE) } == PackageManager.PERMISSION_DENIED) {
             activity?.let { ActivityCompat.requestPermissions(it,arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),1 ) }
         }
@@ -162,67 +159,12 @@ class DisplayGraph : Fragment() {
         if (activity?.let { ContextCompat.checkSelfPermission(it,android.Manifest.permission.WRITE_EXTERNAL_STORAGE) } == PackageManager.PERMISSION_GRANTED) {
             val graph = dataViewModel.getGraph()
             graph?.setBackgroundColor(resources.getColor(R.color.white));
-            graph?.takeSnapshotAndShare(activity, "testSnap", "our first share!")
+            graph?.takeSnapshotAndShare(activity, "Graph snapshot", "Del!")
         }
 
         else{
-            Toast.makeText(context, "No permission given", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Du mangler tilladelse til at dele", Toast.LENGTH_SHORT).show()
         }
     }
-
-
-
- //THE BELOW CODE IS NOT OURS!!! TAKEN FROM: https://stackoverflow.com/questions/36624756/how-to-save-bitmap-to-android-gallery
-    /// @param folderName can be your app's name
-    private fun saveImage(bitmap: Bitmap, context: Context, folderName: String) {
-        if (android.os.Build.VERSION.SDK_INT >= 29) {
-            val values = contentValues()
-            values.put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/" + folderName)
-            values.put(MediaStore.Images.Media.IS_PENDING, true)
-            // RELATIVE_PATH and IS_PENDING are introduced in API 29.
-
-            val uri: Uri? = context.contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
-            if (uri != null) {
-                saveImageToStream(bitmap, context.contentResolver.openOutputStream(uri))
-                values.put(MediaStore.Images.Media.IS_PENDING, false)
-                context.contentResolver.update(uri, values, null, null)
-            }
-        } else {
-            val directory = File(Environment.getExternalStorageDirectory().toString() + separator + folderName)
-            // getExternalStorageDirectory is deprecated in API 29
-
-            if (!directory.exists()) {
-                directory.mkdirs()
-            }
-            val fileName = System.currentTimeMillis().toString() + ".png"
-            val file = File(directory, fileName)
-            saveImageToStream(bitmap, FileOutputStream(file))
-            val values = contentValues()
-            values.put(MediaStore.Images.Media.DATA, file.absolutePath)
-            // .DATA is deprecated in API 29
-            context.contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
-        }
-    }
-
-    private fun contentValues() : ContentValues {
-        val values = ContentValues()
-        values.put(MediaStore.Images.Media.MIME_TYPE, "image/png")
-        values.put(MediaStore.Images.Media.DATE_ADDED, System.currentTimeMillis() / 1000);
-        values.put(MediaStore.Images.Media.DATE_TAKEN, System.currentTimeMillis());
-        return values
-    }
-
-    private fun saveImageToStream(bitmap: Bitmap, outputStream: OutputStream?) {
-        if (outputStream != null) {
-            try {
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
-                outputStream.close()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-    }
-
-
 
 }

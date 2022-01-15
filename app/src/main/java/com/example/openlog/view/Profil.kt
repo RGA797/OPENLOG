@@ -35,16 +35,6 @@ class Profil : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
-        if (dataViewModel.userDataList.size != 0 ) {
-
-            val navnString =  "Navn: " + dataViewModel.userDataList.get(1).getInputOneAsString()
-            val koenString = "Køn: " + dataViewModel.userDataList.get(0).getInputOneAsString()
-            val alderString ="Alder: " + dataViewModel.userDataList.get(0).getInputTwoAsString()
-
-            binding.alderTekst.text = alderString
-            binding.koenTekst.text = koenString
-            binding.navnTekst.text = navnString
-        }
     }
 
 

@@ -17,22 +17,6 @@
         tools:context=".view.Forside">
 
         <TextView
-                android:id="@+id/hilsenTekst"
-                android:layout_width="208dp"
-                android:layout_height="86dp"
-                android:text="@{@string/hilsen(dataViewModel.currentEmail)}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.753"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.024" />
-
-        <TextView
                 android:id="@+id/speechText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -98,5 +82,17 @@
                 app:layout_constraintHorizontal_bias="0.948"
                 app:layout_constraintVertical_bias="0.96"
                 android:id="@+id/manuelIndtastningButton" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/hilsenTekst"
+                android:text="@{@string/hilsen(dataViewModel.currentUsername)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintVertical_bias="0.077" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

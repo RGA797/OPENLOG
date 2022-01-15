@@ -50,8 +50,7 @@ class Login : Fragment() {
                         dataViewModel.changeUser(firebaseUser, email)
                         dataViewModel.updateUserData()
                         Toast.makeText(context, "You are now logged in", Toast.LENGTH_SHORT).show()
-                        Navigation.findNavController(view)
-                            .navigate(R.id.navigateFromLoginToForside)
+                        Navigation.findNavController(view).navigate(R.id.navigateFromLoginToForside)
                     } else {
                         Toast.makeText(
                             context,

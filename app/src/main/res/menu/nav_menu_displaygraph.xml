@@ -4,6 +4,6 @@
 
     <item android:id="@+id/delingDropdown"
             android:title="@string/DEL"
-            />
+            app:showAsAction="always" />
 
 </menu>

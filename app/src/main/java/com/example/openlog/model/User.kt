@@ -6,6 +6,9 @@ import com.google.firebase.auth.FirebaseUser
 class User {
     private var fireBaseUser: FirebaseUser? = null
     private var email = ""
+    private var userName = ""
+    private var age = ""
+    private var gender = ""
 
     fun setFirebaseUser(firebaseUser: FirebaseUser){
         this.fireBaseUser = firebaseUser
@@ -15,10 +18,34 @@ class User {
         this.email = email
     }
 
+    fun setUsername(userName: String){
+        this.userName = userName
+    }
+
+    fun setAge(age: String){
+        this.age = age
+    }
+
+    fun setGender(gender: String){
+        this.gender = gender
+    }
+
     fun getFirebaseUser(): FirebaseUser?{
         return fireBaseUser
     }
     fun getEmail(): String {
         return email
     }
+    fun getUsername(): String {
+        return userName
+    }
+
+    fun getAge(): String{
+        return age
+    }
+
+    fun getGender(): String{
+        return gender
+    }
+
 }

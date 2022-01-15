@@ -15,7 +15,6 @@
             android:layout_height="match_parent"
             tools:context=".view.Profil">
 
-
         <TextView
                 android:id="@+id/profile_title"
                 android:layout_width="wrap_content"
@@ -36,6 +35,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/alderTekst"
+                android:text="@{@string/ageDisplay(dataViewModel.currentAge)}"
+                android:background="@drawable/background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -49,6 +50,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/koenTekst"
+                android:text="@{@string/genderDisplay(dataViewModel.currentGender)}"
+                android:background="@drawable/background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -62,6 +65,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/navnTekst"
+                android:text="@{@string/nameDisplay(dataViewModel.currentUsername)}"
+                android:background="@drawable/background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
