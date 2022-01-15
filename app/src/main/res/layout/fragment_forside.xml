@@ -5,16 +5,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
     <data>
         <variable
             name="dataViewModel"
             type="com.example.openlog.viewModel.DataViewModel" />
     </data>
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.Forside">
+
 
         <TextView
                 android:id="@+id/hilsenTekst"
@@ -98,5 +102,8 @@
                 app:layout_constraintHorizontal_bias="0.948"
                 app:layout_constraintVertical_bias="0.96"
                 android:id="@+id/manuelIndtastningButton" />
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
