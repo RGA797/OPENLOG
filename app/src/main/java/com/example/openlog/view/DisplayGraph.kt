@@ -40,9 +40,8 @@ class DisplayGraph : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val list = dataViewModel.getInputList()
         val fireBaseUser = dataViewModel.getCurrentFirebaseUser()
-        val graph = binding.graphBlodsukker
-        labelFormat(graph,"dd:HH")
-        setOptions(graph, loadData())
+
+        setOptions()
     }
 
 
@@ -64,31 +63,74 @@ class DisplayGraph : Fragment() {
     }
 
 
-    private fun setOptions(graph: GraphView, dataArray: Array<Array<DataPoint?>?>) {
+    private fun setOptions() {
         //Create curve/series for graph
-        val lineGraphSeriesList = constructSeries(dataArray)
+        val lineGraphSeriesList = loadData()
+        val graphOne = binding.graphOne
 
-        for (lineGraph in lineGraphSeriesList) {
-            graph.addSeries(lineGraph)
 
-            lineGraph.color = Color.RED //or Color.rgb(0,80,100)
-            //series.title = "Blodsukker" //Needed for creating legend described below
-            lineGraph.isDrawDataPoints = true //Shows datapoints as circles in the curve
-            lineGraph.dataPointsRadius = 16F //layout for datapoints
-            lineGraph.thickness = 8 //Layout for datapoints
+        var lineNumber = 0
+        for ((i, line) in lineGraphSeriesList.withIndex()) {
+
+            if (lineNumber == 0) {
+                graphOne.addSeries(line)
+                line.color = Color.BLUE //or Color.rgb(0,80,100)
+                //series.title = "Blodsukker" //Needed for creating legend described below
+                line.isDrawDataPoints = true //Shows datapoints as circles in the curve
+                line.dataPointsRadius = 16F //layout for datapoints
+                line.thickness = 8 //Layout for datapoints
+                labelFormat(binding.graphOne, "dd:HH")
+                //graphOne.viewport.setMinX(line.lowestValueX)
+
+                lineNumber++
+            } else if (lineNumber == 1) {
+                line.color = Color.RED
+                graphOne.addSeries(line)
+//                        graphOne.viewport.setMaxX(line.highestValueX)
+//                        graphOne.viewport.isXAxisBoundsManual = true
+                lineNumber++
+            } else {
+                val graphTwo = binding.graphTwo
+                graphTwo.addSeries(line)
+                line.color = Color.RED //or Color.rgb(0,80,100)
+                //series.title = "Blodsukker" //Needed for creating legend described below
+                line.isDrawDataPoints = true //Shows datapoints as circles in the curve
+                line.dataPointsRadius = 16F //layout for datapoints
+                line.thickness = 8 //Layout for datapoints
+                graphTwo.visibility = View.VISIBLE
+                labelFormat(binding.graphTwo, "dd:HH")
+
+                graphTwo.titleTextSize = 90.0F
+                graphTwo.titleColor = Color.BLUE
+
+                //Legend (used for displaying overview of curves)
+                //graph.legendRenderer.isVisible = true
+                graphTwo.legendRenderer.align = com.jjoe64.graphview.LegendRenderer.LegendAlign.TOP
+
+                //Axis titles
+                val gridLabel = graphTwo.gridLabelRenderer as GridLabelRenderer
+                //gridLabel.horizontalAxisTitle = "X Axis Title"
+                gridLabel.horizontalAxisTitleTextSize = 50F
+                //gridLabel.verticalAxisTitle = "Y Axis Title"
+                gridLabel.verticalAxisTitleTextSize = 25F
+
+                gridLabel.verticalLabelsSecondScaleColor
+            }
+
         }
+
 
         //Title of graph
         //graph.title = "Kulhydrater"
-        graph.titleTextSize = 90.0F
-        graph.titleColor = Color.BLUE
+        graphOne.titleTextSize = 90.0F
+        graphOne.titleColor = Color.BLUE
 
         //Legend (used for displaying overview of curves)
         //graph.legendRenderer.isVisible = true
-        graph.legendRenderer.align = com.jjoe64.graphview.LegendRenderer.LegendAlign.TOP
+        graphOne.legendRenderer.align = com.jjoe64.graphview.LegendRenderer.LegendAlign.TOP
 
         //Axis titles
-        val gridLabel = graph.gridLabelRenderer as GridLabelRenderer
+        val gridLabel = graphOne.gridLabelRenderer as GridLabelRenderer
         //gridLabel.horizontalAxisTitle = "X Axis Title"
         gridLabel.horizontalAxisTitleTextSize = 50F
         //gridLabel.verticalAxisTitle = "Y Axis Title"
@@ -97,16 +139,16 @@ class DisplayGraph : Fragment() {
         gridLabel.verticalLabelsSecondScaleColor
     }
 
-    private fun constructSeries(dataPoints: Array<Array<DataPoint?>?>): ArrayList<LineGraphSeries<DataPoint>> {
-
-        val lineGraphSeriesList = ArrayList<LineGraphSeries<DataPoint>>(1)
-
-        for (list in dataPoints) {
-            if (list != null)
-            lineGraphSeriesList.add(LineGraphSeries(list))
-        }
-        return lineGraphSeriesList
-    }
+//    private fun constructSeries(dataPoints: Array<Array<DataPoint?>?>): ArrayList<LineGraphSeries<DataPoint>> {
+//
+//        val lineGraphSeriesList = ArrayList<LineGraphSeries<DataPoint>>(1)
+//
+//        for (list in dataPoints) {
+//            if (list != null)
+//            lineGraphSeriesList.add(LineGraphSeries(list))
+//        }
+//        return lineGraphSeriesList
+//    }
 
 
 
@@ -132,9 +174,11 @@ class DisplayGraph : Fragment() {
     }
 
 
-    private fun loadData(): Array<Array<DataPoint?>?> {
+    private fun loadData(): ArrayList<LineGraphSeries<DataPoint>> {
         val dataList = dataViewModel.getInputList()
         val dataPoints = arrayOfNulls<Array<DataPoint?>>(dataList.size)
+
+        val lineGraphSeriesList = ArrayList<LineGraphSeries<DataPoint>>(0)
 
         for ((i, list) in dataList.withIndex()) {
             if (list != null) {
@@ -144,8 +188,9 @@ class DisplayGraph : Fragment() {
                         (DataPoint(inputDTO.getInputTwoAsDate(), inputDTO.firstInput.toDouble()))
                     )
                 }
+                lineGraphSeriesList.add(LineGraphSeries(dataPoints[i]))
             }
         }
-        return dataPoints
+        return lineGraphSeriesList
     }
 }
