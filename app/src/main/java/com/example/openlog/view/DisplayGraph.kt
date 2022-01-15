@@ -116,8 +116,9 @@ class DisplayGraph : Fragment() {
 
                 gridLabel.verticalLabelsSecondScaleColor
             }
-
         }
+
+        setXAxisRange(getXAxisRange(lineGraphSeriesList))
 
 
         //Title of graph
@@ -137,42 +138,62 @@ class DisplayGraph : Fragment() {
         gridLabel.verticalAxisTitleTextSize = 25F
 
         gridLabel.verticalLabelsSecondScaleColor
+
+
+//        line.color = Color.RED //or Color.rgb(0,80,100)
+//        //series.title = "Blodsukker" //Needed for creating legend described below
+//        line.isDrawDataPoints = true //Shows datapoints as circles in the curve
+//        line.dataPointsRadius = 16F //layout for datapoints
+//        line.thickness = 8 //Layout for datapoints
+//        graphTwo.visibility = View.VISIBLE
+//        labelFormat(binding.graphTwo, "dd:HH")
+//
+//        graphTwo.titleTextSize = 90.0F
+//        graphTwo.titleColor = Color.BLUE
+//
+//        //Legend (used for displaying overview of curves)
+//        //graph.legendRenderer.isVisible = true
+//        graphTwo.legendRenderer.align = com.jjoe64.graphview.LegendRenderer.LegendAlign.TOP
+//
+//        //Axis titles
+//        val gridLabel = graphTwo.gridLabelRenderer as GridLabelRenderer
+//        //gridLabel.horizontalAxisTitle = "X Axis Title"
+//        gridLabel.horizontalAxisTitleTextSize = 50F
+//        //gridLabel.verticalAxisTitle = "Y Axis Title"
+//        gridLabel.verticalAxisTitleTextSize = 25F
+//
+//        gridLabel.verticalLabelsSecondScaleColor
     }
 
-//    private fun constructSeries(dataPoints: Array<Array<DataPoint?>?>): ArrayList<LineGraphSeries<DataPoint>> {
-//
-//        val lineGraphSeriesList = ArrayList<LineGraphSeries<DataPoint>>(1)
-//
-//        for (list in dataPoints) {
-//            if (list != null)
-//            lineGraphSeriesList.add(LineGraphSeries(list))
-//        }
-//        return lineGraphSeriesList
-//    }
+    private fun getXAxisRange(lineGraphSeriesList: ArrayList<LineGraphSeries<DataPoint>>): Array<Double>  {
+        var greatest = Double.MIN_VALUE
+        var smallest = Double.MAX_VALUE
 
+        val xAxisRange = arrayOf(smallest, greatest)
 
-
-    private fun getData(graph: GraphView)//: Array<Array<DataPoint?>>
-    {
-        val dataList = dataViewModel.getInputList()
-        val dataPoints = loadData()
-
-//        if (dataList != null) {
-//            if (dataList.isNotEmpty()) {
-//                graph.viewport.setMinX(dataList?.get(0)?.getInputTwoAsDate()?.time.toDouble())
-//                dataList?.get(dataList.size-1)?.getInputTwoAsDate()?.time?.let {
-//                    graph.viewport.setMaxX(
-//                        it.toDouble())
-//                }
-//                graph.viewport.isXAxisBoundsManual = true
-//            }
-//        }
-////        graph.viewport.setMinY(0.0);
-////        graph.viewport.setMaxY(200.0);
-//
-//        return dataPoints
+        for (list in lineGraphSeriesList) {
+            if (list.highestValueX > greatest) {
+                greatest = list.highestValueX
+            }
+            if (list.lowestValueX < smallest) {
+                smallest = list.lowestValueX
+            }
+        }
+        return xAxisRange
     }
 
+    private fun setXAxisRange(range: Array<Double>) {
+        val graphOne = binding.graphOne
+        val graphTwo = binding.graphTwo
+
+        graphOne.viewport.isXAxisBoundsManual = true
+        graphOne.viewport.setMinX(range[0])
+        graphOne.viewport.setMaxX(range[1])
+//
+//        graphTwo.viewport.setMinX(range[0])
+//        graphTwo.viewport.setMaxX(range[1])
+//        graphTwo.viewport.isXAxisBoundsManual = true
+    }
 
     private fun loadData(): ArrayList<LineGraphSeries<DataPoint>> {
         val dataList = dataViewModel.getInputList()
