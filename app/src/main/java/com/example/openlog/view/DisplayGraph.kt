@@ -41,8 +41,7 @@ class DisplayGraph : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val list = dataViewModel.getInputList()
-        val fireBaseUser = dataViewModel.getCurrentFirebaseUser()
+
 
         setOptions()
     }
@@ -141,7 +140,7 @@ class DisplayGraph : Fragment() {
         gridLabel.verticalAxisTitleTextSize = 25F
 
         gridLabel.verticalLabelsSecondScaleColor
-
+//
 
 //        line.color = Color.RED //or Color.rgb(0,80,100)
 //        //series.title = "Blodsukker" //Needed for creating legend described below
@@ -179,6 +178,9 @@ class DisplayGraph : Fragment() {
             if (list.lowestValueX < smallest) {
                 smallest = list.lowestValueX
             }
+        }
+        if (lineGraphSeriesList.isEmpty()) {
+            return arrayOf(0.0,1.0)
         }
 
         return arrayOf(smallest, greatest)
