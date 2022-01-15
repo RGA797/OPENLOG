@@ -18,6 +18,9 @@ import com.jjoe64.graphview.GraphView
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.seconds
+import kotlin.time.seconds
 
 
 class DisplayGraph : Fragment() {
@@ -169,8 +172,6 @@ class DisplayGraph : Fragment() {
         var greatest = Double.MIN_VALUE
         var smallest = Double.MAX_VALUE
 
-        val xAxisRange = arrayOf(smallest, greatest)
-
         for (list in lineGraphSeriesList) {
             if (list.highestValueX > greatest) {
                 greatest = list.highestValueX
@@ -179,20 +180,21 @@ class DisplayGraph : Fragment() {
                 smallest = list.lowestValueX
             }
         }
-        return xAxisRange
+
+        return arrayOf(smallest, greatest)
     }
 
     private fun setXAxisRange(range: Array<Double>) {
         val graphOne = binding.graphOne
         val graphTwo = binding.graphTwo
 
-        graphOne.viewport.isXAxisBoundsManual = true
         graphOne.viewport.setMinX(range[0])
         graphOne.viewport.setMaxX(range[1])
-//
-//        graphTwo.viewport.setMinX(range[0])
-//        graphTwo.viewport.setMaxX(range[1])
-//        graphTwo.viewport.isXAxisBoundsManual = true
+        graphOne.viewport.isXAxisBoundsManual = true
+
+        graphTwo.viewport.setMinX(range[0])
+        graphTwo.viewport.setMaxX(range[1])
+        graphTwo.viewport.isXAxisBoundsManual = true
     }
 
     private fun loadData(): ArrayList<LineGraphSeries<DataPoint>> {
