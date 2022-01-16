@@ -64,6 +64,12 @@ class DisplayGraph : Fragment() {
         }
     }
 
+    private fun getPattern(): String {
+        val dates = dataViewModel.getCopySelectedDates()
+
+
+    }
+
 
     private fun setOptions() {
         //Create curve/series for graph

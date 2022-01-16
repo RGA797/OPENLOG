@@ -146,7 +146,12 @@ class DataViewModel: ViewModel() {
         graphOptionData.setDateSelected(date)
     }
 
+    fun getCopySelectedDates(): Array<Date?> {
+        return graphOptionData.getCopySelectedDates()
+    }
+
     fun getInputList(): Array<ArrayList<InputDTO>?> {
         return userInputList
     }
+
 }

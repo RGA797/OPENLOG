@@ -7,6 +7,7 @@ const val BLOODSUGAR = 2
 class GraphOptionData {
     private val categoryArray = arrayOf(false, false, false)
     private var selectedDates = arrayOfNulls<Date>(2)
+    private var copySelectedDates = arrayOfNulls<Date>(2)
     private var isStartDate = true
 
     //flips boolean value for category in bool array indicating if it is to be displayed on graph or not
@@ -23,9 +24,11 @@ class GraphOptionData {
     fun setDateSelected(date: Date) {
         if (isStartDate) {
             selectedDates[0] = date
+            copySelectedDates[0] = date
             isStartDate = false
         } else {
             selectedDates[1] = date
+            copySelectedDates[1] = date
             isStartDate = true
         }
     }
@@ -47,8 +50,22 @@ class GraphOptionData {
                 selectedDates[1] = firstDate
             }
         }
-
         return selectedDates
+    }
+
+    // can cause problems since array is not reset
+    fun getCopySelectedDates(): Array<Date?> {
+        val firstDate = copySelectedDates[0]
+        val secondDate = copySelectedDates[1]
+        val dayInMiliseconds = 86400000
+
+        if (firstDate != null && secondDate != null) {
+            if (firstDate.after(secondDate)) {
+                copySelectedDates[0] = secondDate
+                copySelectedDates[1] = firstDate
+            }
+        }
+        return copySelectedDates
     }
 
     // resets selected dates and categories
