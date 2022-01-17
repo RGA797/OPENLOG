@@ -16,6 +16,7 @@ class DataViewModel: ViewModel() {
     private var user = User()
     private var data = Data()
     private var graphOptionData = GraphOptionData()
+    private var lineData = arrayOfNulls<LineData>(3)
     //these are the two lists holding fetched database values, as lists of inputDTO's.
 
     //userDataList holds user data made when creating a user (gender and age)
@@ -89,6 +90,7 @@ class DataViewModel: ViewModel() {
                 data.updateUserData(firebaseUser, "kulhydrat", startDate, endDate) {
                     _currentDataList.value = it as ArrayList<InputDTO>
                     userInputList[CARB] = it
+                    lineData[CARB] = LineData(CARB)
                 }
             }
 
@@ -97,6 +99,7 @@ class DataViewModel: ViewModel() {
                 data.updateUserData(firebaseUser, "insulin", startDate, endDate) {
                     _currentDataList.value = it as ArrayList<InputDTO>
                     userInputList[INSULIN] = it
+                    lineData[INSULIN] = LineData(INSULIN)
                 }
             }
 
@@ -105,6 +108,7 @@ class DataViewModel: ViewModel() {
                 data.updateUserData(firebaseUser, "blodsukker", startDate, endDate) {
                     _currentDataList.value = it as ArrayList<InputDTO>
                     userInputList[BLOODSUGAR] = it
+                    lineData[BLOODSUGAR] = LineData(BLOODSUGAR)
                 }
             }
             // TODO : find better way to prevent attempting to use data before it has been fetched
@@ -154,4 +158,7 @@ class DataViewModel: ViewModel() {
         return userInputList
     }
 
+    fun getLineData(): Array<LineData?> {
+        return lineData
+    }
 }

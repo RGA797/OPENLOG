@@ -12,6 +12,7 @@ import com.jjoe64.graphview.GridLabelRenderer
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import com.example.openlog.databinding.FragmentDisplayGraphBinding
+import com.example.openlog.model.LineData
 import com.example.openlog.viewModel.DataViewModel
 import com.jjoe64.graphview.DefaultLabelFormatter
 import com.jjoe64.graphview.GraphView
@@ -27,6 +28,7 @@ class DisplayGraph : Fragment() {
 
     private val dataViewModel: DataViewModel by activityViewModels()
     private lateinit var binding: FragmentDisplayGraphBinding
+    private var lineData = ArrayList<LineData?>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,7 +65,7 @@ class DisplayGraph : Fragment() {
             }
         }
     }
-
+    //TODO : pattern is based on selected dates, not x-axis range (needs to be updated)
     private fun getPattern(): String {
         val dates = dataViewModel.getCopySelectedDates()
         val startDate = dates[0]
@@ -72,9 +74,7 @@ class DisplayGraph : Fragment() {
         val msInDay = 86400000
         val buffer = msInDay/100
 
-
         if (startDate != null && endDate != null) {
-            // create default "dd:HH" for when statement
             when {
                 startDate.year != endDate.year -> {
                     pattern = "yy:MM"
@@ -98,7 +98,14 @@ class DisplayGraph : Fragment() {
         if (pattern.isNotEmpty())
         return "$pattern:$addition"
         else return addition
+    }
 
+    private fun setLineOptions(line: LineGraphSeries<DataPoint>, index: Int) {
+        line.color = lineData[index]?.color!!  //or Color.rgb(0,80,100)
+        //series.title = "Blodsukker" //Needed for creating legend described below
+        line.isDrawDataPoints = true //Shows datapoints as circles in the curve
+        line.dataPointsRadius = 16F //layout for datapoints
+        line.thickness = 8 //Layout for datapoints
     }
 
 
@@ -108,34 +115,31 @@ class DisplayGraph : Fragment() {
         val graphOne = binding.graphOne
 
 
-        var lineNumber = 0
         for ((i, line) in lineGraphSeriesList.withIndex()) {
-
-            if (lineNumber == 0) {
+            setLineOptions(line, i)
+            if (i == 0) {
                 graphOne.addSeries(line)
-                line.color = Color.BLUE //or Color.rgb(0,80,100)
-                //series.title = "Blodsukker" //Needed for creating legend described below
-                line.isDrawDataPoints = true //Shows datapoints as circles in the curve
-                line.dataPointsRadius = 16F //layout for datapoints
-                line.thickness = 8 //Layout for datapoints
+//                line.color = Color.BLUE //or Color.rgb(0,80,100)
+//                //series.title = "Blodsukker" //Needed for creating legend described below
+//                line.isDrawDataPoints = true //Shows datapoints as circles in the curve
+//                line.dataPointsRadius = 16F //layout for datapoints
+//                line.thickness = 8 //Layout for datapoints
                 labelFormat(binding.graphOne, getPattern())
                 //graphOne.viewport.setMinX(line.lowestValueX)
 
-                lineNumber++
-            } else if (lineNumber == 1) {
-                line.color = Color.RED
+            } else if (i == 1) {
+//                line.color = Color.RED
                 graphOne.addSeries(line)
 //                        graphOne.viewport.setMaxX(line.highestValueX)
 //                        graphOne.viewport.isXAxisBoundsManual = true
-                lineNumber++
             } else {
                 val graphTwo = binding.graphTwo
                 graphTwo.addSeries(line)
-                line.color = Color.RED //or Color.rgb(0,80,100)
-                //series.title = "Blodsukker" //Needed for creating legend described below
-                line.isDrawDataPoints = true //Shows datapoints as circles in the curve
-                line.dataPointsRadius = 16F //layout for datapoints
-                line.thickness = 8 //Layout for datapoints
+//                line.color = Color.RED //or Color.rgb(0,80,100)
+//                //series.title = "Blodsukker" //Needed for creating legend described below
+//                line.isDrawDataPoints = true //Shows datapoints as circles in the curve
+//                line.dataPointsRadius = 16F //layout for datapoints
+//                line.thickness = 8 //Layout for datapoints
                 graphTwo.visibility = View.VISIBLE
                 labelFormat(binding.graphTwo, getPattern())
 
@@ -164,6 +168,8 @@ class DisplayGraph : Fragment() {
         //graph.title = "Kulhydrater"
         graphOne.titleTextSize = 90.0F
         graphOne.titleColor = Color.BLUE
+        graphOne.secondScale
+
 
         //Legend (used for displaying overview of curves)
         //graph.legendRenderer.isVisible = true
@@ -239,6 +245,7 @@ class DisplayGraph : Fragment() {
     private fun loadData(): ArrayList<LineGraphSeries<DataPoint>> {
         val dataList = dataViewModel.getInputList()
         val dataPoints = arrayOfNulls<Array<DataPoint?>>(dataList.size)
+        val lineData = dataViewModel.getLineData()
 
         val lineGraphSeriesList = ArrayList<LineGraphSeries<DataPoint>>(0)
 
@@ -250,6 +257,7 @@ class DisplayGraph : Fragment() {
                         (DataPoint(inputDTO.getInputTwoAsDate(), inputDTO.firstInput.toDouble()))
                     )
                 }
+                this.lineData.add(lineData[i])
                 lineGraphSeriesList.add(LineGraphSeries(dataPoints[i]))
             }
         }
