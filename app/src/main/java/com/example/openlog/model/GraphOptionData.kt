@@ -37,7 +37,7 @@ class GraphOptionData {
     fun getSelectedDates(): Array<Date?> {
         val firstDate = selectedDates[0]
         val secondDate = selectedDates[1]
-        val dayInMiliseconds = 86400000
+        val millisecondsInDay = 86400000
 
         //if only one day selected
 //        if (secondDate == null && firstDate != null) {

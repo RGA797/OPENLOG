@@ -66,7 +66,38 @@ class DisplayGraph : Fragment() {
 
     private fun getPattern(): String {
         val dates = dataViewModel.getCopySelectedDates()
+        val startDate = dates[0]
+        val endDate = dates[1]
+        var pattern = ""
+        val msInDay = 86400000
+        val buffer = msInDay/100
 
+
+        if (startDate != null && endDate != null) {
+            // create default "dd:HH" for when statement
+            when {
+                startDate.year != endDate.year -> {
+                    pattern = "yy:MM"
+                    if (endDate.time - startDate.time < (msInDay * 4 + buffer)) {
+                        pattern = addToPattern(pattern, "dd")
+                    }
+                }
+                startDate.month != endDate.month -> pattern = "MM:dd"
+                startDate.day != endDate.day -> pattern = "dd:HH"
+
+            }
+            if (pattern != "dd:HH") {
+                if (endDate.time - startDate.time < (msInDay * 3 + buffer))
+                    pattern = addToPattern(pattern, "HH")
+            }
+        }
+        return pattern
+    }
+
+    private fun addToPattern(pattern: String, addition: String): String {
+        if (pattern.isNotEmpty())
+        return "$pattern:$addition"
+        else return addition
 
     }
 
@@ -87,7 +118,7 @@ class DisplayGraph : Fragment() {
                 line.isDrawDataPoints = true //Shows datapoints as circles in the curve
                 line.dataPointsRadius = 16F //layout for datapoints
                 line.thickness = 8 //Layout for datapoints
-                labelFormat(binding.graphOne, "dd:HH")
+                labelFormat(binding.graphOne, getPattern())
                 //graphOne.viewport.setMinX(line.lowestValueX)
 
                 lineNumber++
@@ -106,7 +137,7 @@ class DisplayGraph : Fragment() {
                 line.dataPointsRadius = 16F //layout for datapoints
                 line.thickness = 8 //Layout for datapoints
                 graphTwo.visibility = View.VISIBLE
-                labelFormat(binding.graphTwo, "dd:HH")
+                labelFormat(binding.graphTwo, getPattern())
 
                 graphTwo.titleTextSize = 90.0F
                 graphTwo.titleColor = Color.BLUE
