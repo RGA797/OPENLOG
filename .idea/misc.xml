@@ -3,32 +3,34 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/drawable/background.xml" value="0.1" />
-        <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/dropdown_item.xml" value="0.175" />
         <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_blank.xml" value="0.17592592592592593" />
-        <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_display_graph.xml" value="0.2212962962962963" />
-        <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_forside.xml" value="0.1" />
+        <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_forside.xml" value="0.22" />
         <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_historik.xml" value="0.25" />
         <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_login.xml" value="0.22" />
+        <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_manuel_indtastning.xml" value="0.2115036231884058" />
         <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_opret_bruger.xml" value="0.33" />
-        <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_opret_profil.xml" value="0.1" />
+        <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_opret_profil.xml" value="0.2" />
         <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_profil.xml" value="0.33" />
         <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_status_bar__blodsukker.xml" value="0.20555555555555555" />
-        <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/menu/nav_menu.xml" value="0.13796296296296295" />
-        <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/menu/nav_menu_del.xml" value="0.1" />
-        <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/menu/nav_menu_displaygraph.xml" value="0.1" />
-        <entry key="..\:/Users/Tasty/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_display_graph.xml" value="0.2" />
-        <entry key="..\:/Users/Tasty/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_graph_options.xml" value="0.2" />
-        <entry key="..\:/Users/Tasty/AndroidStudioProjects/OPENLOG/app/src/main/res/menu/nav_menu.xml" value="0.6802218114602587" />
+        <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_voice_confirmation.xml" value="0.240063233965673" />
+        <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/menu/menu.xml" value="0.2611111111111111" />
+        <entry key="..\:/Users/Rachid Gaim Ahwaz/AndroidStudioProjects/OPENLOG/app/src/main/res/menu/nav_menu.xml" value="0.27175925925925926" />
+        <entry key="..\:/Users/Rachid/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_forside.xml" value="0.1" />
+        <entry key="..\:/Users/Rachid/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_manuel_indtastning.xml" value="0.10666666666666667" />
+        <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_forside.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_historik.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_forside.xml" value="0.12" />
+        <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_historik.xml" value="0.10666666666666667" />
         <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_login.xml" value="0.22" />
-        <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_opret_profil.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_profil.xml" value="0.10666666666666667" />
-        <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_status_bar__blodsukker.xml" value="0.1796875" />
+        <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_manuel_indtastning.xml" value="0.18" />
+        <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_opret_profil.xml" value="0.25" />
+        <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_profil.xml" value="0.22" />
+        <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_status_bar__blodsukker.xml" value="0.22" />
+        <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_status_bar__insulin.xml" value="0.1796875" />
+        <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_status_bar__kulhydrater.xml" value="0.1796875" />
+        <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/layout/fragment_voice_confirmation.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/Zeinu/AndroidStudioProjects/OPENLOG/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.19583333333333333" />
       </map>
