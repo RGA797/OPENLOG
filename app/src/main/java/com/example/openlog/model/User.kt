@@ -2,7 +2,8 @@ package com.example.openlog.model
 
 import com.google.firebase.auth.FirebaseUser
 
-//this class is meant to store who the current firebase user is and their email. values are set whenever someone is logged in.
+//this class is meant to store who the current firebase user is, and their email/username/age/gender. values are set whenever someone is logged in.
+//functions only consist of set and get.
 class User {
     private var fireBaseUser: FirebaseUser? = null
     private var email = ""

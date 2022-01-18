@@ -17,8 +17,7 @@ import com.example.openlog.model.CARB
 import com.example.openlog.model.INSULIN
 import java.util.*
 
-class GraphOption : Fragment() {
-
+class GraphOptions: Fragment() {
     private val dataViewModel: com.example.openlog.viewModel.DataViewModel by activityViewModels()
     private lateinit var binding: FragmentGraphOptionsBinding
 

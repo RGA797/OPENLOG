@@ -14,7 +14,7 @@ import com.example.openlog.viewModel.DataViewModel
 import java.util.*
 
 
-class manuelIndtastning : Fragment() {
+class ManuelIndtastning : Fragment() {
     private val dataViewModel: DataViewModel by activityViewModels()
     private lateinit var binding: FragmentManuelIndtastningBinding
     override fun onCreate(savedInstanceState: Bundle?) {

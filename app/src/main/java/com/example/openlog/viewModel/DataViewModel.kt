@@ -22,11 +22,10 @@ class DataViewModel: ViewModel() {
     //these are the two lists holding fetched database values, as lists of inputDTO's.
 
     //userDataList holds user data made when creating a user (gender and age)
-    var userDataList = ArrayList<InputDTO>(0)
+    var userDataList = ArrayList<DataDTO>(0)
 
-    //userInputList holds a list of list of user input made when logged in
-    // (in order, kulhydrat, insulin, blodsukker values, with dates)
-    var userInputList = arrayOfNulls<ArrayList<InputDTO>>(3)
+    //userInputList holds a list of list of user input made when logged in (in order, insulin, blodsukker, kulhydrat values, with dates)
+    var userInputList = arrayOfNulls<ArrayList<DataDTO>>(3)
 
     //currentUser livedata. not used atm.
     private val _currentUser = MutableLiveData(user.getFirebaseUser())
@@ -46,8 +45,8 @@ class DataViewModel: ViewModel() {
         get() = _currentGender
 
     //currentDataList livedata. not used atm.
-    private val _currentInputList = MutableLiveData(ArrayList<InputDTO>(0))
-    val currentDataList: MutableLiveData<ArrayList<InputDTO>>
+    private val _currentInputList = MutableLiveData(ArrayList<DataDTO>(0))
+    val currentDataList: MutableLiveData<ArrayList<DataDTO>>
         get() = _currentInputList
 
     //currentEmail livedata. used for greeting in viewbinding for forside fragment
@@ -110,7 +109,7 @@ class DataViewModel: ViewModel() {
             //if kulhydrat == true
             if (graphOptionData.categorySelected(CARB)) {
                 data.updateUserData(firebaseUser, "kulhydrat", startDate, endDate) {
-                    userInputList[CARB] = it as ArrayList<InputDTO>
+                    userInputList[CARB] = it as ArrayList<DataDTO>
                     lineData[CARB] = LineData(CARB)
                 }
             }
@@ -118,7 +117,7 @@ class DataViewModel: ViewModel() {
             //if insulin == true (set true temporarily for testing)
             if (graphOptionData.categorySelected(INSULIN)) {
                 data.updateUserData(firebaseUser, "insulin", startDate, endDate) {
-                    userInputList[INSULIN] = it as ArrayList<InputDTO>
+                    userInputList[INSULIN] = it as ArrayList<DataDTO>
                     lineData[INSULIN] = LineData(INSULIN)
 
                 }
@@ -127,11 +126,11 @@ class DataViewModel: ViewModel() {
             //if blodsukker == true
             if (graphOptionData.categorySelected(BLOODSUGAR)) {
                 data.updateUserData(firebaseUser, "blodsukker", startDate, endDate) {
-                    userInputList[BLOODSUGAR] = it as ArrayList<InputDTO>
+                    userInputList[BLOODSUGAR] = it as ArrayList<DataDTO>
                     lineData[BLOODSUGAR] = LineData(BLOODSUGAR)
                 }
             }
-            // TODO : find better way to prevent attempting to use data before it has been fetched
+            // TODO : find better way to prevent attempting to use date before it has been fetched
             Thread.sleep(250)
         }
         graphOptionData.resetDatesAndCategories()
@@ -142,7 +141,7 @@ class DataViewModel: ViewModel() {
     fun updateUserData () {
         data.updateUserData(getCurrentFirebaseUser()!!,"køn", null, null){
             resetUserData()
-            userDataList = it as ArrayList<InputDTO>
+            userDataList = it as ArrayList<DataDTO>
             if (userDataList.size != 0) {
                 user.setUsername(userDataList.get(1).getInputOneAsString())
                 _currentUsername.value = user.getUsername()
@@ -154,6 +153,7 @@ class DataViewModel: ViewModel() {
         }
     }
 
+    //resets current username gender and age to empty strings
     fun resetUserData(){
         _currentUsername.value = ""
         _currentGender.value = ""
@@ -167,7 +167,7 @@ class DataViewModel: ViewModel() {
     }
 
     //returns userDataList
-    fun getDataList(): ArrayList<InputDTO> {
+    fun getDataList(): ArrayList<DataDTO> {
         return userDataList
     }
 
@@ -181,10 +181,13 @@ class DataViewModel: ViewModel() {
         return graphOptionData.categorySelected(index)
     }
 
+    //sets the selected date
     fun setDateSelected(date: Date) {
         graphOptionData.setDateSelected(date)
     }
 
+    //returns userinputlist
+    fun getInputList(): Array<ArrayList<DataDTO>?> {
     fun getCopySelectedDates(): Array<Date?> {
         return graphOptionData.getCopySelectedDates()
     }

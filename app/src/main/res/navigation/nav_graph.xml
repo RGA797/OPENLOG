@@ -67,7 +67,7 @@
     </fragment>
     <fragment
         android:id="@+id/manuelIndtastning"
-        android:name="com.example.openlog.view.manuelIndtastning"
+        android:name="com.example.openlog.view.ManuelIndtastning"
         android:label="fragment_manuel_indtastning"
         tools:layout="@layout/fragment_manuel_indtastning" >
         <action
@@ -81,7 +81,7 @@
             tools:layout="@layout/fragment_info" />
     <fragment
             android:id="@+id/graphOption"
-            android:name="com.example.openlog.view.GraphOption"
+            android:name="com.example.openlog.view.GraphOptions"
             android:label="GraphOptions">
         <action
                 android:id="@+id/navigateFromGraphOptionsToGraph"
