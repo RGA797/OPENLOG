@@ -6,13 +6,8 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore
 import android.view.*
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -21,7 +16,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import com.example.openlog.R
 import com.jjoe64.graphview.GridLabelRenderer
@@ -33,17 +27,10 @@ import com.example.openlog.model.LineData
 import com.example.openlog.viewModel.DataViewModel
 import com.jjoe64.graphview.DefaultLabelFormatter
 import com.jjoe64.graphview.GraphView
-import java.io.File
-import java.io.File.separator
-import java.io.FileOutputStream
-import java.io.OutputStream
 import com.jjoe64.graphview.SecondScale
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.time.Duration.Companion.milliseconds
-import kotlin.time.Duration.Companion.seconds
-import kotlin.time.seconds
 
 
 class DisplayGraph : Fragment() {
@@ -55,6 +42,8 @@ class DisplayGraph : Fragment() {
         super.onCreate(savedInstanceState)
     }
     private var lineData = ArrayList<LineData?>()
+    private var userInputList = arrayOfNulls<ArrayList<DataDTO>>(3)
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,6 +53,7 @@ class DisplayGraph : Fragment() {
 
         //Obtains graph from layout
         binding = FragmentDisplayGraphBinding.inflate(inflater, container, false)
+        userInputList = dataViewModel.getInputList()
 
         return binding.root
     }
@@ -106,22 +96,20 @@ class DisplayGraph : Fragment() {
         val msInDay = 86400000
         val buffer = msInDay/100
 
-        if (startDate != null && endDate != null) {
-            when {
-                startDate.year != endDate.year -> {
-                    pattern = "yy:MM"
-                    if (endDate.time - startDate.time < (msInDay * 24 + buffer)) {
-                        pattern = addToPattern(pattern, "dd")
-                    }
+        when {
+            startDate.year != endDate.year -> {
+                pattern = "yy:MM"
+                if (endDate.time - startDate.time < (msInDay * 24 + buffer)) {
+                    pattern = addToPattern(pattern, "dd")
                 }
-                startDate.month != endDate.month -> pattern = "MM:dd"
-                startDate.date != endDate.date -> pattern = "dd:HH"
+            }
+            startDate.month != endDate.month -> pattern = "MM:dd"
+            startDate.date != endDate.date -> pattern = "dd:HH"
 
-            }
-            if (pattern != "dd:HH") {
-                if (endDate.time - startDate.time < (msInDay * 3 + buffer))
-                    pattern = addToPattern(pattern, "HH")
-            }
+        }
+        if (pattern != "dd:HH") {
+            if (endDate.time - startDate.time < (msInDay * 3 + buffer))
+                pattern = addToPattern(pattern, "HH")
         }
         return pattern
     }
@@ -130,6 +118,24 @@ class DisplayGraph : Fragment() {
         if (pattern.isNotEmpty())
         return "$pattern:$addition"
         else return addition
+    }
+
+    private fun getLabelFormatRange(): Array<Date> {
+        var startDate = Date(250, 1, 1, 1, 1, 1)
+        var endDate = Date(1, 1, 1, 1, 1, 1)
+
+        for (list in userInputList) {
+            if (!list.isNullOrEmpty()) {
+                if (list[0].getInputTwoAsDate().before(startDate)) {
+                    startDate = list[0].getInputTwoAsDate()
+                }
+
+                if (list[list.size - 1].getInputTwoAsDate().after(endDate)) {
+                    endDate = list[list.size - 1].getInputTwoAsDate()
+                }
+            }
+        }
+        return arrayOf(startDate, endDate)
     }
 
     private fun setOptions() {
@@ -241,10 +247,8 @@ class DisplayGraph : Fragment() {
         graphTwo.viewport.isXAxisBoundsManual = true
     }
 
-
-
     private fun loadData(): ArrayList<LineGraphSeries<DataPoint>> {
-        val dataList = dataViewModel.getInputList()
+        val dataList = userInputList
         val dataPoints = arrayOfNulls<Array<DataPoint?>>(dataList.size)
         val lineData = dataViewModel.getLineData()
 
@@ -358,5 +362,4 @@ class DisplayGraph : Fragment() {
 
         return cs
     }
-
 }
