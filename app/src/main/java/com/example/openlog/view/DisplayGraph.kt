@@ -277,6 +277,7 @@ class DisplayGraph : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    //shares the shown graphs
     fun onDelDropdown() {
         if (activity?.let {
                 ContextCompat.checkSelfPermission(
@@ -339,7 +340,7 @@ class DisplayGraph : Fragment() {
     fun combineImages(
         c: Bitmap,
         s: Bitmap
-    ): Bitmap? { // can add a 3rd parameter 'String loc' if you want to save the new image - left some code to do that at the bottom
+    ): Bitmap? {
         var cs: Bitmap? = null
         val width: Int
         var height = 0
