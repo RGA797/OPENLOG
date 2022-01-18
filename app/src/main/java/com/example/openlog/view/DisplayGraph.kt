@@ -127,6 +127,7 @@ class DisplayGraph : Fragment() {
                     graphOne.visibility = View.VISIBLE
                     // this will draw a border aroung graph and will also show both axis
                     graphOne.viewport.setDrawBorder(true)
+                    lineData[i]?.let { graphOne.gridLabelRenderer.verticalLabelsColor = it.color }
                 }
                 1 -> {
                     val canvas = Canvas()
@@ -134,7 +135,7 @@ class DisplayGraph : Fragment() {
 //                    graphOne.secondScale.verticalAxisTitle = "haha"
                     setSecondScaleYAxis(line, graphOne.secondScale)
                     graphOne.secondScale.addSeries(line)
-//                    graphOne.addSeries(line)
+                    lineData[i]?.let { graphOne.gridLabelRenderer.verticalLabelsSecondScaleColor = it.color }
                 }
                 2 -> {
                     val graphTwo = binding.graphTwo
@@ -157,6 +158,9 @@ class DisplayGraph : Fragment() {
                     gridLabel.verticalAxisTitleTextSize = 25F
 
                     gridLabel.verticalLabelsSecondScaleColor
+
+                    lineData[i]?.let { graphTwo.gridLabelRenderer.verticalLabelsColor = it.color }
+
                 }
             }
         }
