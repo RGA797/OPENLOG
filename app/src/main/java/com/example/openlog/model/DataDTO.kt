@@ -3,10 +3,10 @@ package com.example.openlog.model
 import java.util.*
 
 //This is a class meant to consist of the two key value pairs, fetched from a firebase database.
-class InputDTO(var firstInput: String, var secondInput: String) {
+class DataDTO(var firstInput: String, var secondInput: String) {
     val dateConverter = DateConverter()
 
-    //gets the first value (ex, a number for age, insulin, kulhydrat, blodsukker etc.)
+    //gets the first value (ex, a number for a users' age, insulin, kulhydrat, blodsukker etc.)
     fun getInputOneAsString(): String {
         return firstInput
     }

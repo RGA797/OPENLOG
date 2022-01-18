@@ -12,6 +12,9 @@ class Data {
     var input: String? = ""
     val database = FirebaseDatabase.getInstance("https://openlog-a2b24-default-rtdb.europe-west1.firebasedatabase.app/")
 
+    //Data has an instance of DateConverter. used to search for input in date range.
+    var dateConverter = DateConverter()
+
     //changes instance variable input
     fun changeInput(input: String) {
         this.input = input
@@ -67,9 +70,9 @@ class Data {
 
     //this function handles the data fetching. for a given date range, firebase user, and type, we give a list of inputDTO.
     //due to firebase being an asynchronous database, we use callback. be aware that values are not immediately given.
-    fun updateUserData(firebaseUser: FirebaseUser, type: String, startDate: Date?, endDate: Date?, callback: (result: List<InputDTO>) -> Unit) {
+    fun updateUserData(firebaseUser: FirebaseUser, type: String, startDate: Date?, endDate: Date?, callback: (result: List<DataDTO>) -> Unit) {
         val myRef = database.getReference("users").child(firebaseUser.uid)
-        val dataList = mutableListOf<InputDTO>()
+        val dataList = mutableListOf<DataDTO>()
         val valueEventListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (ds in dataSnapshot.children) {
@@ -77,9 +80,9 @@ class Data {
                         if (type == "blodsukker" || type == "insulin" || type == "kulhydrat"){
                             val timeData = ds.child("time").getValue(String::class.java)
                             val typeData = ds.child(type).getValue(String::class.java)
-                            if(dateInRange(timeData!!, startDate!!, endDate!!)){
+                            if(dateConverter.dateInRange(timeData!!, startDate!!, endDate!!)){
                                 timeData
-                                val inputDTO  = InputDTO(typeData!!,timeData)
+                                val inputDTO  = DataDTO(typeData!!,timeData)
                                 dataList.add(inputDTO)
                             }
                         }
@@ -88,8 +91,8 @@ class Data {
                             val alderData = ds.child("alder").getValue(String::class.java)
                             val navnData = ds.child("navn").getValue(String::class.java)
 
-                            val inputDTO_koenAlder = InputDTO(koenData!!, alderData!!)
-                            val inputDTO_navn = InputDTO(navnData!!, " ")
+                            val inputDTO_koenAlder = DataDTO(koenData!!, alderData!!)
+                            val inputDTO_navn = DataDTO(navnData!!, " ")
                             dataList.add(inputDTO_koenAlder)
                             dataList.add(inputDTO_navn)
                         }
@@ -101,43 +104,5 @@ class Data {
             }
         }
         myRef.addValueEventListener(valueEventListener)
-    }
-
-    //checks weather a date is in range of two other date
-    fun dateInRange(dateString: String, startDate: Date, endDate: Date): Boolean{
-        val date = convertStringToDate(dateString)
-        return (date.after(startDate) && date.before(endDate))
-    }
-
-    //converts a String to Date. this is used when inputDto dates need to be
-    // converted back into Dates for comparison, as they are stored as strings in the database.
-    fun convertStringToDate(time: String): Date {
-
-        val stringList = time.split(" ")
-        val day = stringList[2].toInt()
-        val month = when(stringList[1]){
-            "Jan" -> 0
-            "Feb" -> 1
-            "Mar" -> 2
-            "Apr" -> 3
-            "May" -> 4
-            "Jun" -> 5
-            "Jul" -> 6
-            "Aug" -> 7
-            "Sep" -> 8
-            "Oct" -> 9
-            "Now" -> 10
-            "Dec" -> 11
-            else -> {0}
-        }
-        val hourOfDay = stringList[3].split(":")[0].toInt()
-        val minuteOfDay = stringList[3].split(":")[1].toInt()
-        val seconOfDay = stringList[3].split(":")[2].toInt()
-
-        val year = stringList[5].toInt()
-        val date = Calendar.getInstance()
-        date.set(year, month, day, hourOfDay, minuteOfDay, seconOfDay)
-
-        return date.time
     }
 }
