@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.openlog.model.*
 import com.google.firebase.auth.FirebaseUser
-import com.jjoe64.graphview.GraphView
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -17,13 +16,15 @@ class DataViewModel: ViewModel() {
     private var user = User()
     private var data = Data()
     private var graphOptionData = GraphOptionData()
+    private var lineData = arrayOfNulls<LineData>(3)
     private var graphData = GraphData()
     //these are the two lists holding fetched database values, as lists of inputDTO's.
 
     //userDataList holds user data made when creating a user (gender and age)
     var userDataList = ArrayList<InputDTO>(0)
 
-    //userInputList holds a list of list of user input made when logged in (in order, insulin, blodsukker, kulhydrat values, with dates)
+    //userInputList holds a list of list of user input made when logged in
+    // (in order, kulhydrat, insulin, blodsukker values, with dates)
     var userInputList = arrayOfNulls<ArrayList<InputDTO>>(3)
 
     //currentUser livedata. not used atm.
@@ -102,10 +103,15 @@ class DataViewModel: ViewModel() {
         val startDate = graphOptionData.getSelectedDates()[0]
         val endDate = graphOptionData.getSelectedDates()[1]
 
+        resetUseInputList()
+
         if (startDate != null && endDate != null) {
             //if kulhydrat == true
             if (graphOptionData.categorySelected(CARB)) {
                 data.updateUserData(firebaseUser, "kulhydrat", startDate, endDate) {
+                    _currentDataList.value = it as ArrayList<InputDTO>
+                    userInputList[CARB] = it
+                    lineData[CARB] = LineData(CARB)
                     userInputList[CARB] = it as ArrayList<InputDTO>
                 }
             }
@@ -113,6 +119,9 @@ class DataViewModel: ViewModel() {
             //if insulin == true (set true temporarily for testing)
             if (graphOptionData.categorySelected(INSULIN)) {
                 data.updateUserData(firebaseUser, "insulin", startDate, endDate) {
+                    _currentDataList.value = it as ArrayList<InputDTO>
+                    userInputList[INSULIN] = it
+                    lineData[INSULIN] = LineData(INSULIN)
                     userInputList[INSULIN] = it as ArrayList<InputDTO>
                 }
             }
@@ -120,10 +129,13 @@ class DataViewModel: ViewModel() {
             //if blodsukker == true
             if (graphOptionData.categorySelected(BLOODSUGAR)) {
                 data.updateUserData(firebaseUser, "blodsukker", startDate, endDate) {
+                    _currentDataList.value = it as ArrayList<InputDTO>
+                    userInputList[BLOODSUGAR] = it
+                    lineData[BLOODSUGAR] = LineData(BLOODSUGAR)
                     userInputList[BLOODSUGAR] = it as ArrayList<InputDTO>
                 }
             }
-            // TODO : find better way to prevent attempting to use date before it has been fetched
+            // TODO : find better way to prevent attempting to use data before it has been fetched
             Thread.sleep(250)
         }
         graphOptionData.resetDatesAndCategories()
@@ -152,6 +164,12 @@ class DataViewModel: ViewModel() {
         _currentAge.value = ""
     }
 
+    private fun resetUseInputList() {
+        for ((index, item) in userInputList.withIndex()) {
+            userInputList[index] = null
+        }
+    }
+
     //returns userDataList
     fun getDataList(): ArrayList<InputDTO> {
         return userDataList
@@ -171,7 +189,15 @@ class DataViewModel: ViewModel() {
         graphOptionData.setDateSelected(date)
     }
 
+    fun getCopySelectedDates(): Array<Date?> {
+        return graphOptionData.getCopySelectedDates()
+    }
+
     fun getInputList(): Array<ArrayList<InputDTO>?> {
         return userInputList
+    }
+
+    fun getLineData(): Array<LineData?> {
+        return lineData
     }
 }
