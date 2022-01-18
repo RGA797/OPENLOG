@@ -12,9 +12,9 @@
         tools:layout="@layout/activity_main" />
 
     <fragment
-        android:id="@+id/status_bar_Blodsukker"
+        android:id="@+id/DisplayGraph"
         android:name="com.example.openlog.view.DisplayGraph"
-        android:label="fragment_status_bar__blodsukker"
+        android:label="DisplayGraph"
         tools:layout="@layout/fragment_display_graph" />
     <fragment
         android:id="@+id/Login"
@@ -45,10 +45,10 @@
                 app:destination="@id/fragment_info2" />
         <action
                 android:id="@+id/action_forside_to_graphOption"
-                app:destination="@id/graphOption" />
+                app:destination="@id/GraphOptions" />
         <action
                 android:id="@+id/navigateFromFrontpageToGraphOptions"
-                app:destination="@id/graphOption" />
+                app:destination="@id/GraphOptions" />
 
     </fragment>
     <fragment
@@ -72,7 +72,7 @@
         tools:layout="@layout/fragment_manuel_indtastning" >
         <action
                 android:id="@+id/navigateFromManualInputToGraphOptions"
-                app:destination="@id/graphOption" />
+                app:destination="@id/GraphOptions" />
     </fragment>
     <fragment
             android:id="@+id/fragment_info2"
@@ -80,11 +80,11 @@
             android:label="fragment_info"
             tools:layout="@layout/fragment_info" />
     <fragment
-            android:id="@+id/graphOption"
+            android:id="@+id/GraphOptions"
             android:name="com.example.openlog.view.GraphOptions"
             android:label="GraphOptions">
         <action
                 android:id="@+id/navigateFromGraphOptionsToGraph"
-                app:destination="@id/status_bar_Blodsukker" />
+                app:destination="@id/DisplayGraph" />
     </fragment>
 </navigation>
