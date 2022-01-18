@@ -17,6 +17,7 @@ import com.example.openlog.model.LineData
 import com.example.openlog.viewModel.DataViewModel
 import com.jjoe64.graphview.DefaultLabelFormatter
 import com.jjoe64.graphview.GraphView
+import com.jjoe64.graphview.SecondScale
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -120,7 +121,7 @@ class DisplayGraph : Fragment() {
             setLineOptions(line, i)
             when (i) {
                 0 -> {
-                    graphOne.getGridLabelRenderer().setHighlightZeroLines(false);
+                    graphOne.gridLabelRenderer.isHighlightZeroLines = false;
                     graphOne.addSeries(line)
                     labelFormat(binding.graphOne, getPattern())
                     graphOne.visibility = View.VISIBLE
@@ -128,10 +129,12 @@ class DisplayGraph : Fragment() {
                     graphOne.viewport.setDrawBorder(true)
                 }
                 1 -> {
-                    graphOne.addSeries(line)
                     val canvas = Canvas()
                     line.draw(graphOne, canvas, true)
-//                    graphOne.secondScale.verticalAxisTitle = "test"
+//                    graphOne.secondScale.verticalAxisTitle = "haha"
+                    setSecondScaleYAxis(line, graphOne.secondScale)
+                    graphOne.secondScale.addSeries(line)
+//                    graphOne.addSeries(line)
                 }
                 2 -> {
                     val graphTwo = binding.graphTwo
@@ -204,6 +207,11 @@ class DisplayGraph : Fragment() {
 //        gridLabel.verticalAxisTitleTextSize = 25F
 //
 //        gridLabel.verticalLabelsSecondScaleColor
+    }
+
+    private fun setSecondScaleYAxis(line: LineGraphSeries<DataPoint>, secondScale: SecondScale) {
+        secondScale.setMinY(line.lowestValueY)
+        secondScale.setMaxY(line.highestValueY)
     }
 
     private fun getXAxisRange(lineGraphSeriesList: ArrayList<LineGraphSeries<DataPoint>>): Array<Double>  {
