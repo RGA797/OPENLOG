@@ -12,6 +12,7 @@ import com.jjoe64.graphview.GridLabelRenderer
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import com.example.openlog.databinding.FragmentDisplayGraphBinding
+import com.example.openlog.model.InputDTO
 import com.example.openlog.model.LineData
 import com.example.openlog.viewModel.DataViewModel
 import com.jjoe64.graphview.DefaultLabelFormatter
@@ -205,6 +206,8 @@ class DisplayGraph : Fragment() {
         graphTwo.viewport.setMaxX(range[1])
         graphTwo.viewport.isXAxisBoundsManual = true
     }
+
+
 
     private fun loadData(): ArrayList<LineGraphSeries<DataPoint>> {
         val dataList = dataViewModel.getInputList()
