@@ -2,7 +2,6 @@ package com.example.openlog.view
 
 import android.annotation.SuppressLint
 import android.graphics.Canvas
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -21,9 +20,6 @@ import com.jjoe64.graphview.SecondScale
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.time.Duration.Companion.milliseconds
-import kotlin.time.Duration.Companion.seconds
-import kotlin.time.seconds
 
 
 class DisplayGraph : Fragment() {
@@ -49,7 +45,6 @@ class DisplayGraph : Fragment() {
 
         setOptions()
     }
-
 
     // Sets the format of the label on the x-axis example "hh:mm:ss"
     private fun labelFormat(graph: GraphView, pattern: String) {
@@ -102,25 +97,16 @@ class DisplayGraph : Fragment() {
         else return addition
     }
 
-    private fun setLineOptions(line: LineGraphSeries<DataPoint>, index: Int) {
-        line.color = lineData[index]?.color!!  //or Color.rgb(0,80,100)
-        //series.title = "Blodsukker" //Needed for creating legend described below
-        line.isDrawDataPoints = true //Shows datapoints as circles in the curve
-        line.dataPointsRadius = 16F //layout for datapoints
-        line.thickness = 8 //Layout for datapoints
-    }
-
-
     private fun setOptions() {
         //Create curve/series for graph
         val lineGraphSeriesList = loadData()
         val graphOne = binding.graphOne
 
-
         for ((i, line) in lineGraphSeriesList.withIndex()) {
-            setLineOptions(line, i)
+            setLineSettings(line, i)
             when (i) {
                 0 -> {
+                    setGraphSettings(graphOne)
                     graphOne.gridLabelRenderer.isHighlightZeroLines = false;
                     graphOne.addSeries(line)
                     labelFormat(binding.graphOne, getPattern())
@@ -140,25 +126,10 @@ class DisplayGraph : Fragment() {
                 }
                 2 -> {
                     val graphTwo = binding.graphTwo
+                    setGraphSettings(graphTwo)
                     graphTwo.addSeries(line)
                     graphTwo.visibility = View.VISIBLE
                     labelFormat(binding.graphTwo, getPattern())
-
-                    graphTwo.titleTextSize = 90.0F
-                    graphTwo.titleColor = Color.BLUE
-
-                    //Legend (used for displaying overview of curves)
-                    //graph.legendRenderer.isVisible = true
-                    graphTwo.legendRenderer.align = com.jjoe64.graphview.LegendRenderer.LegendAlign.TOP
-
-                    //Axis titles
-                    val gridLabel = graphTwo.gridLabelRenderer as GridLabelRenderer
-                    //gridLabel.horizontalAxisTitle = "X Axis Title"
-                    gridLabel.horizontalAxisTitleTextSize = 50F
-                    //gridLabel.verticalAxisTitle = "Y Axis Title"
-                    gridLabel.verticalAxisTitleTextSize = 25F
-
-                    gridLabel.verticalLabelsSecondScaleColor
 
                     lineData[i]?.let { graphTwo.gridLabelRenderer.verticalLabelsColor = it.color }
                     graphTwo.gridLabelRenderer.setHumanRounding(false, true)
@@ -167,51 +138,37 @@ class DisplayGraph : Fragment() {
         }
 
         setXAxisRange(getXAxisRange(lineGraphSeriesList))
+    }
 
-        //Title of graph
-        //graph.title = "Kulhydrater"
-        graphOne.titleTextSize = 90.0F
-        graphOne.titleColor = Color.BLUE
-        graphOne.secondScale
+    private fun setLineSettings(line: LineGraphSeries<DataPoint>, index: Int) {
+        line.color = lineData[index]?.color!!  //or Color.rgb(0,80,100)
+        //series.title = "Blodsukker" //Needed for creating legend described below
+        line.isDrawDataPoints = true //Shows datapoints as circles in the curve
+        line.dataPointsRadius = 16F //layout for datapoints
+        line.thickness = 8 //Layout for datapoints
+    }
 
+    private fun setGraphSettings(graph: GraphView) {
+        graph.visibility = View.VISIBLE
+        labelFormat(binding.graphTwo, getPattern())
+
+        graph.titleTextSize = 90.0F
+//        graphTwo.titleColor = Color.BLUE
 
         //Legend (used for displaying overview of curves)
         //graph.legendRenderer.isVisible = true
-        graphOne.legendRenderer.align = com.jjoe64.graphview.LegendRenderer.LegendAlign.TOP
+//        graph.legendRenderer.align = com.jjoe64.graphview.LegendRenderer.LegendAlign.TOP
 
         //Axis titles
-        val gridLabel = graphOne.gridLabelRenderer as GridLabelRenderer
+        val gridLabel = graph.gridLabelRenderer as GridLabelRenderer
         //gridLabel.horizontalAxisTitle = "X Axis Title"
         gridLabel.horizontalAxisTitleTextSize = 50F
         //gridLabel.verticalAxisTitle = "Y Axis Title"
         gridLabel.verticalAxisTitleTextSize = 25F
 
         gridLabel.verticalLabelsSecondScaleColor
-//
 
-//        line.color = Color.RED //or Color.rgb(0,80,100)
-//        //series.title = "Blodsukker" //Needed for creating legend described below
-//        line.isDrawDataPoints = true //Shows datapoints as circles in the curve
-//        line.dataPointsRadius = 16F //layout for datapoints
-//        line.thickness = 8 //Layout for datapoints
-//        graphTwo.visibility = View.VISIBLE
-//        labelFormat(binding.graphTwo, "dd:HH")
-//
-//        graphTwo.titleTextSize = 90.0F
-//        graphTwo.titleColor = Color.BLUE
-//
-//        //Legend (used for displaying overview of curves)
-//        //graph.legendRenderer.isVisible = true
-//        graphTwo.legendRenderer.align = com.jjoe64.graphview.LegendRenderer.LegendAlign.TOP
-//
-//        //Axis titles
-//        val gridLabel = graphTwo.gridLabelRenderer as GridLabelRenderer
-//        //gridLabel.horizontalAxisTitle = "X Axis Title"
-//        gridLabel.horizontalAxisTitleTextSize = 50F
-//        //gridLabel.verticalAxisTitle = "Y Axis Title"
-//        gridLabel.verticalAxisTitleTextSize = 25F
-//
-//        gridLabel.verticalLabelsSecondScaleColor
+        graph.gridLabelRenderer.setHumanRounding(false, true)
     }
 
     private fun setSecondScaleYAxis(line: LineGraphSeries<DataPoint>, secondScale: SecondScale) {
