@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.openlog.model.*
 import com.google.firebase.auth.FirebaseUser
+import com.jjoe64.graphview.GraphView
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -109,30 +110,25 @@ class DataViewModel: ViewModel() {
             //if kulhydrat == true
             if (graphOptionData.categorySelected(CARB)) {
                 data.updateUserData(firebaseUser, "kulhydrat", startDate, endDate) {
-                    _currentDataList.value = it as ArrayList<InputDTO>
-                    userInputList[CARB] = it
-                    lineData[CARB] = LineData(CARB)
                     userInputList[CARB] = it as ArrayList<InputDTO>
+                    lineData[CARB] = LineData(CARB)
                 }
             }
 
             //if insulin == true (set true temporarily for testing)
             if (graphOptionData.categorySelected(INSULIN)) {
                 data.updateUserData(firebaseUser, "insulin", startDate, endDate) {
-                    _currentDataList.value = it as ArrayList<InputDTO>
-                    userInputList[INSULIN] = it
-                    lineData[INSULIN] = LineData(INSULIN)
                     userInputList[INSULIN] = it as ArrayList<InputDTO>
+                    lineData[INSULIN] = LineData(INSULIN)
+
                 }
             }
 
             //if blodsukker == true
             if (graphOptionData.categorySelected(BLOODSUGAR)) {
                 data.updateUserData(firebaseUser, "blodsukker", startDate, endDate) {
-                    _currentDataList.value = it as ArrayList<InputDTO>
-                    userInputList[BLOODSUGAR] = it
-                    lineData[BLOODSUGAR] = LineData(BLOODSUGAR)
                     userInputList[BLOODSUGAR] = it as ArrayList<InputDTO>
+                    lineData[BLOODSUGAR] = LineData(BLOODSUGAR)
                 }
             }
             // TODO : find better way to prevent attempting to use data before it has been fetched

@@ -65,8 +65,10 @@ class DisplayGraph : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val graph = binding.graphView
-        getData(graph)?.let { setOptions(graph, it) }
+        val graph = binding.graphOne
+
+        //getData(graph)?.let { setOptions(graph, it) }
+
         dataViewModel.setGraph(graph)
 
 
