@@ -37,27 +37,36 @@ class GraphOptionData {
     fun getSelectedDates(): Array<Date?> {
         val firstDate = selectedDates[0]
         val secondDate = selectedDates[1]
+        //86400000
         val millisecondsInDay = 86400000
-
-        //if only one day selected
-//        if (secondDate == null && firstDate != null) {
-//            secondDate = Date(firstDate.time+dayInMiliseconds)
-//        }
 
         if (firstDate != null && secondDate != null) {
             if (firstDate.after(secondDate)) {
                 selectedDates[0] = secondDate
                 selectedDates[1] = firstDate
             }
+        } else if (secondDate == null && firstDate != null) {  //if only one day selected
+            selectedDates[1] = Date(firstDate.time)
         }
+        //add 1 day to enddate to get from beginning of start date to end of end date
+        if (firstDate != null && secondDate != null)
+        selectedDates[1] = Date(selectedDates[1]?.time!!+millisecondsInDay)
+
+        if (selectedDates[0] != null)
         return selectedDates
+
+        else {
+            val dateOne = Date(1)
+            val dateTwo = Date(1000)
+            return arrayOf(dateOne, dateTwo)
+        }
     }
 
     // can cause problems since array is not reset
+    // (must find better solution to handling selected dates)
     fun getCopySelectedDates(): Array<Date?> {
         val firstDate = copySelectedDates[0]
         val secondDate = copySelectedDates[1]
-        val dayInMiliseconds = 86400000
 
         if (firstDate != null && secondDate != null) {
             if (firstDate.after(secondDate)) {
@@ -69,17 +78,13 @@ class GraphOptionData {
     }
 
     // resets selected dates and categories
-    // TODO : create a better way to reset selected dates
+    // TODO : create a better way to reset selected dates (currently causes bug when selecting single day)
     fun resetDatesAndCategories() {
-        val date = Calendar.getInstance()
-        
-        date.set(1, 1, 1, 1, 1, 1)
-        selectedDates[0] = date.time
-        date.set(1, 1, 1, 2, 1, 1)
-        selectedDates[1] = date.time
-        
+        selectedDates[0] = null
+        selectedDates[1] = null
         categoryArray[0] = false
         categoryArray[1] = false
         categoryArray[2] = false
+        isStartDate = true
     }
 }
