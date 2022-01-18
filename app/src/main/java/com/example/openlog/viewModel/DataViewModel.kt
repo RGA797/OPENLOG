@@ -187,12 +187,12 @@ class DataViewModel: ViewModel() {
     }
 
     //returns userinputlist
-    fun getInputList(): Array<ArrayList<DataDTO>?> {
+
     fun getCopySelectedDates(): Array<Date?> {
         return graphOptionData.getCopySelectedDates()
     }
 
-    fun getInputList(): Array<ArrayList<InputDTO>?> {
+    fun getInputList(): Array<ArrayList<DataDTO>?> {
         return userInputList
     }
 
