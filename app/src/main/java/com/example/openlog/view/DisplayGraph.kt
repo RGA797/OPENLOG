@@ -80,7 +80,7 @@ class DisplayGraph : Fragment() {
             when {
                 startDate.year != endDate.year -> {
                     pattern = "yy:MM"
-                    if (endDate.time - startDate.time < (msInDay * 4 + buffer)) {
+                    if (endDate.time - startDate.time < (msInDay * 24 + buffer)) {
                         pattern = addToPattern(pattern, "dd")
                     }
                 }
@@ -128,6 +128,7 @@ class DisplayGraph : Fragment() {
                     // this will draw a border aroung graph and will also show both axis
                     graphOne.viewport.setDrawBorder(true)
                     lineData[i]?.let { graphOne.gridLabelRenderer.verticalLabelsColor = it.color }
+                    graphOne.gridLabelRenderer.setHumanRounding(false, true)
                 }
                 1 -> {
                     val canvas = Canvas()
@@ -160,7 +161,7 @@ class DisplayGraph : Fragment() {
                     gridLabel.verticalLabelsSecondScaleColor
 
                     lineData[i]?.let { graphTwo.gridLabelRenderer.verticalLabelsColor = it.color }
-
+                    graphTwo.gridLabelRenderer.setHumanRounding(false, true)
                 }
             }
         }
