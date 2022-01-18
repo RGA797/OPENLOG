@@ -19,8 +19,9 @@
 
     <com.jjoe64.graphview.GraphView
             android:id="@+id/graphOne"
-            android:layout_width="350dp"
+            android:layout_width="275dp"
             android:layout_height="300dp"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
