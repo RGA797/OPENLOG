@@ -111,15 +111,12 @@ class DisplayGraph : Fragment() {
                     graphOne.addSeries(line)
                     labelFormat(binding.graphOne, getPattern())
                     graphOne.visibility = View.VISIBLE
-                    // this will draw a border aroung graph and will also show both axis
-                    graphOne.viewport.setDrawBorder(true)
                     lineData[i]?.let { graphOne.gridLabelRenderer.verticalLabelsColor = it.color }
                     graphOne.gridLabelRenderer.setHumanRounding(false, true)
                 }
                 1 -> {
                     val canvas = Canvas()
                     line.draw(graphOne, canvas, true)
-//                    graphOne.secondScale.verticalAxisTitle = "haha"
                     setSecondScaleYAxis(line, graphOne.secondScale)
                     graphOne.secondScale.addSeries(line)
                     lineData[i]?.let { graphOne.gridLabelRenderer.verticalLabelsSecondScaleColor = it.color }
@@ -141,7 +138,7 @@ class DisplayGraph : Fragment() {
     }
 
     private fun setLineSettings(line: LineGraphSeries<DataPoint>, index: Int) {
-        line.color = lineData[index]?.color!!  //or Color.rgb(0,80,100)
+        line.color = lineData[index]?.color!!
         //series.title = "Blodsukker" //Needed for creating legend described below
         line.isDrawDataPoints = true //Shows datapoints as circles in the curve
         line.dataPointsRadius = 16F //layout for datapoints
@@ -165,8 +162,8 @@ class DisplayGraph : Fragment() {
         gridLabel.horizontalAxisTitleTextSize = 50F
         //gridLabel.verticalAxisTitle = "Y Axis Title"
         gridLabel.verticalAxisTitleTextSize = 25F
-
-        gridLabel.verticalLabelsSecondScaleColor
+        // this will draw a border aroung graph and will also show both axis
+        graph.viewport.setDrawBorder(true)
 
         graph.gridLabelRenderer.setHumanRounding(false, true)
     }
