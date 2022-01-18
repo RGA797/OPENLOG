@@ -1,8 +1,10 @@
 package com.example.openlog.view
 
 import android.annotation.SuppressLint
+import android.content.ActivityNotFoundException
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -19,6 +21,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import com.example.openlog.R
 import com.jjoe64.graphview.GridLabelRenderer
@@ -66,11 +69,12 @@ class DisplayGraph : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val graph = binding.graphOne
+        val graph1 = binding.graphOne
+        val graph2 = binding.graphTwo
 
         //getData(graph)?.let { setOptions(graph, it) }
 
-        dataViewModel.setGraph(graph)
+        dataViewModel.setGraphs(graph1, graph2)
 
 
         setOptions()
@@ -274,19 +278,84 @@ class DisplayGraph : Fragment() {
     }
 
     fun onDelDropdown() {
-        if (activity?.let { ContextCompat.checkSelfPermission(it,android.Manifest.permission.WRITE_EXTERNAL_STORAGE) } == PackageManager.PERMISSION_DENIED) {
-            activity?.let { ActivityCompat.requestPermissions(it,arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),1 ) }
+        if (activity?.let {
+                ContextCompat.checkSelfPermission(
+                    it,
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+                )
+            } == PackageManager.PERMISSION_DENIED) {
+            activity?.let {
+                ActivityCompat.requestPermissions(
+                    it,
+                    arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                    1
+                )
+            }
         }
 
-        if (activity?.let { ContextCompat.checkSelfPermission(it,android.Manifest.permission.WRITE_EXTERNAL_STORAGE) } == PackageManager.PERMISSION_GRANTED) {
-            val graph = dataViewModel.getGraph()
-            graph?.setBackgroundColor(resources.getColor(R.color.white));
-            graph?.takeSnapshotAndShare(activity, "Graph snapshot", "Del!")
-        }
+        if (activity?.let { ContextCompat.checkSelfPermission(it, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)} == PackageManager.PERMISSION_GRANTED) {
+            val graph_one = dataViewModel.getGraphOne()
+            graph_one?.setBackgroundColor(resources.getColor(R.color.white))
+            val graph_two = dataViewModel.getGraphTwo()
+            graph_two?.setBackgroundColor(resources.getColor(R.color.white))
 
-        else{
-            Toast.makeText(context, "Du mangler tilladelse til at dele", Toast.LENGTH_SHORT).show()
+            var bitmap: Bitmap? = null
+
+            if (graph_one?.isVisible == true && graph_two?.isVisible == true){
+                bitmap = graph_one.takeSnapshot()?.let { graph_two.takeSnapshot()?.let { it1 -> combineImages(it, it1) } }
+            }
+
+            else if( graph_one?.isVisible == true){
+                bitmap = graph_one.takeSnapshot()
+            }
+
+            if (bitmap == null){
+                Toast.makeText(context, "Der er intet at dele", Toast.LENGTH_SHORT).show()
+            }
+
+            if (bitmap != null){
+                shareImage(bitmap)
+            }
         }
+    }
+
+
+    //not made by us!! taken from graphview.takeSnapshotAndShare, and modified: https://github.com/jjoe64/GraphView/blob/master/src/main/java/com/jjoe64/graphview/GraphView.java
+    fun shareImage(bitmap: Bitmap){
+        val path: String = MediaStore.Images.Media.insertImage(context!!.contentResolver, bitmap, "Graph snapshot", null) ?: // most likely a security problem
+        throw SecurityException("Could not get path from MediaStore. Please check permissions.")
+        val i = Intent(Intent.ACTION_SEND)
+        i.type = "image/*"
+        i.putExtra(Intent.EXTRA_STREAM, Uri.parse(path))
+        try {
+            context!!.startActivity(Intent.createChooser(i, "Del!"))
+        } catch (ex: ActivityNotFoundException) {
+            ex.printStackTrace()
+        }
+    }
+
+
+    //not made by us. taken from https://stackoverflow.com/questions/4863518/combining-two-bitmap-image-side-by-side/4863551
+    fun combineImages(
+        c: Bitmap,
+        s: Bitmap
+    ): Bitmap? { // can add a 3rd parameter 'String loc' if you want to save the new image - left some code to do that at the bottom
+        var cs: Bitmap? = null
+        val width: Int
+        var height = 0
+        if (c.width > s.width) {
+            width = c.width + s.width
+            height = c.height
+        } else {
+            width = s.width + s.width
+            height = c.height
+        }
+        cs = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        val comboImage = Canvas(cs)
+        comboImage.drawBitmap(c, 0f, 0f, null)
+        comboImage.drawBitmap(s, c.width.toFloat(), 0f, null)
+
+        return cs
     }
 
 }

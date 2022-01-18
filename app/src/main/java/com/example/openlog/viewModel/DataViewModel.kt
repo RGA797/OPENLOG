@@ -67,12 +67,16 @@ class DataViewModel: ViewModel() {
         _currentUser.value = user.getFirebaseUser()
     }
 
-    fun setGraph(graph: GraphView){
-        graphData.setGraphData(graph)
+    fun setGraphs(graph_one: GraphView, graph_two: GraphView){
+        graphData.setGraphData(graph_one, graph_two)
     }
 
-    fun getGraph(): GraphView? {
-        return graphData.getGraphData()
+    fun getGraphOne(): GraphView? {
+        return graphData.getGraphOne()
+    }
+
+    fun getGraphTwo(): GraphView? {
+        return graphData.getGraphTwo()
     }
 
     //changes the current input. used to store input of speech recognition. does not save in database
