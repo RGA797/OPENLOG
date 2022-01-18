@@ -25,6 +25,7 @@ import com.jjoe64.graphview.GridLabelRenderer
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import com.example.openlog.databinding.FragmentDisplayGraphBinding
+import com.example.openlog.model.DataDTO
 import com.example.openlog.model.LineData
 import com.example.openlog.viewModel.DataViewModel
 import com.jjoe64.graphview.DefaultLabelFormatter
@@ -127,63 +128,36 @@ class DisplayGraph : Fragment() {
         else return addition
     }
 
-    private fun setLineOptions(line: LineGraphSeries<DataPoint>, index: Int) {
-        line.color = lineData[index]?.color!!  //or Color.rgb(0,80,100)
-        //series.title = "Blodsukker" //Needed for creating legend described below
-        line.isDrawDataPoints = true //Shows datapoints as circles in the curve
-        line.dataPointsRadius = 16F //layout for datapoints
-        line.thickness = 8 //Layout for datapoints
-    }
-
-
     private fun setOptions() {
         //Create curve/series for graph
         val lineGraphSeriesList = loadData()
         val graphOne = binding.graphOne
 
-
         for ((i, line) in lineGraphSeriesList.withIndex()) {
-            setLineOptions(line, i)
+            setLineSettings(line, i)
             when (i) {
                 0 -> {
+                    setGraphSettings(graphOne)
                     graphOne.gridLabelRenderer.isHighlightZeroLines = false;
                     graphOne.addSeries(line)
                     labelFormat(binding.graphOne, getPattern())
                     graphOne.visibility = View.VISIBLE
-                    // this will draw a border aroung graph and will also show both axis
-                    graphOne.viewport.setDrawBorder(true)
                     lineData[i]?.let { graphOne.gridLabelRenderer.verticalLabelsColor = it.color }
                     graphOne.gridLabelRenderer.setHumanRounding(false, true)
                 }
                 1 -> {
                     val canvas = Canvas()
                     line.draw(graphOne, canvas, true)
-//                    graphOne.secondScale.verticalAxisTitle = "haha"
                     setSecondScaleYAxis(line, graphOne.secondScale)
                     graphOne.secondScale.addSeries(line)
                     lineData[i]?.let { graphOne.gridLabelRenderer.verticalLabelsSecondScaleColor = it.color }
                 }
                 2 -> {
                     val graphTwo = binding.graphTwo
+                    setGraphSettings(graphTwo)
                     graphTwo.addSeries(line)
                     graphTwo.visibility = View.VISIBLE
                     labelFormat(binding.graphTwo, getPattern())
-
-                    graphTwo.titleTextSize = 90.0F
-                    graphTwo.titleColor = Color.BLUE
-
-                    //Legend (used for displaying overview of curves)
-                    //graph.legendRenderer.isVisible = true
-                    graphTwo.legendRenderer.align = com.jjoe64.graphview.LegendRenderer.LegendAlign.TOP
-
-                    //Axis titles
-                    val gridLabel = graphTwo.gridLabelRenderer as GridLabelRenderer
-                    //gridLabel.horizontalAxisTitle = "X Axis Title"
-                    gridLabel.horizontalAxisTitleTextSize = 50F
-                    //gridLabel.verticalAxisTitle = "Y Axis Title"
-                    gridLabel.verticalAxisTitleTextSize = 25F
-
-                    gridLabel.verticalLabelsSecondScaleColor
 
                     lineData[i]?.let { graphTwo.gridLabelRenderer.verticalLabelsColor = it.color }
                     graphTwo.gridLabelRenderer.setHumanRounding(false, true)
@@ -192,26 +166,37 @@ class DisplayGraph : Fragment() {
         }
 
         setXAxisRange(getXAxisRange(lineGraphSeriesList))
+    }
 
-        //Title of graph
-        //graph.title = "Kulhydrater"
-        graphOne.titleTextSize = 90.0F
-        graphOne.titleColor = Color.BLUE
-        graphOne.secondScale
+    private fun setLineSettings(line: LineGraphSeries<DataPoint>, index: Int) {
+        line.color = lineData[index]?.color!!
+        //series.title = "Blodsukker" //Needed for creating legend described below
+        line.isDrawDataPoints = true //Shows datapoints as circles in the curve
+        line.dataPointsRadius = 16F //layout for datapoints
+        line.thickness = 8 //Layout for datapoints
+    }
 
+    private fun setGraphSettings(graph: GraphView) {
+        graph.visibility = View.VISIBLE
+        labelFormat(binding.graphTwo, getPattern())
+
+        graph.titleTextSize = 90.0F
+//        graphTwo.titleColor = Color.BLUE
 
         //Legend (used for displaying overview of curves)
         //graph.legendRenderer.isVisible = true
-        graphOne.legendRenderer.align = com.jjoe64.graphview.LegendRenderer.LegendAlign.TOP
+//        graph.legendRenderer.align = com.jjoe64.graphview.LegendRenderer.LegendAlign.TOP
 
         //Axis titles
-        val gridLabel = graphOne.gridLabelRenderer as GridLabelRenderer
+        val gridLabel = graph.gridLabelRenderer as GridLabelRenderer
         //gridLabel.horizontalAxisTitle = "X Axis Title"
         gridLabel.horizontalAxisTitleTextSize = 50F
         //gridLabel.verticalAxisTitle = "Y Axis Title"
         gridLabel.verticalAxisTitleTextSize = 25F
+        // this will draw a border aroung graph and will also show both axis
+        graph.viewport.setDrawBorder(true)
 
-        gridLabel.verticalLabelsSecondScaleColor
+        graph.gridLabelRenderer.setHumanRounding(false, true)
     }
 
     private fun setSecondScaleYAxis(line: LineGraphSeries<DataPoint>, secondScale: SecondScale) {
@@ -251,6 +236,8 @@ class DisplayGraph : Fragment() {
         graphTwo.viewport.setMaxX(range[1])
         graphTwo.viewport.isXAxisBoundsManual = true
     }
+
+
 
     private fun loadData(): ArrayList<LineGraphSeries<DataPoint>> {
         val dataList = dataViewModel.getInputList()
