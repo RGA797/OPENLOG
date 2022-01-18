@@ -103,7 +103,7 @@ class DataViewModel: ViewModel() {
         val startDate = graphOptionData.getSelectedDates()[0]
         val endDate = graphOptionData.getSelectedDates()[1]
 
-        resetUseInputList()
+        resetUserInputList()
 
         if (startDate != null && endDate != null) {
             //if kulhydrat == true
@@ -160,7 +160,7 @@ class DataViewModel: ViewModel() {
         _currentAge.value = ""
     }
 
-    private fun resetUseInputList() {
+    private fun resetUserInputList() {
         for ((index, item) in userInputList.withIndex()) {
             userInputList[index] = null
         }
