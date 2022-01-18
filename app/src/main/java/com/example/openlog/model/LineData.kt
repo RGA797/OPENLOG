@@ -1,6 +1,8 @@
 package com.example.openlog.model
 
-import android.graphics.Color
+const val YELLOW = 4293507916.toInt()
+const val BLUE = 4280062934.toInt()
+const val RED = 4293483617.toInt()
 
 class LineData(type: Int) {
     var color: Int = 0
@@ -8,15 +10,14 @@ class LineData(type: Int) {
     init {
         when(type) {
             0 -> {
-                color = Color.YELLOW
+                color = YELLOW
             }
             1 -> {
-                color = Color.BLUE
+                color = BLUE
             }
             2 -> {
-                color = Color.RED
+                color = RED
             }
         }
     }
-
 }
