@@ -165,6 +165,7 @@ class DisplayGraph : Fragment() {
                     graphOne.addSeries(line)
                     labelFormat(binding.graphOne, getPattern())
                     graphOne.visibility = View.VISIBLE
+                    binding.timeUnit.visibility = View.VISIBLE
                     lineData[i]?.let { graphOne.gridLabelRenderer.verticalLabelsColor = it.color }
                     graphOne.gridLabelRenderer.setHumanRounding(false, true)
                 }
