@@ -57,12 +57,32 @@ class DisplayGraph : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val graph = binding.graphOne
 
-        //getData(graph)?.let { setOptions(graph, it) }
-
         dataViewModel.setGraph(graph)
         setOptions()
+        binding.timeUnit.text = getTimeUnit()
     }
 
+    // returns the timeunit of x-axis
+    private fun getTimeUnit(): String {
+        val pattern = getPattern()
+        var timeUnit = ""
+
+        if (pattern.contains("y"))
+            timeUnit = addToTimeUnit(timeUnit, "år")
+        if (pattern.contains("M"))
+            timeUnit = addToTimeUnit(timeUnit, "måned")
+        if (pattern.contains("d"))
+            timeUnit = addToTimeUnit(timeUnit, "dag")
+        if (pattern.contains("H"))
+            timeUnit = addToTimeUnit(timeUnit, "time")
+        return timeUnit
+    }
+
+    private fun addToTimeUnit(timeUnit: String, addition: String): String {
+        if (timeUnit.isNotEmpty())
+            return "$timeUnit/$addition"
+        else return addition
+    }
 
     // Sets the format of the label on the x-axis example "hh:mm:ss"
     private fun labelFormat(graph: GraphView, pattern: String) {

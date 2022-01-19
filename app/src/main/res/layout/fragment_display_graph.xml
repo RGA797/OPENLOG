@@ -17,10 +17,22 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/timeUnit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintBottom_toTopOf="@+id/graphTwo"
+            app:layout_constraintTop_toBottomOf="@+id/graphOne"
+            app:layout_constraintVertical_bias="0.703" />
+
     <com.jjoe64.graphview.GraphView
             android:id="@+id/graphOne"
             android:layout_width="match_parent"
-            android:layout_height="325dp"
+            android:layout_height="310dp"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.491"
@@ -32,14 +44,14 @@
     <com.jjoe64.graphview.GraphView
             android:id="@+id/graphTwo"
             android:layout_width="match_parent"
-            android:layout_height="325dp"
+            android:layout_height="310dp"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.935" />
+            app:layout_constraintVertical_bias="0.943" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
         </layout>
