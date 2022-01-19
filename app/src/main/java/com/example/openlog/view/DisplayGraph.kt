@@ -69,9 +69,8 @@ class DisplayGraph : Fragment() {
         //getData(graph)?.let { setOptions(graph, it) }
 
         dataViewModel.setGraphs(graph1, graph2)
-
-
         setOptions()
+        binding.timeUnit.text = getTimeUnit()
     }
 
 
@@ -93,35 +92,27 @@ class DisplayGraph : Fragment() {
     }
     //TODO : pattern is based on selected dates, not x-axis range (needs to be updated)
     private fun getPattern(): String {
-        val dates = dataViewModel.getCopySelectedDates()
+        val dates = getLabelFormatRange()
         val startDate = dates[0]
         val endDate = dates[1]
         var pattern = ""
         val msInDay = 86400000
         val buffer = msInDay/100
 
-        if (endDate != null) {
-            if (startDate != null) {
-                when {
-                    startDate.year != endDate.year -> {
-                        pattern = "yy:MM"
-                        if (endDate.time - startDate.time < (msInDay * 24 + buffer)) {
-                            pattern = addToPattern(pattern, "dd")
-                        }
-                    }
-                    startDate.month != endDate.month -> pattern = "MM:dd"
-                    startDate.date != endDate.date -> pattern = "dd:HH"
-
+        when {
+            startDate.year != endDate.year -> {
+                pattern = "yy:MM"
+                if (endDate.time - startDate.time < (msInDay * 24 + buffer)) {
+                    pattern = addToPattern(pattern, "dd")
                 }
             }
+            startDate.month != endDate.month -> pattern = "MM:dd"
+            startDate.date != endDate.date -> pattern = "dd:HH"
+
         }
         if (pattern != "dd:HH") {
-            if (endDate != null) {
-                if (startDate != null) {
-                    if (endDate.time - startDate.time < (msInDay * 3 + buffer))
-                        pattern = addToPattern(pattern, "HH")
-                }
-            }
+            if (endDate.time - startDate.time < (msInDay * 3 + buffer))
+                pattern = addToPattern(pattern, "HH")
         }
         return pattern
     }
@@ -129,6 +120,28 @@ class DisplayGraph : Fragment() {
     private fun addToPattern(pattern: String, addition: String): String {
         if (pattern.isNotEmpty())
         return "$pattern:$addition"
+        else return addition
+    }
+
+    // returns the timeunit of x-axis
+    private fun getTimeUnit(): String {
+        val pattern = getPattern()
+        var timeUnit = ""
+
+        if (pattern.contains("y"))
+            timeUnit = addToTimeUnit(timeUnit, "år")
+        if (pattern.contains("M"))
+            timeUnit = addToTimeUnit(timeUnit, "måned")
+        if (pattern.contains("d"))
+            timeUnit = addToTimeUnit(timeUnit, "dag")
+        if (pattern.contains("H"))
+            timeUnit = addToTimeUnit(timeUnit, "time")
+        return timeUnit
+    }
+
+    private fun addToTimeUnit(timeUnit: String, addition: String): String {
+        if (timeUnit.isNotEmpty())
+            return "$timeUnit/$addition"
         else return addition
     }
 
