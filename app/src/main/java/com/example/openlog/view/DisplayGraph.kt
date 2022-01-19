@@ -2,8 +2,6 @@ package com.example.openlog.view
 
 import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
-import android.content.ContentValues
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -75,7 +73,7 @@ class DisplayGraph : Fragment() {
 
 
     // Sets the format of the label on the x-axis example "hh:mm:ss"
-    private fun labelFormat(graph: GraphView, pattern: String) {
+    private fun setLablFormat(graph: GraphView, pattern: String) {
         graph.gridLabelRenderer.labelFormatter = object : DefaultLabelFormatter() {
 
             @SuppressLint("SimpleDateFormat")
@@ -175,8 +173,6 @@ class DisplayGraph : Fragment() {
                     setGraphSettings(graphOne)
                     graphOne.gridLabelRenderer.isHighlightZeroLines = false;
                     graphOne.addSeries(line)
-                    labelFormat(binding.graphOne, getPattern())
-                    graphOne.visibility = View.VISIBLE
                     lineData[i]?.let { graphOne.gridLabelRenderer.verticalLabelsColor = it.color }
                     graphOne.gridLabelRenderer.setHumanRounding(false, true)
                 }
@@ -191,8 +187,7 @@ class DisplayGraph : Fragment() {
                     val graphTwo = binding.graphTwo
                     setGraphSettings(graphTwo)
                     graphTwo.addSeries(line)
-                    graphTwo.visibility = View.VISIBLE
-                    labelFormat(binding.graphTwo, getPattern())
+                    setLablFormat(binding.graphTwo, getPattern())
 
                     lineData[i]?.let { graphTwo.gridLabelRenderer.verticalLabelsColor = it.color }
                     graphTwo.gridLabelRenderer.setHumanRounding(false, true)
@@ -213,7 +208,7 @@ class DisplayGraph : Fragment() {
 
     private fun setGraphSettings(graph: GraphView) {
         graph.visibility = View.VISIBLE
-        labelFormat(binding.graphTwo, getPattern())
+        setLablFormat(graph, getPattern())
 
         graph.titleTextSize = 90.0F
 //        graphTwo.titleColor = Color.BLUE
