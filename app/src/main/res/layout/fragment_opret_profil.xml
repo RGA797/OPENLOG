@@ -30,7 +30,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.104"
-                app:layout_constraintHorizontal_bias="0.445"
+                app:layout_constraintHorizontal_bias="0.497"
                 android:layout_marginTop="8dp" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -47,7 +47,7 @@
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.818"
+                app:layout_constraintVertical_bias="0.802"
                 android:layout_marginBottom="8dp" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -162,7 +162,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_bias="0.068"
+                app:layout_constraintVertical_bias="0.04"
                 android:layout_marginStart="3dp"
                 android:layout_marginEnd="3dp"
                 android:layout_marginTop="5dp"
