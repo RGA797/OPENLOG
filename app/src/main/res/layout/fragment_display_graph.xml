@@ -19,20 +19,20 @@
 
     <com.jjoe64.graphview.GraphView
             android:id="@+id/graphOne"
-            android:layout_width="347dp"
-            android:layout_height="327dp"
+            android:layout_width="340dp"
+            android:layout_height="325dp"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.097" />
+            app:layout_constraintVertical_bias="0.078" />
 
     <com.jjoe64.graphview.GraphView
             android:id="@+id/graphTwo"
-            android:layout_width="335dp"
-            android:layout_height="335dp"
+            android:layout_width="340dp"
+            android:layout_height="325dp"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.491"

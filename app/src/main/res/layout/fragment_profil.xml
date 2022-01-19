@@ -15,36 +15,36 @@
             android:layout_height="match_parent"
             tools:context=".view.Profil">
 
+
         <TextView
                 android:id="@+id/profile_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/profil"
+                android:layout_width="209dp"
+                android:layout_height="45dp"
+                android:text="@string/min_profil"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display2"
                 android:textColor="@color/black"
-                android:textSize="35dp"
+                android:textSize="30dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.645"
+                app:layout_constraintHorizontal_bias="0.821"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.097" />
-
+                app:layout_constraintVertical_bias="0.116" />
 
         <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/alderTekst"
                 android:clickable="false"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="320dp"
+                android:layout_width="300dp"
                 android:layout_height="55dp"
                 android:textColorHint="#B3000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.493"
+                app:layout_constraintHorizontal_bias="0.405"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.636">
+                app:layout_constraintVertical_bias="0.602">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/alderTekstoutline"
@@ -53,21 +53,24 @@
                     android:layout_width="match_parent"
                     android:text="@{@string/ageDisplay(dataViewModel.currentAge)}"
                     android:layout_height="match_parent"
-                    tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+                    tools:ignore="TextContrastCheck,TouchTargetSizeCheck"
+                    android:textSize="18sp"
+                    android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/koenTekst"
                 android:clickable="false"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="320dp"
+                android:layout_width="300dp"
                 android:layout_height="55dp"
                 android:textColorHint="#B3000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.493"
+                app:layout_constraintHorizontal_bias="0.405"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.473">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/koenTekstoutline"
@@ -76,22 +79,24 @@
                     android:layout_width="match_parent"
                     android:text="@{@string/genderDisplay(dataViewModel.currentGender)}"
                     android:layout_height="match_parent"
-                    tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+                    tools:ignore="TextContrastCheck,TouchTargetSizeCheck"
+                    android:textSize="18sp"
+                    android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/navnTekst"
                 android:clickable="false"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="320dp"
+                android:layout_width="300dp"
                 android:layout_height="55dp"
                 android:textColorHint="#B3000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.493"
+                app:layout_constraintHorizontal_bias="0.405"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.376">
+                app:layout_constraintVertical_bias="0.343">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/navnTekstoutline"
@@ -100,7 +105,9 @@
                     android:layout_width="match_parent"
                     android:text="@{@string/nameDisplay(dataViewModel.currentUsername)}"
                     android:layout_height="match_parent"
-                    tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+                    tools:ignore="TextContrastCheck,TouchTargetSizeCheck"
+                    android:textSize="18sp"
+                    android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <ImageButton
@@ -115,6 +122,46 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.061"
-                app:layout_constraintVertical_bias="0.06" />
+                app:layout_constraintVertical_bias="0.084" />
+
+        <TextView
+                android:text="Navn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/navnTitel"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.118"
+                app:layout_constraintVertical_bias="0.299" />
+
+        <TextView
+                android:text="Alder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/alderTitel"
+                android:textStyle="italic"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.118"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.422" />
+
+        <TextView
+                android:text="Køn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/koenTitel"
+                android:textStyle="italic"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.116"
+                app:layout_constraintVertical_bias="0.544" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
         </layout>
