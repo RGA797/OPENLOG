@@ -6,17 +6,21 @@ const val RED = 4293483617.toInt()
 
 class LineData(type: Int) {
     var color: Int = 0
+    var unit: String = ""
 
     init {
         when(type) {
             0 -> {
                 color = YELLOW
+                unit = "yellow"
             }
             1 -> {
                 color = BLUE
+                unit = "blue"
             }
             2 -> {
                 color = RED
+                unit = "red"
             }
         }
     }

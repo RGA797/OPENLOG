@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CalendarView
 import android.widget.Toast
+import androidx.core.view.get
 import com.example.openlog.databinding.FragmentGraphOptionsBinding
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
@@ -27,18 +28,19 @@ class GraphOptions: Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentGraphOptionsBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         binding.calendarView.setOnDateChangeListener { p0, p1, p2, p3 ->
             val date = Calendar.getInstance()
 
             date.set(p1,p2,p3,0,0,0)
             dataViewModel.setDateSelected(date.time)
+
         }
 
         binding.insulinButton.setOnClickListener{onCategory(INSULIN)}

@@ -103,11 +103,12 @@ class DisplayGraph : Fragment() {
             }
             startDate.month != endDate.month -> pattern = "MM:dd"
             startDate.date != endDate.date -> pattern = "dd:HH"
-
         }
         if (pattern != "dd:HH") {
             if (endDate.time - startDate.time < (msInDay * 3 + buffer))
                 pattern = addToPattern(pattern, "HH")
+            if (endDate.time - startDate.time < (msInDay + buffer))
+                pattern = addToPattern(pattern, "mm")
         }
         return pattern
     }
@@ -131,6 +132,8 @@ class DisplayGraph : Fragment() {
             timeUnit = addToTimeUnit(timeUnit, "dag")
         if (pattern.contains("H"))
             timeUnit = addToTimeUnit(timeUnit, "time")
+        if (pattern.contains("m"))
+            timeUnit = addToTimeUnit(timeUnit, "minut")
         return timeUnit
     }
 
