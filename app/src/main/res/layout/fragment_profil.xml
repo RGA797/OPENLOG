@@ -30,7 +30,7 @@
                 app:layout_constraintHorizontal_bias="0.821"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.116" />
+                app:layout_constraintVertical_bias="0.094" />
 
         <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/alderTekst"
@@ -44,7 +44,7 @@
                 app:layout_constraintHorizontal_bias="0.405"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.602">
+                app:layout_constraintVertical_bias="0.591">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/alderTekstoutline"
@@ -54,7 +54,7 @@
                     android:text="@{@string/ageDisplay(dataViewModel.currentAge)}"
                     android:layout_height="match_parent"
                     tools:ignore="TextContrastCheck,TouchTargetSizeCheck"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,7 +70,7 @@
                 app:layout_constraintHorizontal_bias="0.405"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.473">
+                app:layout_constraintVertical_bias="0.457">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/koenTekstoutline"
@@ -80,7 +80,7 @@
                     android:text="@{@string/genderDisplay(dataViewModel.currentGender)}"
                     android:layout_height="match_parent"
                     tools:ignore="TextContrastCheck,TouchTargetSizeCheck"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -96,7 +96,7 @@
                 app:layout_constraintHorizontal_bias="0.405"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.343">
+                app:layout_constraintVertical_bias="0.319">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/navnTekstoutline"
@@ -106,7 +106,7 @@
                     android:text="@{@string/nameDisplay(dataViewModel.currentUsername)}"
                     android:layout_height="match_parent"
                     tools:ignore="TextContrastCheck,TouchTargetSizeCheck"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -122,7 +122,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.061"
-                app:layout_constraintVertical_bias="0.084" />
+                app:layout_constraintVertical_bias="0.058" />
 
         <TextView
                 android:text="Navn"
@@ -135,7 +135,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.118"
-                app:layout_constraintVertical_bias="0.299" />
+                app:layout_constraintVertical_bias="0.276" />
 
         <TextView
                 android:text="Alder"
@@ -148,7 +148,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintHorizontal_bias="0.118"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias="0.422" />
+                app:layout_constraintVertical_bias="0.407" />
 
         <TextView
                 android:text="Køn"
@@ -161,7 +161,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintHorizontal_bias="0.116"
-                app:layout_constraintVertical_bias="0.544" />
+                app:layout_constraintVertical_bias="0.535" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
         </layout>
