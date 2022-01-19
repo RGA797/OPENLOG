@@ -66,7 +66,6 @@ class DisplayGraph : Fragment() {
 
         dataViewModel.setGraphs(graph1, graph2)
         setOptions()
-        binding.timeUnit.text = getTimeUnit()
     }
 
 
