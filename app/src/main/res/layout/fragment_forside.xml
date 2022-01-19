@@ -88,14 +88,14 @@
                 android:id="@+id/hilsenTekst"
                 android:text="@{@string/hilsen(dataViewModel.currentUsername)}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.381"
-                app:layout_constraintVertical_bias="0.053"
+                app:layout_constraintVertical_bias="0.059"
                 android:layout_marginTop="5dp"
-                android:layout_marginStart="1dp"
-                app:layout_constraintStart_toEndOf="@+id/profilButton" />
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.389" />
 
         <ImageButton
                 android:layout_width="125dp"

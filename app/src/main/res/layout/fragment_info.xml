@@ -9,6 +9,49 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+    <TextView
+            android:layout_width="335dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView15"
+            android:textSize="11sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.617"
+            android:text="Efter at have genereret grafer, kan graferne deles ved at trykke DEL inde i menuen øverst til højre, og efterfølgende vælge den ønskede delingsplatform."
+            app:layout_constraintHorizontal_bias="0.525" />
+
+    <TextView
+            android:layout_width="335dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView11"
+            android:textSize="11sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.477"
+            app:layout_constraintHorizontal_bias="0.518"
+            android:text="Vælg en enkelt dag, eller to datoer for at se gemte værdier i en periode. " />
+
+    <TextView
+            android:layout_width="335dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView13"
+            android:textSize="9sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.757"
+            android:text="OpenLog prototype samt design udarbejdet af studerende, Gülsen Dilan Tasci, Jens Helmer Olesen, Rachid Gaim Ahwaz og Zeinab Hajri ud fra Ture Nilssons vision.  "
+            app:layout_constraintHorizontal_bias="0.539"
+            android:textStyle="italic" />
+
     <ImageView
             android:src="@drawable/info"
             android:layout_width="77dp"
@@ -19,6 +62,121 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.083"
-            app:layout_constraintVertical_bias="0.049" />
+            app:layout_constraintVertical_bias="0.061" />
+
+    <TextView
+            android:text="Logning af værdier:"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:id="@+id/textView"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.133"
+            app:layout_constraintVertical_bias="0.194" />
+
+    <TextView
+            android:text="Deling af grafer:"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:id="@+id/textView12"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.128"
+            app:layout_constraintVertical_bias="0.571" />
+
+    <TextView
+            android:text="Ved tale trykkes der på mikrofon-knappen og siges en kategori + en værdi (f.eks. insulin 20). Tryk derefter på LOG INPUT for at gemme. "
+            android:layout_width="335dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView5"
+            android:textColor="@color/black"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintVertical_bias="0.224" />
+
+    <TextView
+            android:text="Ved manuel indtastning (tastaturet i nederste højre hjørne) vælges en kategori, hvor man herefter indtaster værdien. Tryk derefter LOG DATA for at gemme."
+            android:layout_width="335dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6"
+            android:textColor="@color/black"
+            android:textSize="11sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.281"
+            app:layout_constraintHorizontal_bias="0.526" />
+
+    <TextView
+            android:text="Visning af loggede værdier:"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:id="@+id/textView7"
+            android:textSize="13sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.158"
+            app:layout_constraintVertical_bias="0.355" />
+
+    <TextView
+            android:text="Herefter kan der vælges 2-3 kategorier. De første 2 kategorier vises i samme graf, mens den sidste vises hver for sig."
+            android:layout_width="335dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView8"
+            android:textSize="11sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.438"
+            app:layout_constraintHorizontal_bias="0.533" />
+
+    <TextView
+            android:layout_width="335dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView10"
+            android:textSize="11sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.519"
+            android:text="Tryk på GENERATE GRAPH for at generer grafer."
+            app:layout_constraintHorizontal_bias="0.532" />
+
+    <TextView
+            android:text="For at se grafer over gemte værdier, tryk på menu-knappen øverst til højre. "
+            android:layout_width="335dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView9"
+            android:textColor="@color/black"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintVertical_bias="0.388" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
