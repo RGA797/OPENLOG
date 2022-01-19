@@ -95,7 +95,7 @@
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/opretAdgangskodeText"
                     android:layout_width="match_parent"
-
+                    android:inputType="textPassword"
                     android:layout_height="match_parent"
                     tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -171,7 +171,6 @@
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/opretNavnText"
                     android:layout_width="match_parent"
-                    android:inputType="textPassword"
                     android:layout_height="match_parent"
                     tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
         </com.google.android.material.textfield.TextInputLayout>
