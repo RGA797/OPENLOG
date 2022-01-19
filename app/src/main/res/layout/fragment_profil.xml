@@ -31,50 +31,77 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.097" />
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+
+        <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/alderTekst"
-                android:text="@{@string/ageDisplay(dataViewModel.currentAge)}"
-                android:background="@drawable/background"
+                android:clickable="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="320dp"
+                android:layout_height="55dp"
+                android:textColorHint="#B3000000"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.493"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.193"
-                app:layout_constraintVertical_bias="0.569"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textColor="@color/black" />
+                app:layout_constraintVertical_bias="0.636">
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/alderTekstoutline"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:layout_width="match_parent"
+                    android:text="@{@string/ageDisplay(dataViewModel.currentAge)}"
+                    android:layout_height="match_parent"
+                    tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/koenTekst"
-                android:text="@{@string/genderDisplay(dataViewModel.currentGender)}"
-                android:background="@drawable/background"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:clickable="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="320dp"
+                android:layout_height="55dp"
+                android:textColorHint="#B3000000"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.193"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                app:layout_constraintVertical_bias="0.46"
-                android:textColor="@color/black" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.493"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/koenTekstoutline"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:layout_width="match_parent"
+                    android:text="@{@string/genderDisplay(dataViewModel.currentGender)}"
+                    android:layout_height="match_parent"
+                    tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/navnTekst"
-                android:text="@{@string/nameDisplay(dataViewModel.currentUsername)}"
-                android:background="@drawable/background"
+                android:clickable="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="320dp"
+                android:layout_height="55dp"
+                android:textColorHint="#B3000000"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.493"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.193"
-                app:layout_constraintVertical_bias="0.364"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textColor="@color/black" />
+                app:layout_constraintVertical_bias="0.376">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/navnTekstoutline"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:layout_width="match_parent"
+                    android:text="@{@string/nameDisplay(dataViewModel.currentUsername)}"
+                    android:layout_height="match_parent"
+                    tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ImageButton
                 android:src="@drawable/profilny"
