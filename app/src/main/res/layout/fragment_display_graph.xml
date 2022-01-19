@@ -19,7 +19,7 @@
 
     <com.jjoe64.graphview.GraphView
             android:id="@+id/graphOne"
-            android:layout_width="340dp"
+            android:layout_width="350dp"
             android:layout_height="325dp"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +31,7 @@
 
     <com.jjoe64.graphview.GraphView
             android:id="@+id/graphTwo"
-            android:layout_width="340dp"
+            android:layout_width="350dp"
             android:layout_height="325dp"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
