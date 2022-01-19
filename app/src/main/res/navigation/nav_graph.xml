@@ -73,6 +73,9 @@
         <action
                 android:id="@+id/navigateFromManualInputToGraphOptions"
                 app:destination="@id/GraphOptions" />
+        <action
+                android:id="@+id/navigateFromManualInputToInfo"
+                app:destination="@id/fragment_info2" />
     </fragment>
     <fragment
             android:id="@+id/fragment_info2"

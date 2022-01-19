@@ -95,7 +95,7 @@
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintHorizontal_bias="0.389" />
+                app:layout_constraintHorizontal_bias="0.575" />
 
         <ImageButton
                 android:layout_width="125dp"

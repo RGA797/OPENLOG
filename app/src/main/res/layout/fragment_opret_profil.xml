@@ -54,7 +54,7 @@
                 android:id="@+id/emailOpretTextInput"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="320dp"
-                android:layout_height="55dp"
+                android:layout_height="60dp"
                 android:hint="@string/email"
                 android:textColorHint="#B3000000"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -79,7 +79,7 @@
                 android:id="@+id/adgangskodeTextInput"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="320dp"
-                android:layout_height="55dp"
+                android:layout_height="60dp"
                 android:hint="@string/adgangskode"
                 android:textColorHint="#B3000000"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -104,7 +104,7 @@
                 android:id="@+id/alderTextInput"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="320dp"
-                android:layout_height="55dp"
+                android:layout_height="60dp"
                 android:hint="@string/alder"
                 android:textColorHint="#B3000000"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -129,7 +129,7 @@
                 android:id="@+id/kønTextInput"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="320dp"
-                android:layout_height="55dp"
+                android:layout_height="60dp"
                 android:hint="@string/køn"
                 android:textColorHint="#B3000000"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -155,7 +155,7 @@
                 android:id="@+id/navnTekstInput"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="320dp"
-                android:layout_height="55dp"
+                android:layout_height="60dp"
                 android:hint="@string/navn"
                 android:textColorHint="#B3000000"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -171,7 +171,7 @@
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/opretNavnText"
                     android:layout_width="match_parent"
-
+                    android:inputType="textPassword"
                     android:layout_height="match_parent"
                     tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
         </com.google.android.material.textfield.TextInputLayout>

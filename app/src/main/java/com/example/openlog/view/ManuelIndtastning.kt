@@ -109,11 +109,18 @@ class ManuelIndtastning : Fragment() {
         when (item.itemId){
             R.id.historikDropdown -> onHistorikDropdown()
         }
+        when (item.itemId){
+            R.id.infoDropdown -> onInfoDropdown()
+        }
         return super.onOptionsItemSelected(item)
     }
 
     fun onHistorikDropdown(){
         Navigation.findNavController(binding.root).navigate(R.id.navigateFromManualInputToGraphOptions)
+    }
+
+    fun onInfoDropdown(){
+        Navigation.findNavController(binding.root).navigate(R.id.navigateFromManualInputToInfo)
     }
 }
 
