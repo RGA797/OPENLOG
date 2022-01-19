@@ -64,8 +64,6 @@ class DisplayGraph : Fragment() {
         val graph1 = binding.graphOne
         val graph2 = binding.graphTwo
 
-        //getData(graph)?.let { setOptions(graph, it) }
-
         dataViewModel.setGraphs(graph1, graph2)
         setOptions()
         binding.timeUnit.text = getTimeUnit()
@@ -73,7 +71,7 @@ class DisplayGraph : Fragment() {
 
 
     // Sets the format of the label on the x-axis example "hh:mm:ss"
-    private fun setLablFormat(graph: GraphView, pattern: String) {
+    private fun setLabelFormat(graph: GraphView, pattern: String) {
         graph.gridLabelRenderer.labelFormatter = object : DefaultLabelFormatter() {
 
             @SuppressLint("SimpleDateFormat")
@@ -187,7 +185,7 @@ class DisplayGraph : Fragment() {
                     val graphTwo = binding.graphTwo
                     setGraphSettings(graphTwo)
                     graphTwo.addSeries(line)
-                    setLablFormat(binding.graphTwo, getPattern())
+                    setLabelFormat(binding.graphTwo, getPattern())
 
                     lineData[i]?.let { graphTwo.gridLabelRenderer.verticalLabelsColor = it.color }
                     graphTwo.gridLabelRenderer.setHumanRounding(false, true)
@@ -208,7 +206,7 @@ class DisplayGraph : Fragment() {
 
     private fun setGraphSettings(graph: GraphView) {
         graph.visibility = View.VISIBLE
-        setLablFormat(graph, getPattern())
+        setLabelFormat(graph, getPattern())
 
         graph.titleTextSize = 90.0F
 //        graphTwo.titleColor = Color.BLUE
@@ -225,6 +223,10 @@ class DisplayGraph : Fragment() {
         gridLabel.verticalAxisTitleTextSize = 25F
         // this will draw a border aroung graph and will also show both axis
         graph.viewport.setDrawBorder(true)
+        gridLabel.labelsSpace = -20
+        gridLabel.horizontalAxisTitle = getTimeUnit()
+        gridLabel.horizontalAxisTitleTextSize = 42F
+        gridLabel.labelHorizontalHeight = 95
 
         graph.gridLabelRenderer.setHumanRounding(false, true)
     }
@@ -246,6 +248,8 @@ class DisplayGraph : Fragment() {
                 smallest = list.lowestValueX
             }
         }
+        greatest += (greatest-smallest)/16
+        smallest += -(greatest-smallest)/16
         if (lineGraphSeriesList.isEmpty()) {
             return arrayOf(0.0,1.0)
         }
