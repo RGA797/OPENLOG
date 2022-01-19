@@ -30,6 +30,7 @@ class DateConverter {
             "Dec" -> 11
             else -> {0}
         }
+
         val hourOfDay = stringList[3].split(":")[0].toInt()
         val minuteOfDay = stringList[3].split(":")[1].toInt()
         val seconOfDay = stringList[3].split(":")[2].toInt()
