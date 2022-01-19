@@ -7,101 +7,103 @@
     android:layout_height="match_parent"
     tools:context=".view.Login">
 
+
     <TextView
-        android:id="@+id/OPENLOG_title"
-        android:layout_width="219dp"
-        android:layout_height="62dp"
-        android:text="@string/openlog"
+            android:id="@+id/OPENLOG_title"
+            android:layout_width="219dp"
+            android:layout_height="62dp"
+            android:text="@string/openlog"
 
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        android:textColor="#069C81"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.176" />
-
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textColor="#069C81"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.285"
+            android:layout_marginTop="10dp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailloginTextInput"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="320dp"
-        android:layout_height="60dp"
-        android:hint="@string/email"
-        android:textColorHint="#B3000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.299"
-        app:startIconDrawable="@android:drawable/sym_action_email">
+            android:id="@+id/emailloginTextInput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="320dp"
+            android:layout_height="60dp"
+            android:hint="@string/email"
+            android:textColorHint="#B3000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.403"
+            app:startIconDrawable="@android:drawable/sym_action_email"
+            app:layout_constraintHorizontal_bias="0.494">
 
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/loginEmailText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+                android:id="@+id/loginEmailText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/opretButton"
-        android:layout_width="136dp"
-        android:layout_height="50dp"
-        android:background="@color/white"
-        android:backgroundTint="@color/white"
-        android:fadeScrollbars="false"
-        android:text="@string/opret_bruger"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.829"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.641" />
+            android:id="@+id/opretButton"
+            android:layout_width="136dp"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:backgroundTint="@color/white"
+            android:fadeScrollbars="false"
+            android:text="@string/opret_bruger"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.832"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.703" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/adgangskodeTextInput"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="320dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="10dp"
-        android:hint="@string/adgangskode"
-        android:textColorHint="#B3000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailloginTextInput"
-        app:layout_constraintVertical_bias="0.042"
-        app:startIconDrawable="@android:drawable/ic_lock_idle_lock">
+            android:id="@+id/adgangskodeTextInput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="320dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:hint="@string/adgangskode"
+            android:textColorHint="#B3000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailloginTextInput"
+            app:layout_constraintVertical_bias="0.009"
+            app:startIconDrawable="@android:drawable/ic_lock_idle_lock">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/loginAdgangskodeText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+                android:id="@+id/loginAdgangskodeText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:inputType="textPassword"
-            tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+                tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/loginButton"
-        android:layout_width="320dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:background="#069C81"
-        android:text="@string/login"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.55"
-        app:rippleColor="#FFFFFF" />
+            android:id="@+id/loginButton"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:background="#069C81"
+            android:text="@string/login"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.64"
+            app:rippleColor="#FFFFFF"
+            android:layout_marginBottom="10dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"

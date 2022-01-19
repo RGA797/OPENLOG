@@ -29,8 +29,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.084"
-                app:layout_constraintHorizontal_bias="0.497" />
+                app:layout_constraintVertical_bias="0.104"
+                app:layout_constraintHorizontal_bias="0.445"
+                android:layout_marginTop="8dp" />
 
         <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/opretProfilButton"
@@ -46,7 +47,8 @@
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.787" />
+                app:layout_constraintVertical_bias="0.818"
+                android:layout_marginBottom="8dp" />
 
         <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/emailOpretTextInput"
@@ -59,8 +61,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.315">
+                app:layout_constraintVertical_bias="0.027"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/navnTekstInput"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp">
 
 
             <com.google.android.material.textfield.TextInputEditText
@@ -81,8 +86,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.421">
+                app:layout_constraintVertical_bias="0.033"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/emailOpretTextInput"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/opretAdgangskodeText"
@@ -97,15 +105,17 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="320dp"
                 android:layout_height="55dp"
-                android:layout_marginTop="10dp"
                 android:hint="@string/alder"
                 android:textColorHint="#B3000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_bias="0.644"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintVertical_bias="0.061"
+                app:layout_constraintTop_toBottomOf="@+id/kønTextInput"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginTop="4dp">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/opretAlderText"
@@ -126,8 +136,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.534">
+                app:layout_constraintVertical_bias="0.04"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/adgangskodeTextInput"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp">
 
 
             <com.google.android.material.textfield.TextInputEditText
@@ -149,8 +162,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.207">
+                app:layout_constraintVertical_bias="0.068"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@+id/profile_title">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/opretNavnText"

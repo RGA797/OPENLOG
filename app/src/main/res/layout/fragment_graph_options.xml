@@ -140,7 +140,9 @@
                 app:layout_constraintHorizontal_bias="0.491"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.564" />
+                app:layout_constraintVertical_bias="0.564"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

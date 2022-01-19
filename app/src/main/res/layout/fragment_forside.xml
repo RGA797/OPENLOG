@@ -21,12 +21,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{@string/inputText(dataViewModel.currentInput)}"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/microphoneButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.283" />
+                app:layout_constraintVertical_bias="0.453"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="1dp" />
 
         <Button
                 android:id="@+id/logButton"
@@ -38,9 +42,12 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:textColor="@color/black"
-                app:layout_constraintVertical_bias="0.687" />
+                app:layout_constraintVertical_bias="0.0"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="1dp"
+                app:layout_constraintTop_toBottomOf="@+id/microphoneButton" />
 
         <ImageButton
                 android:layout_width="130dp"
@@ -54,7 +61,9 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintHorizontal_bias="0.056"
-                app:layout_constraintVertical_bias="0.026" />
+                app:layout_constraintVertical_bias="0.026"
+                android:layout_marginTop="2dp"
+                android:layout_marginStart="2dp" />
 
         <ImageButton
                 android:layout_width="241dp"
@@ -67,21 +76,11 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintVertical_bias="0.466" />
-
-        <ImageButton
-                android:layout_width="98dp"
-                android:layout_height="101dp"
-                app:srcCompat="@drawable/keyboard"
-                android:scaleType="centerInside"
-                android:backgroundTint="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.948"
-                app:layout_constraintVertical_bias="0.96"
-                android:id="@+id/manuelIndtastningButton" />
+                app:layout_constraintVertical_bias="0.446"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp" />
 
         <TextView
                 android:layout_width="wrap_content"
@@ -92,7 +91,27 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintVertical_bias="0.077" />
+                app:layout_constraintHorizontal_bias="0.381"
+                app:layout_constraintVertical_bias="0.053"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="1dp"
+                app:layout_constraintStart_toEndOf="@+id/profilButton" />
+
+        <ImageButton
+                android:layout_width="125dp"
+                android:layout_height="119dp"
+                app:srcCompat="@drawable/keyboard2"
+                android:id="@+id/manuelIndtastningButton"
+                android:scaleType="centerInside"
+                android:backgroundTint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintHorizontal_bias="0.979"
+                app:layout_constraintVertical_bias="0.973"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
