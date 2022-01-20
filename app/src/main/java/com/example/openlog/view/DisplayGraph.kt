@@ -163,7 +163,6 @@ class DisplayGraph : Fragment() {
     }
 
     private fun setOptions() {
-        //Create curve/series for graph
         val lineGraphSeriesList = loadData()
         val graphOne = binding.graphOne
 
@@ -202,7 +201,6 @@ class DisplayGraph : Fragment() {
     private fun setLineSettings(line: LineGraphSeries<DataPoint>, index: Int) {
         line.color = lineData[index]?.color!!
         line.title = lineData[index]?.title!!
-        //series.title = "Blodsukker" //Needed for creating legend described below
         line.isDrawDataPoints = true //Shows datapoints as circles in the curve
         line.dataPointsRadius = 16F //layout for datapoints
         line.thickness = 8 //Layout for datapoints
@@ -212,9 +210,6 @@ class DisplayGraph : Fragment() {
         graph.visibility = View.VISIBLE
         setLabelFormat(graph, getPattern())
 
-        graph.titleTextSize = 90.0F
-//        graphTwo.titleColor = Color.BLUE
-
         //Legend (used for displaying overview of curves)
         graph.legendRenderer.isVisible = true
         graph.legendRenderer.align = com.jjoe64.graphview.LegendRenderer.LegendAlign.TOP
@@ -223,10 +218,7 @@ class DisplayGraph : Fragment() {
 
         //Axis titles
         val gridLabel = graph.gridLabelRenderer as GridLabelRenderer
-        //gridLabel.horizontalAxisTitle = "X Axis Title"
-        gridLabel.horizontalAxisTitleTextSize = 50F
-        //gridLabel.verticalAxisTitle = "Y Axis Title"
-        gridLabel.verticalAxisTitleTextSize = 25F
+
         // this will draw a border aroung graph and will also show both axis
         graph.viewport.setDrawBorder(true)
         gridLabel.labelsSpace = -20
@@ -254,6 +246,7 @@ class DisplayGraph : Fragment() {
                 smallest = list.lowestValueX
             }
         }
+        //padding between line start/end and y-axis
         greatest += (greatest-smallest)/16
         smallest += -(greatest-smallest)/16
         if (lineGraphSeriesList.isEmpty()) {
