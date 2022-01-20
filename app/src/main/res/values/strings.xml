@@ -35,6 +35,7 @@
     <string name="todo">TODO</string>
     <string name="alder">Alder</string>
     <string name="INFO">INFO</string>
+    <string name="logdata">logData</string>
 
     <string-array name="Køn">
         <item>Dreng</item>

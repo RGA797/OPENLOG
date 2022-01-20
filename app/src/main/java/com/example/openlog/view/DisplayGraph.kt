@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -200,6 +201,7 @@ class DisplayGraph : Fragment() {
 
     private fun setLineSettings(line: LineGraphSeries<DataPoint>, index: Int) {
         line.color = lineData[index]?.color!!
+        line.title = lineData[index]?.title!!
         //series.title = "Blodsukker" //Needed for creating legend described below
         line.isDrawDataPoints = true //Shows datapoints as circles in the curve
         line.dataPointsRadius = 16F //layout for datapoints
@@ -214,8 +216,10 @@ class DisplayGraph : Fragment() {
 //        graphTwo.titleColor = Color.BLUE
 
         //Legend (used for displaying overview of curves)
-        //graph.legendRenderer.isVisible = true
-//        graph.legendRenderer.align = com.jjoe64.graphview.LegendRenderer.LegendAlign.TOP
+        graph.legendRenderer.isVisible = true
+        graph.legendRenderer.align = com.jjoe64.graphview.LegendRenderer.LegendAlign.TOP
+        graph.legendRenderer.textSize
+        graph.legendRenderer.backgroundColor = Color.WHITE
 
         //Axis titles
         val gridLabel = graph.gridLabelRenderer as GridLabelRenderer
