@@ -66,7 +66,7 @@ class DisplayGraph : Fragment() {
         val graph2 = binding.graphTwo
 
         dataViewModel.setGraphs(graph1, graph2)
-        setOptions()
+        generateGraph()
     }
 
 
@@ -86,7 +86,7 @@ class DisplayGraph : Fragment() {
             }
         }
     }
-    //TODO : pattern is based on selected dates, not x-axis range (needs to be updated)
+    // returns timeformat for x-axis labels
     private fun getPattern(): String {
         val dates = getLabelFormatRange()
         val startDate = dates[0]
@@ -120,7 +120,7 @@ class DisplayGraph : Fragment() {
         else return addition
     }
 
-    // returns the timeunit of x-axis
+    // returns timeunit such that humans can understand timefomat on x-axis
     private fun getTimeUnit(): String {
         val pattern = getPattern()
         var timeUnit = ""
@@ -144,6 +144,7 @@ class DisplayGraph : Fragment() {
         else return addition
     }
 
+    // returns earliest and latest date of logged values in dataset
     private fun getLabelFormatRange(): Array<Date> {
         var startDate = Date(250, 1, 1, 1, 1, 1)
         var endDate = Date(1, 1, 1, 1, 1, 1)
@@ -162,7 +163,8 @@ class DisplayGraph : Fragment() {
         return arrayOf(startDate, endDate)
     }
 
-    private fun setOptions() {
+    // generates graph with certain options
+    private fun generateGraph() {
         val lineGraphSeriesList = loadData()
         val graphOne = binding.graphOne
 
@@ -198,6 +200,7 @@ class DisplayGraph : Fragment() {
         setXAxisRange(getXAxisRange(lineGraphSeriesList))
     }
 
+    // settings for line representing data
     private fun setLineSettings(line: LineGraphSeries<DataPoint>, index: Int) {
         line.color = lineData[index]?.color!!
         line.title = lineData[index]?.title!!
@@ -206,6 +209,7 @@ class DisplayGraph : Fragment() {
         line.thickness = 8 //Layout for datapoints
     }
 
+    // sets various setting for the graph
     private fun setGraphSettings(graph: GraphView) {
         graph.visibility = View.VISIBLE
         setLabelFormat(graph, getPattern())
@@ -223,17 +227,19 @@ class DisplayGraph : Fragment() {
         graph.viewport.setDrawBorder(true)
         gridLabel.labelsSpace = -20
         gridLabel.horizontalAxisTitle = getTimeUnit()
-        gridLabel.horizontalAxisTitleTextSize = 42F
+        gridLabel.horizontalAxisTitleTextSize = 40F
         gridLabel.labelHorizontalHeight = 95
 
         graph.gridLabelRenderer.setHumanRounding(false, true)
     }
+
 
     private fun setSecondScaleYAxis(line: LineGraphSeries<DataPoint>, secondScale: SecondScale) {
         secondScale.setMinY(line.lowestValueY)
         secondScale.setMaxY(line.highestValueY)
     }
 
+    // manually sets range of the graph along the x-axis
     private fun getXAxisRange(lineGraphSeriesList: ArrayList<LineGraphSeries<DataPoint>>): Array<Double>  {
         var greatest = Double.MIN_VALUE
         var smallest = Double.MAX_VALUE
@@ -270,6 +276,7 @@ class DisplayGraph : Fragment() {
         graphTwo.viewport.isXAxisBoundsManual = true
     }
 
+    // loads all data selected by user into arraylist of linegraphseries to be used by graphview
     private fun loadData(): ArrayList<LineGraphSeries<DataPoint>> {
         val dataList = userInputList
         val dataPoints = arrayOfNulls<Array<DataPoint?>>(dataList.size)
