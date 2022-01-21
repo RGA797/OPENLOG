@@ -77,6 +77,8 @@ class DisplayGraph : Fragment() {
             @SuppressLint("SimpleDateFormat")
             val sdf = SimpleDateFormat(pattern)
 
+            //slightly modified code from
+            //http://www.java2s.com/Open-Source/Android_Free_Code/Graphics/graph/com_jjoe64_graphview_helperDateAsXAxisLabelFormatter_java.htm
             override fun formatLabel(value: Double, isValueX: Boolean): String {
                 if (isValueX) {
                     return sdf.format(Date(value.toLong()))
@@ -173,10 +175,8 @@ class DisplayGraph : Fragment() {
             when (i) {
                 0 -> {
                     setGraphSettings(graphOne)
-                    graphOne.gridLabelRenderer.isHighlightZeroLines = false;
                     graphOne.addSeries(line)
                     lineData[i]?.let { graphOne.gridLabelRenderer.verticalLabelsColor = it.color }
-                    graphOne.gridLabelRenderer.setHumanRounding(false, true)
                 }
                 1 -> {
                     val canvas = Canvas()
@@ -192,7 +192,6 @@ class DisplayGraph : Fragment() {
                     setLabelFormat(binding.graphTwo, getPattern())
 
                     lineData[i]?.let { graphTwo.gridLabelRenderer.verticalLabelsColor = it.color }
-                    graphTwo.gridLabelRenderer.setHumanRounding(false, true)
                 }
             }
         }
@@ -214,23 +213,23 @@ class DisplayGraph : Fragment() {
         graph.visibility = View.VISIBLE
         setLabelFormat(graph, getPattern())
 
-        //Legend (used for displaying overview of curves)
-        graph.legendRenderer.isVisible = true
-        graph.legendRenderer.align = com.jjoe64.graphview.LegendRenderer.LegendAlign.TOP
-        graph.legendRenderer.textSize
-        graph.legendRenderer.backgroundColor = Color.WHITE
+        val legendRenderer = graph.legendRenderer
+        legendRenderer.isVisible = true
+        legendRenderer.align = com.jjoe64.graphview.LegendRenderer.LegendAlign.TOP
+        legendRenderer.textSize
+        legendRenderer.backgroundColor = Color.WHITE
 
         //Axis titles
         val gridLabel = graph.gridLabelRenderer as GridLabelRenderer
-
-        // this will draw a border aroung graph and will also show both axis
-        graph.viewport.setDrawBorder(true)
         gridLabel.labelsSpace = -20
         gridLabel.horizontalAxisTitle = getTimeUnit()
         gridLabel.horizontalAxisTitleTextSize = 40F
         gridLabel.labelHorizontalHeight = 95
 
+        // this will draw a border aroung graph and will also show both axis
+        graph.viewport.setDrawBorder(true)
         graph.gridLabelRenderer.setHumanRounding(false, true)
+        graph.gridLabelRenderer.isHighlightZeroLines = false
     }
 
 
@@ -258,7 +257,6 @@ class DisplayGraph : Fragment() {
         if (lineGraphSeriesList.isEmpty()) {
             return arrayOf(0.0,1.0)
         }
-
         return arrayOf(smallest, greatest)
     }
 
